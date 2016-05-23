@@ -14,6 +14,7 @@ namespace Wordless.Models
         //titel på boken
         public string Title { get; set; }
 
+        public string BookText { get; set; }
 
         //public int AuthorId { get; set; }
         ////vilken användare som har skrivit
