@@ -204,6 +204,8 @@ namespace Wordless.Migrations
             context.Comment.AddOrUpdate(comment3);
             context.Comment.AddOrUpdate(comment4);
             #endregion
+
+            
             context.SaveChanges();
 
         }

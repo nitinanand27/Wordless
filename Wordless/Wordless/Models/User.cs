@@ -40,5 +40,7 @@ namespace Wordless.Models
         //en användare har en collection av kommentarer
         public virtual IList<Comment> Comments { get; set; }
 
+        public virtual IList<File> Files { get; set; }
+
     }
 }

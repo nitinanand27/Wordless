@@ -16,5 +16,7 @@ namespace Wordless.Models
         public DbSet<Comment> Comment { get; set; }
         public DbSet<PurchasedBook> PurchaseBook { get; set; }
         public DbSet<User> User { get; set; }
+        public DbSet<File> File { get; set; }
+
     }
 }

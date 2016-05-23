@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -127,9 +128,14 @@
     <Compile Include="Migrations\201605231040316_lade till boooktext.Designer.cs">
       <DependentUpon>201605231040316_lade till boooktext.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605231221212_lagt till filehanteringsmodell.cs" />
+    <Compile Include="Migrations\201605231221212_lagt till filehanteringsmodell.Designer.cs">
+      <DependentUpon>201605231221212_lagt till filehanteringsmodell.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\File.cs" />
     <Compile Include="Models\PurchasedBook.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\WordlessContext.cs" />
@@ -145,6 +151,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\File\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -161,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605231040316_lade till boooktext.resx">
       <DependentUpon>201605231040316_lade till boooktext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605231221212_lagt till filehanteringsmodell.resx">
+      <DependentUpon>201605231221212_lagt till filehanteringsmodell.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
