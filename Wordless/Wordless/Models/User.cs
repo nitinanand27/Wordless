@@ -3,30 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Proejket.Models
+namespace Wordless.Models
 {
     public class User
     {
+        //användarens ID
         public int UserId { get; set; }
 
+        //användarens användarnamn
         public string Username { get; set; }
 
+        //användarens lösenord
         public string Password { get; set; }
 
+        //användarens namn
         public string Name { get; set; }
 
+        //användarens e-mail
         public string Email { get; set; }
 
+        //om användaren är en författaren
         public bool Author { get; set; }
 
+        //om användaren är admin
         public bool Admin { get; set; }
-        //en användares 
+
+        //en användares pengar
         public decimal Funds { get; set; }
+
         //En användare har en lista av bäcker användaren har köpt
-        public virtual ICollection<PurchasedBook> PurchasedBooks { get; set; }
+        public virtual IList<PurchasedBook> PurchasedBooks { get; set; }
+
         //en användare har en lista av böcken användaren har skrivit
-        public virtual ICollection<Book> WrittenBooks { get; set; }
+        public virtual IList<Book> WrittenBooks { get; set; }
+
         //en användare har en collection av kommentarer
-        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual IList<Comment> Comments { get; set; }
+
     }
 }
