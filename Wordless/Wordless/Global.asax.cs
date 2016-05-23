@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Wordless.Models;
 
 namespace Wordless
 {
@@ -13,6 +14,8 @@ namespace Wordless
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            WorldlessContext db = new WorldlessContext();
+            db.Database.Initialize(true);
         }
     }
 }
