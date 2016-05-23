@@ -17,15 +17,15 @@ namespace Wordless.Models
         //vilket datum kommentaren blev skriven
         public DateTime Date { get; set; }
 
-        //public int UserId { get; set; }
-        ////vilken användare som skrev kommentaren
-        //[ForeignKey("UserId")]
+        public int UserId { get; set; }
+        //vilken användare som skrev kommentaren
+        [ForeignKey("UserId")]
         public virtual User User { get; set; }
 
 
         //vilken bok kommentaren handlar om
-        //public int BookId { get; set; }
-        //[ForeignKey("BookId")]
+        public int BookId { get; set; }
+        [ForeignKey("BookId")]
         public virtual Book Book { get; set; }
     }
 }

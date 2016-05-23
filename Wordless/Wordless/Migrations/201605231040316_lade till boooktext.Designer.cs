@@ -7,13 +7,13 @@ namespace Wordless.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class firstmigration : IMigrationMetadata
+    public sealed partial class ladetillboooktext : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(firstmigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ladetillboooktext));
         
         string IMigrationMetadata.Id
         {
-            get { return "201605230903385_first migration"; }
+            get { return "201605231040316_lade till boooktext"; }
         }
         
         string IMigrationMetadata.Source
