@@ -6,9 +6,9 @@ using System.Data.Entity;
 
 namespace Wordless.Models
 {
-    public class WorldlessContext : DbContext
+    public class WordlessContext : DbContext
     {
-        public WorldlessContext() : base ("Wordless")
+        public WordlessContext() : base ("Wordless")
         {           
         }
 

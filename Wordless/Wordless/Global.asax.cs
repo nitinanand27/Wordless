@@ -14,7 +14,7 @@ namespace Wordless
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            WorldlessContext db = new WorldlessContext();
+            WordlessContext db = new WordlessContext();
             db.Database.Initialize(true);
         }
     }

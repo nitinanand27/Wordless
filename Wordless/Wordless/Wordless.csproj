@@ -114,7 +114,7 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\PurchasedBook.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\WorldlessContext.cs" />
+    <Compile Include="Models\WordlessContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
