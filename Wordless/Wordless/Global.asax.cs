@@ -17,5 +17,15 @@ namespace Wordless
             WordlessContext db = new WordlessContext();
             db.Database.Initialize(true);
         }
+
+        protected void Session_Start()
+        {
+            ///Id for the current logged in user(int)
+            Session["currentUserId"] = "";
+            ///Name for the current logged in user (string)
+            Session["currentUsername"] = "";
+            ///Logged in or not (bool)
+            Session["loginStatus"] = false;
+        }
     }
 }
