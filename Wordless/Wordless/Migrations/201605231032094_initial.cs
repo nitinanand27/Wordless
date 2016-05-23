@@ -3,7 +3,7 @@ namespace Wordless.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class firstmigration : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -44,14 +44,14 @@ namespace Wordless.Migrations
                         CommentId = c.Int(nullable: false, identity: true),
                         CommentText = c.String(),
                         Date = c.DateTime(nullable: false),
-                        Book_BookId = c.Int(),
-                        User_UserId = c.Int(),
+                        UserId = c.Int(nullable: false),
+                        BookId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.CommentId)
-                .ForeignKey("dbo.Books", t => t.Book_BookId)
-                .ForeignKey("dbo.Users", t => t.User_UserId)
-                .Index(t => t.Book_BookId)
-                .Index(t => t.User_UserId);
+                .ForeignKey("dbo.Books", t => t.BookId, cascadeDelete: true)
+                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.BookId);
             
             CreateTable(
                 "dbo.PurchasedBooks",
@@ -77,12 +77,12 @@ namespace Wordless.Migrations
             DropForeignKey("dbo.Books", "Author_UserId", "dbo.Users");
             DropForeignKey("dbo.PurchasedBooks", "Buyer_UserId", "dbo.Users");
             DropForeignKey("dbo.PurchasedBooks", "Book_BookId", "dbo.Books");
-            DropForeignKey("dbo.Comments", "User_UserId", "dbo.Users");
-            DropForeignKey("dbo.Comments", "Book_BookId", "dbo.Books");
+            DropForeignKey("dbo.Comments", "UserId", "dbo.Users");
+            DropForeignKey("dbo.Comments", "BookId", "dbo.Books");
             DropIndex("dbo.PurchasedBooks", new[] { "Buyer_UserId" });
             DropIndex("dbo.PurchasedBooks", new[] { "Book_BookId" });
-            DropIndex("dbo.Comments", new[] { "User_UserId" });
-            DropIndex("dbo.Comments", new[] { "Book_BookId" });
+            DropIndex("dbo.Comments", new[] { "BookId" });
+            DropIndex("dbo.Comments", new[] { "UserId" });
             DropIndex("dbo.Books", new[] { "Author_UserId" });
             DropTable("dbo.PurchasedBooks");
             DropTable("dbo.Comments");

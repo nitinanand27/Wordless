@@ -105,9 +105,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605230903385_first migration.cs" />
-    <Compile Include="Migrations\201605230903385_first migration.Designer.cs">
-      <DependentUpon>201605230903385_first migration.cs</DependentUpon>
+    <Compile Include="Migrations\201605231032094_initial.cs" />
+    <Compile Include="Migrations\201605231032094_initial.Designer.cs">
+      <DependentUpon>201605231032094_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605231040316_lade till boooktext.cs" />
+    <Compile Include="Migrations\201605231040316_lade till boooktext.Designer.cs">
+      <DependentUpon>201605231040316_lade till boooktext.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
@@ -132,8 +136,11 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605230903385_first migration.resx">
-      <DependentUpon>201605230903385_first migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605231032094_initial.resx">
+      <DependentUpon>201605231032094_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605231040316_lade till boooktext.resx">
+      <DependentUpon>201605231040316_lade till boooktext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
