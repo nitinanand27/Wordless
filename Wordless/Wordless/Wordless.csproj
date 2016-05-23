@@ -51,6 +51,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -114,7 +118,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FacebookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -128,14 +133,9 @@
     <Compile Include="Migrations\201605231040316_lade till boooktext.Designer.cs">
       <DependentUpon>201605231040316_lade till boooktext.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605231221212_lagt till filehanteringsmodell.cs" />
-    <Compile Include="Migrations\201605231221212_lagt till filehanteringsmodell.Designer.cs">
-      <DependentUpon>201605231221212_lagt till filehanteringsmodell.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\File.cs" />
     <Compile Include="Models\PurchasedBook.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\WordlessContext.cs" />
@@ -151,7 +151,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\File\Index.cshtml" />
+    <Content Include="Views\Facebook\Index.cshtml" />
+    <Content Include="Views\Account\FbLogin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -168,9 +169,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605231040316_lade till boooktext.resx">
       <DependentUpon>201605231040316_lade till boooktext.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605231221212_lagt till filehanteringsmodell.resx">
-      <DependentUpon>201605231221212_lagt till filehanteringsmodell.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
