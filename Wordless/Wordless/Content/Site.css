@@ -1,0 +1,38 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color:#c1b580;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+#BannerImg{
+    width:100%;
+    height:auto;
+    margin:0px;
+    padding:0px;
+    
+    
+}
+#Banner{
+    margin:0px;
+    padding:0px;
+}
+#NavBar{
+    background-color:#766C5D;
+    border-color:#766C5D;
+}
+#LayoutBody{
+    background-color:#f4e8d7;
+}
+
