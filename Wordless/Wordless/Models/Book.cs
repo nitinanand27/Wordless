@@ -19,13 +19,13 @@ namespace Wordless.Models
         //public int AuthorId { get; set; }
         ////vilken användare som har skrivit
         //[ForeignKey("AuthorId")]
-        public User Author { get; set; }
+        public virtual User Author { get; set; }
 
         //hur många gånger boken har köpts
         public int TimesPurchased { get; set; }
 
         //vilken genrer
-        public Genres Genre { get; set; }
+        public virtual Genres Genre { get; set; }
 
         //vad boken kostar
         public decimal Price { get; set; }

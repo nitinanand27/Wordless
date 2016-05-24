@@ -30,6 +30,10 @@ namespace Wordless.Controllers
         {
             {
                 var fileToGet = db.File.Find(Session["pdfIdToShow"]);
+                if (fileToGet == null)
+                {
+                    return null;
+                }
                 return File(fileToGet.Content, fileToGet.ContentType);
             }
         }

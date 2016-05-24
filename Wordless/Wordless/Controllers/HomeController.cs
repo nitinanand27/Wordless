@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Wordless.Models;
+using System.Data.Entity;
 
 namespace Wordless.Controllers
 {
@@ -11,8 +12,10 @@ namespace Wordless.Controllers
     {
         // GET: Home
         public ActionResult Index()
-        { 
-            return View();
+        {
+            WordlessContext db = new WordlessContext();
+            var bookList = db.Book.Include(b => b.Author).Include(c => c.Comments).ToList();
+            return View(bookList);
         }
 
         //Need books in Database to Run Search Function

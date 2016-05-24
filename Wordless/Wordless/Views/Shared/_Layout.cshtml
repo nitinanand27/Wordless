@@ -10,43 +10,48 @@
 
     <!--Facebook Api script-->
     <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-        appId      : '1774392159446483',
-      xfbml      : true,
-      version    : 'v2.6'
-    });
-  };
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1774392159446483',
+                xfbml: true,
+                version: 'v2.6'
+            });
+        };
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
     </script>
 
 </head>
 <body id="LayoutBody">
-    <div class="jumbotron" id="Banner" >
+    <div id="Banner">
         <img src="~/Img/WordlessBannerBig.jpg" id="BannerImg" />
-        
     </div>
     <div class="navbar navbar-inverse navbar-fixed-top" id="NavBar">
-        <div class="container">
-            <div class="navbar-header">
+        <div class="container body-content">
+            <div class="navbar-header navbar-padding">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Register/login", "Register", "user", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("File", "Index", "File", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li> @Html.ActionLink("File", "Index", "File", new { area = "" }, new { @class = "navbar-brand" }) </li>
+                    @if ((bool)Session["loginStatus"])
+                    {
+                        <li>@Html.ActionLink("Userhome", "UserHome", "User", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    }
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Register/login", "Register", "user", new { area = "" }, new { @class = "navbar-brand" })</li>
                 </ul>
             </div>
         </div>
@@ -64,4 +69,3 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
-@*0C5415*@

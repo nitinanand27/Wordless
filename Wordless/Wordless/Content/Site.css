@@ -6,8 +6,7 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    max-width:720px!important;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -32,9 +31,11 @@ textarea {
     background-color:#766C5D;
     border-color:#766C5D;
 }
+/*bakgrund på body*/
 #LayoutBody{
     background-color:#f4e8d7;
 }
+/*rutan där man ser PDF:en*/
 #showPDF {
         height: 100%;
         width: 100%;
@@ -42,8 +43,25 @@ textarea {
         max-width: 450px;
         border: 1px solid;
 }
-.pdfBox {
-        height: 500px;
-        width: 100%;
+/*Body på alla sidor*/
+.siteBody{
+    max-width: 500px;
+    margin-top: 50px;
+}
+.navbar-padding {
+    margin-left: 18px!important;
+
 }
 
+/*färgen på navbar*/
+.navbar-inverse .navbar-brand {
+    color: #EBD8BA!important;
+}
+/*hover på navbar*/
+.navbar-inverse .navbar-brand:hover {
+    color: #fffbf5!important;
+}
+/**/
+dt {
+    text-align:left!important;
+}

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Wordless.Models;
+using System.Data.Entity;
 
 namespace Wordless.Controllers
 {
@@ -39,7 +40,6 @@ namespace Wordless.Controllers
             try
             {
                 WordlessContext db = new WordlessContext();
-
                 string username = Request["username"];
                 string password = Request["password"];
 
@@ -55,9 +55,7 @@ namespace Wordless.Controllers
                     TempData["error"] = "Welcome "+ Session["currentUsername"];
                     return Redirect("Register");
                     //return RedirectToAction("Register");
-
                 }
-
                 else
                 {
                     TempData["error"] = "Check username and/or password";
@@ -65,15 +63,12 @@ namespace Wordless.Controllers
                 }
             }
             catch
-            {
-              
+            {              
                 ///Return to login/register -view to try again
                 TempData["error"] = "Database fail!";
-                return View(); // Redirect("/Default/Login");
-            
+                return View(); // Redirect("/Default/Login");           
             }
         }
-
         public ActionResult Logout()
         {
             ///reset session values
@@ -82,6 +77,26 @@ namespace Wordless.Controllers
             Session["loginStatus"] = false;
                         
             return View(); //Redirect("/Default/Index");
+        }
+        public ActionResult UserHome()
+        {
+            if ((bool)Session["loginStatus"])
+            {
+                ViewBag.Message = "Välkommen " + (string)Session["currentUsername"];
+                var userId = (int)Session["currentUserId"];
+                WordlessContext db = new WordlessContext();
+                var userInfo = (db.User
+                    .Include(b => b.WrittenBooks)
+                    .Include(c => c.Comments)
+                    .Include(p =>p.PurchasedBooks)
+                    .Where(u => u.UserId == userId)).SingleOrDefault();
+                return View(userInfo);
+            }
+            else
+            {
+                return Redirect("/user/Register");
+            }
+
         }
     }
 }

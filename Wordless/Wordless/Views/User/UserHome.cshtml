@@ -1,0 +1,39 @@
+﻿@model Wordless.Models.User
+@{
+    ViewBag.Title = "UserHome";
+}
+<div class="container">
+    <div class="siteBody">
+        <div>
+            <div style="max-height: 300px; max-width:300px; background-color:#766C5D">
+                <h4>@ViewBag.Message</h4>
+                <p>
+                    <strong>Username: </strong> @Html.DisplayFor(model => model.Username)
+                </p>
+                <p>
+                    <strong>Name: </strong> @Html.DisplayFor(model => model.Name)
+                </p>
+                <p>
+                    <strong>Email: </strong> @Html.DisplayFor(model => model.Email)
+                </p>
+                <p>
+                    <strong>Cash</strong> @Html.DisplayFor(model => model.Funds)
+                </p>
+            </div>
+        </div>
+        <div style="max-width:300px; background-color:#766C5D">
+            <p><strong>Published books: </strong> </p>
+            <hr />
+            @foreach (var writtenBooks in Model.WrittenBooks)
+            {
+                <p>Title: @writtenBooks.Title</p>
+                <p>Times purchased: @writtenBooks.TimesPurchased</p>
+                <p>Genre: @writtenBooks.Genre</p>
+                <hr />
+            }
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.UserId })
+        </p>
+    </div>
+ </div>
