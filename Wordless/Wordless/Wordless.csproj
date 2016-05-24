@@ -134,6 +134,7 @@
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\File.cs" />
     <Compile Include="Models\PurchasedBook.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\WordlessContext.cs" />
