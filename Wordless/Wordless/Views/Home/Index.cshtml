@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<Wordless.Models.Book>
+
 @{
     ViewBag.Title = "Index";
 }
@@ -49,3 +50,27 @@
         player.stopVideo();
       }
 </script>
+
+<!--TEMPORARY VIEW TO SHOW BOOKS-->
+
+
+@foreach (var item in Model)
+{
+    <div class="container-narrow">
+        <div class="row rowfix">
+            <div class="col-sm-12 divnews">
+                <h2><strong>@item.Title</strong></h2>                
+                <div id="divtext">
+                    <p>By: @item.Author.Name</p>
+                </div>
+                <p>@item.BookText</p>
+                <p>@item.Genre</p>
+                <p>Price: @item.Price</p>
+                <p>No. of downloads: @item.TimesPurchased</p>
+                <p>Place for comments (To be fixed): @item.Comments</p>
+            </div>
+        </div>
+    </div>
+}
+
+
