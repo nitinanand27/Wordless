@@ -153,6 +153,7 @@
     <Content Include="Views\Account\FbLogin.cshtml" />
     <Content Include="Views\File\Index.cshtml" />
     <Content Include="Views\File\PDFPartialView.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
