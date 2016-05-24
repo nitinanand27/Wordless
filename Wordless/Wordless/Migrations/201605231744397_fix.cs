@@ -3,7 +3,7 @@ namespace Wordless.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class lagttillfilehanteringsmodell : DbMigration
+    public partial class fix : DbMigration
     {
         public override void Up()
         {

@@ -120,20 +120,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FacebookController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605231032094_initial.cs" />
-    <Compile Include="Migrations\201605231032094_initial.Designer.cs">
-      <DependentUpon>201605231032094_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605231040316_lade till boooktext.cs" />
-    <Compile Include="Migrations\201605231040316_lade till boooktext.Designer.cs">
-      <DependentUpon>201605231040316_lade till boooktext.cs</DependentUpon>
+    <Compile Include="Migrations\201605231744397_fix.cs" />
+    <Compile Include="Migrations\201605231744397_fix.Designer.cs">
+      <DependentUpon>201605231744397_fix.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\File.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\PurchasedBook.cs" />
@@ -153,6 +151,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Facebook\Index.cshtml" />
     <Content Include="Views\Account\FbLogin.cshtml" />
+    <Content Include="Views\File\Index.cshtml" />
+    <Content Include="Views\File\PDFPartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -164,11 +164,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605231032094_initial.resx">
-      <DependentUpon>201605231032094_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605231040316_lade till boooktext.resx">
-      <DependentUpon>201605231040316_lade till boooktext.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605231744397_fix.resx">
+      <DependentUpon>201605231744397_fix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

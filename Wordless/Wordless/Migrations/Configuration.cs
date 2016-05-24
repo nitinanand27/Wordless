@@ -130,7 +130,7 @@ namespace Wordless.Migrations
             context.Book.AddOrUpdate(book4);
             #endregion
             #region Purchase
-            
+
             var purchase1 = new PurchasedBook
             {
                 Buyer = user2,
@@ -170,7 +170,7 @@ namespace Wordless.Migrations
             #endregion
             #region Comments
 
-            
+
             var comment1 = new Comment
             {
                 CommentText = "'Vad ska jag berätta?' svarade hon 'Berätta om Pippi Långstrump!' Hon hittade på det namnet just i det ögonblicket. 	",
@@ -205,7 +205,7 @@ namespace Wordless.Migrations
             context.Comment.AddOrUpdate(comment4);
             #endregion
 
-            
+
             context.SaveChanges();
 
         }

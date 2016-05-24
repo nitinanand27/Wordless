@@ -9,36 +9,90 @@ namespace Wordless.Controllers
 {
     public class FileController : Controller
     {
-        // GET: File
+        WordlessContext db = new WordlessContext();
+        List<File> fileList = new List<File>();
+        public List<File> CreateFileList()
+        {
+            fileList = (from l in db.File
+                        select l).ToList();
+            return fileList;
+        }
         public ActionResult Index()
         {
-            return View();
+            return View(CreateFileList());
         }
-        public ActionResult GetFile ()
+        public ActionResult ChangeFile(int id)
         {
-            WordlessContext db = new WordlessContext();
-            var pdfFile = db.File.Find(1);
-            return File(pdfFile.Content, pdfFile.ContentType);
+            Session["pdfIdToShow"] = id;
+            return RedirectToAction("Index");
+        }
+        public ActionResult ShowFile()
+        {
+            {
+                var fileToGet = db.File.Find(Session["pdfIdToShow"]);
+                return File(fileToGet.Content, fileToGet.ContentType);
+            }
+        }
+        public ActionResult GetFile(int fileId)
+        {
+            if (fileId == 0)
+            {
+                return View("Index");
+            }
+            else
+            {
+                var fileToGet = db.File.Find(fileId);
+                return File(fileToGet.Content, fileToGet.ContentType);
+            }
+        }
+        public ActionResult DownloadFIle(int fileId)
+        {
+            if (fileId == 0)
+            {
+                return View("Index");
+            }
+            else
+            {
+                var fileToGet = db.File.Find(fileId);
+                return File(fileToGet.Content, fileToGet.ContentType, fileToGet.FileName);
+            }
         }
         [HttpPost]
-        public ActionResult UploadFile (HttpPostedFileBase upload)
+        public ActionResult UploadFile(HttpPostedFileBase upload, int? id)
         {
-            WordlessContext db = new WordlessContext();
-            var user = db.User.Find(1);
-            var newPDF = new File
+            if (upload == null)
             {
-                FileName = System.IO.Path.GetFileName(upload.FileName),
-                ContentType = upload.ContentType,                                
-                User = user
-                
-            };
-            using (var reader = new System.IO.BinaryReader(upload.InputStream))
-            {
-                newPDF.Content = reader.ReadBytes(upload.ContentLength);
+                return View("Index");
             }
-            db.File.Add(newPDF);
-            db.SaveChanges();
-            return View("Index");
+            else
+            {                
+                //skall ändras till Find(vilken-änvändare-som-är-inloggad)
+                var user = db.User.Find(1);
+                var newFile = new File
+                {
+                    FileName = System.IO.Path.GetFileName(upload.FileName),
+                    ContentType = upload.ContentType,
+                    User = user
+                };
+                if (newFile.ContentType == "application/pdf")
+                {
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        newFile.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    db.File.Add(newFile);
+                    db.SaveChanges();
+                    return View("Index", CreateFileList());
+                }
+                else
+                {
+                    return View("Index", CreateFileList());
+                }
+            }
+        }
+        public ActionResult PDFPartialView()
+        {
+            return PartialView();
         }
     }
 }
