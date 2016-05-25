@@ -119,6 +119,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\FacebookController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -155,6 +156,7 @@
     <Content Include="Views\File\PDFPartialView.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\UserHome.cshtml" />
+    <Content Include="Views\Book\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
