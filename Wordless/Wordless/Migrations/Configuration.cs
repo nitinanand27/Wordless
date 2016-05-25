@@ -6,14 +6,14 @@ namespace Wordless.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Wordless.Models.WorldlessContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Wordless.Models.WordlessContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Wordless.Models.WorldlessContext context)
+        protected override void Seed(Wordless.Models.WordlessContext context)
         {
           //  context.User.AddOrUpdate(
           //      p => p.UserId,

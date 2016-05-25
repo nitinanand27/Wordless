@@ -8,6 +8,8 @@ namespace Wordless.Models
 {
     public class Book
     {
+        WordlessContext db = new WordlessContext();
+
         //ID
         public int BookId { get; set; }
 
@@ -32,7 +34,11 @@ namespace Wordless.Models
         //en lista på kommentarer
         public virtual IList<Comment> Comments { get; set; }
 
-
+        [NotMapped]
+        public List<Book> GetAll
+        {
+            get { return db.Book.ToList(); } 
+        }        
 
     }
     public enum Genres
