@@ -19,6 +19,8 @@ namespace Wordless
 
         protected void Session_Start()
         {
+            //Id for which pdf to show
+            Session["pdfIdToShow"] = 6;
             ///Id for the current logged in user(int)
             Session["currentUserId"] = "";
             ///Name for the current logged in user (string)

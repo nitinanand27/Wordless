@@ -7,13 +7,13 @@ namespace Wordless.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class lagttillfilehanteringsmodell : IMigrationMetadata
+    public sealed partial class fix : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(lagttillfilehanteringsmodell));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(fix));
         
         string IMigrationMetadata.Id
         {
-            get { return "201605231221212_lagt till filehanteringsmodell"; }
+            get { return "201605231744397_fix"; }
         }
         
         string IMigrationMetadata.Source

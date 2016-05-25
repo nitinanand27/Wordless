@@ -13,6 +13,7 @@ namespace Wordless.Migrations
                     {
                         BookId = c.Int(nullable: false, identity: true),
                         Title = c.String(),
+                        BookText = c.String(),
                         TimesPurchased = c.Int(nullable: false),
                         Genre = c.Int(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
@@ -54,6 +55,20 @@ namespace Wordless.Migrations
                 .Index(t => t.BookId);
             
             CreateTable(
+                "dbo.Files",
+                c => new
+                    {
+                        FileId = c.Int(nullable: false, identity: true),
+                        FileName = c.String(),
+                        ContentType = c.String(),
+                        Content = c.Binary(),
+                        User_UserId = c.Int(),
+                    })
+                .PrimaryKey(t => t.FileId)
+                .ForeignKey("dbo.Users", t => t.User_UserId)
+                .Index(t => t.User_UserId);
+            
+            CreateTable(
                 "dbo.PurchasedBooks",
                 c => new
                     {
@@ -77,14 +92,17 @@ namespace Wordless.Migrations
             DropForeignKey("dbo.Books", "Author_UserId", "dbo.Users");
             DropForeignKey("dbo.PurchasedBooks", "Buyer_UserId", "dbo.Users");
             DropForeignKey("dbo.PurchasedBooks", "Book_BookId", "dbo.Books");
+            DropForeignKey("dbo.Files", "User_UserId", "dbo.Users");
             DropForeignKey("dbo.Comments", "UserId", "dbo.Users");
             DropForeignKey("dbo.Comments", "BookId", "dbo.Books");
             DropIndex("dbo.PurchasedBooks", new[] { "Buyer_UserId" });
             DropIndex("dbo.PurchasedBooks", new[] { "Book_BookId" });
+            DropIndex("dbo.Files", new[] { "User_UserId" });
             DropIndex("dbo.Comments", new[] { "BookId" });
             DropIndex("dbo.Comments", new[] { "UserId" });
             DropIndex("dbo.Books", new[] { "Author_UserId" });
             DropTable("dbo.PurchasedBooks");
+            DropTable("dbo.Files");
             DropTable("dbo.Comments");
             DropTable("dbo.Users");
             DropTable("dbo.Books");
