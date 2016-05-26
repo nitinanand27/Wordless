@@ -19,10 +19,10 @@ namespace Wordless.Controllers
             string email = Request["email"]; 
             string name = Request["name"];
            
-            if (db.User.Where(n => n.Username.ToLower() == username.ToLower()).Count() == 0)
+            if (db.Users.Where(n => n.Username.ToLower() == username.ToLower()).Count() == 0)
             {
                 User user = new User { Name = name, Username = username, Password = password, Email = email };
-                db.User.Add(user);
+                db.Users.Add(user);
                 db.SaveChanges();               
             }
 
@@ -43,7 +43,7 @@ namespace Wordless.Controllers
                 string username = Request["username"];
                 string password = Request["password"];
 
-                var userList = db.User.Where(u => u.Username.ToLower() == username.ToLower()).ToList();
+                var userList = db.Users.Where(u => u.Username.ToLower() == username.ToLower()).ToList();
 
                 if (userList.Count() == 1 && userList.First().Password == password)
                 {
@@ -85,7 +85,7 @@ namespace Wordless.Controllers
                 ViewBag.Message = "Välkommen " + (string)Session["currentUsername"];
                 var userId = (int)Session["currentUserId"];
                 WordlessContext db = new WordlessContext();
-                var userInfo = (db.User
+                var userInfo = (db.Users
                     .Include(b => b.WrittenBooks)
                     .Include(c => c.Comments)
                     .Include(p =>p.PurchasedBooks)

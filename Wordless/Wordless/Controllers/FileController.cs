@@ -13,7 +13,7 @@ namespace Wordless.Controllers
         List<File> fileList = new List<File>();
         public List<File> CreateFileList()
         {
-            fileList = (from l in db.File
+            fileList = (from l in db.Files
                         select l).ToList();
             return fileList;
         }
@@ -29,7 +29,7 @@ namespace Wordless.Controllers
         public ActionResult ShowFile()
         {
             {
-                var fileToGet = db.File.Find(Session["pdfIdToShow"]);
+                var fileToGet = db.Files.Find(Session["pdfIdToShow"]);
                 if (fileToGet == null)
                 {
                     return null;
@@ -45,7 +45,7 @@ namespace Wordless.Controllers
             }
             else
             {
-                var fileToGet = db.File.Find(fileId);
+                var fileToGet = db.Files.Find(fileId);
                 return File(fileToGet.Content, fileToGet.ContentType);
             }
         }
@@ -57,7 +57,7 @@ namespace Wordless.Controllers
             }
             else
             {
-                var fileToGet = db.File.Find(fileId);
+                var fileToGet = db.Files.Find(fileId);
                 return File(fileToGet.Content, fileToGet.ContentType, fileToGet.FileName);
             }
         }
@@ -71,7 +71,7 @@ namespace Wordless.Controllers
             else
             {                
                 //skall ändras till Find(vilken-änvändare-som-är-inloggad)
-                var user = db.User.Find(1);
+                var user = db.Users.Find(5);
                 var newFile = new File
                 {
                     FileName = System.IO.Path.GetFileName(upload.FileName),
@@ -84,7 +84,7 @@ namespace Wordless.Controllers
                     {
                         newFile.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    db.File.Add(newFile);
+                    db.Files.Add(newFile);
                     db.SaveChanges();
                     return View("Index", CreateFileList());
                 }

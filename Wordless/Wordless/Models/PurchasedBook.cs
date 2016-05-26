@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
@@ -8,26 +9,21 @@ namespace Wordless.Models
 {
     public class PurchasedBook
     {
-        //id för varje köp
         public int PurchasedBookId { get; set; }
 
-        //en bok tillhör varje köp
-        //public int BookId { get; set; }
-        //[ForeignKey("BookId")]
-        public virtual Book Book { get; set; }
+        [Range(1, 5)]
+        public int Rating { get; set; }             //varje bokköp kan ha ett betyg som användaren har gett
+        public string Recension { get; set; }       //om användaren har skrivit en recension på köpet max 200 tecken     
+        public DateTime DateOfPurchase { get; set; }    //datum för köp
 
-        //en köpare tillhör varje köp4
-        //public int BuyerId { get; set; }
-        //[ForeignKey("BuyerId")]
-        public virtual User Buyer { get; set; }
+        //Navigation Properties
 
-        //varje bokköp kan ha ett betyg som användaren har gett
-        public int Rating { get; set; }
+        public int BookId { get; set; }
+        [ForeignKey("BookId")]
+        public virtual Book Book { get; set; }      //en bok tillhör varje köp
 
-        //om användaren har skrivit en recension på köpet
-        public string Recension { get; set; }
-
-        //datum för köp
-        public DateTime DateOfPurchase { get; set; }
+        public int BuyerId { get; set; }
+        [ForeignKey("BuyerId")]
+        public virtual User Buyer { get; set; }     //en köpare tillhör varje köp4
     }
 }
