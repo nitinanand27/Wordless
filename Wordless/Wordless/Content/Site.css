@@ -1,7 +1,9 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color:#c1b580;
+    background-image: url('../Img/blur-1283865_1920.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -17,23 +19,11 @@ textarea {
 }
 #BannerImg{
     width:100%;
-    height:auto;
-    margin:0px;
-    padding:0px;
+    width:600px;
+    height: 150px;
+    padding-top:125px;
     
     
-}
-#Banner{
-    margin:0px;
-    padding:0px;
-}
-#NavBar{
-    background-color:#766C5D;
-    border-color:#766C5D;
-}
-/*bakgrund på body*/
-#LayoutBody{
-    background-color:#f4e8d7;
 }
 /*rutan där man ser PDF:en*/
 #showPDF {
@@ -43,25 +33,56 @@ textarea {
         max-width: 450px;
         border: 1px solid;
 }
-/*Body på alla sidor*/
-.siteBody{
-    max-width: 500px;
-    margin-top: 50px;
-}
-.navbar-padding {
-    margin-left: 18px!important;
 
+.navbar-inverse a {
+    color:wheat!important;
+}
+.navbar-inverse a:hover {
+    background-color:wheat!important;
+    color:black!important;
+}
+.li a {
+    border-color: black;
+}
+.navbar-img-left{
+    margin-left: 2px!important;
+}
+.bodyDiv {
+    background-color: wheat;
+    opacity: 0.9;
+    margin:auto;
+    width:100%;
+    border-radius: 5px;
+    border-style:solid;
+    border-width: 1px;
+    
+}
+.sidebar-Top {
+    height:200px;
+    width: 200px;
+    background-color:wheat;
+    opacity: 0.9;
+    border-radius: 5px;
+    position:relative;
+    border-color:black;
+    padding: 5px;
+    border-style:solid;
+    border-width: 1px;
+}
+.sidebar-mid-bot {
+    height:200px;
+    width: 200px;
+    background-color:wheat;
+    opacity: 0.9;
+    border-radius: 5px;
+    position:relative;
+    border-color:black;
+    padding: 5px;
+    margin-top: 5px;
+    border-style:solid;
+    border-width: 1px;
 }
 
-/*färgen på navbar*/
-.navbar-inverse .navbar-brand {
-    color: #EBD8BA!important;
-}
-/*hover på navbar*/
-.navbar-inverse .navbar-brand:hover {
-    color: #fffbf5!important;
-}
-/**/
-dt {
-    text-align:left!important;
+.max-width-navbar {
+    max-width:970px;
 }

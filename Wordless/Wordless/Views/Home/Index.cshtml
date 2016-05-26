@@ -3,10 +3,39 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="container">
-    <div class="siteBody">
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="bodyDiv">
+                    <div class="header-Text">
+                        <h2 class="text-center">Welcome to Wordless!</h2>
+                    </div>
+                    <div class="main-Content">
+                        <div id="player"></div>
+                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />                        
+                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="sidebar-Top sidebar-nav hidden-sm hidden-xs">
+                    Most downloaded!
+                </div>
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                    Best rating!
+                </div>
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                    Most commented!
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
         <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-        @*<div id="player"></div>*@
+        
 
         <script>
     // 2. This code loads the IFrame Player API code asynchronously.
@@ -53,7 +82,7 @@
 
         <!--TEMPORARY VIEW TO SHOW BOOKS-->
 
-        @if (Model.Count() > 0)
+        @*@if (Model.Count() > 0)
         {
             foreach (var item in Model)
             {
@@ -79,4 +108,4 @@
             }
         }
     </div>
-</div>
+</div>*@

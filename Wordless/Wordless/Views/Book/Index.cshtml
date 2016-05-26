@@ -1,45 +1,57 @@
 ﻿@model IEnumerable<Wordless.Models.Book>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8">
-            @if (Model.Count() > 0)
-            {
-                foreach (var item in Model)
-                {
-
-                    <div>
-                        <h2><strong>Title: @item.Title</strong></h2>
-                        <div>
-                            <p>Autor: @item.Author.Name</p>
-                        </div>
-                        <p>Text: @item.BookText</p>
-                        <p>Genre: @item.Genre</p>
-                        <p>Price: @item.Price</p>
-                        <p>No. of downloads: @item.TimesPurchased</p>
-                        <p>Comments:</p>
-                        @foreach (var comment in @item.Comments)
-                    {
-                            <p> @comment.CommentText</p>
-                        }
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="bodyDiv">
+                    <div class="header-Text">
+                        <h2 class="text-center">Books books books!</h2>
                     </div>
-                }
-            }
-        </div>
-        <div class="col-md-4 col-lg-4 hidden-sm hidden-xs">
-            <div style="width:100px; height:200px; background-color:white">
-                <ul class="sideBar">
-                    <li>1: Hej</li>
-                    <li>2: Hej</li>
-                    <li>3: Hej</li>
-                    <li>4: Hej</li>
-                    <li>5: Hej</li>
-                    <li>6: Hej</li>
-                    <li>7: Hej</li>
-                    <li>8: Hej</li>
-                    <li>9: Hej</li>
-                    <li>10: Hej</li>
-                </ul>
+                    <div class="main-Content">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    @if (Model.Count() > 0)
+                                    {
+                                        foreach (var item in Model)
+                                        {
+
+                                            <div>
+                                                <h2><strong>Title: @item.Title</strong></h2>
+                                                <div>
+                                                    <p>Autor: @item.Author.Name</p>
+                                                </div>
+                                                <p>Text: @item.BookText</p>
+                                                <p>Genre: @item.Genre</p>
+                                                <p>Price: @item.Price</p>
+                                                <p>No. of downloads: @item.TimesPurchased</p>
+                                                <p>Comments:</p>
+                                                @foreach (var comment in @item.Comments)
+                                        {
+                                                    <p> @comment.CommentText</p>
+                                                }
+                                            </div>
+                                        }
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="sidebar-Top sidebar-nav hidden-sm hidden-xs">
+                    Most downloaded!
+                </div>
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                    Best rating!
+                </div>
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                    Most commented!
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+</body>
