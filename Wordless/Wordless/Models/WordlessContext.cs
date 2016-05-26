@@ -83,6 +83,7 @@ namespace Wordless.Models
             fileEntity.HasRequired(p => p.User)
                 .WithMany(p => p.Files)
                 .WillCascadeOnDelete(false);
+            fileEntity.Property(p => p.UploadedOn).IsRequired();
 
             base.OnModelCreating(modelBuilder);
         }
