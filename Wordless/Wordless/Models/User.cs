@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,40 +8,24 @@ namespace Wordless.Models
 {
     public class User
     {
-        //användarens ID
-        public int UserId { get; set; }
+        public int UserId { get; set; }         //användarens ID 
+        
+        [MinLength(2), MaxLength(15)]               
+        public string Username { get; set; }    //användarens användarnamn (2-15)
 
-        //användarens användarnamn
-        public string Username { get; set; }
+        [MinLength(2), MaxLength(15)]
+        public string Password { get; set; }    //användarens lösenord      (2-15)  
+        public string Name { get; set; }        //användarens namn (max 20)
+        public string Email { get; set; }       //användarens e-mail
+        public bool Author { get; set; }        //om användaren är en författaren
+        public bool Admin { get; set; }         //om användaren är admin
+        public decimal Funds { get; set; }      //en användarens pengar (precision 4,2- 1234.56)
 
-        //användarens lösenord
-        public string Password { get; set; }
-
-        //användarens namn
-        public string Name { get; set; }
-
-        //användarens e-mail
-        public string Email { get; set; }
-
-        //om användaren är en författaren
-        public bool Author { get; set; }
-
-        //om användaren är admin
-        public bool Admin { get; set; }
-
-        //en användares pengar
-        public decimal Funds { get; set; }
-
-        //En användare har en lista av bäcker användaren har köpt
-        public virtual IList<PurchasedBook> PurchasedBooks { get; set; }
-
-        //en användare har en lista av böcken användaren har skrivit
-        public virtual IList<Book> WrittenBooks { get; set; }
-
-        //en användare har en collection av kommentarer
-        public virtual IList<Comment> Comments { get; set; }
-
-        public virtual IList<File> Files { get; set; }
+        //Navigation Properties
+        public virtual IList<PurchasedBook> PurchasedBooks { get; set; }    //lista av böcker användaren har köpt
+        public virtual IList<Book> WrittenBooks { get; set; }               //lista av böcken användaren har skrivit        
+        public virtual IList<Comment> Comments { get; set; }                //list av kommentarer användaren har skrivit
+        public virtual IList<File> Files { get; set; }                  
 
     }
 }
