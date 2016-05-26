@@ -14,6 +14,8 @@ namespace Wordless.Models
         public string ContentType { get; set; }
         public byte[] Content { get; set; }
 
+        public DateTime UploadedOn { get; set; }
+
         //Naigation Properties
 
         public int UserId { get; set; }             //varje fil tillhör minst en user
