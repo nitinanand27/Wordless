@@ -106,6 +106,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Img\blur-1283865_1920.jpg" />
     <Content Include="Img\WordlessBannerBig.jpg" />
     <Content Include="Img\WorlessBannerSmall.jpg" />
     <Content Include="Scripts\bootstrap.js" />

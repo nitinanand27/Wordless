@@ -7,7 +7,6 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
-
     <!--Facebook Api script-->
     <script>
         window.fbAsyncInit = function () {
@@ -29,35 +28,40 @@
 
 </head>
 <body id="LayoutBody">
-    <div id="Banner">
-        <img src="~/Img/WordlessBannerBig.jpg" id="BannerImg" />
-    </div>
-    <div class="navbar navbar-inverse navbar-fixed-top" id="NavBar">
-        <div class="container body-content">
-            <div class="navbar-header navbar-padding">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    @*<div id="Banner">
+            <img src="~/Img/WordlessBannerBig.jpg" id="BannerImg" />
+        </div>*@
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="collapse navbar-collapse max-width-navbar" id="navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li> @Html.ActionLink("File", "Index", "File", new { area = "" }, new { @class = "navbar-brand" }) </li>
-                    @if ((bool)Session["loginStatus"])
-                    {
-                        <li>@Html.ActionLink("Userhome", "UserHome", "User", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    }
+                    <li><a href="/Home/index">Home</a></li>
+                    <li><a href="/Book/Index">Books</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Register/login", "Register", "user", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    @if ((bool)Session["loginStatus"])
+                    {
+                        <li><a href="/User/Logout">Logout</a></li>
+                    }
+                    @if (!(bool)Session["loginStatus"])
+                    {
+                        <li><a href="/User/Register">Register/login</a></li>
+                    }
+                    
                 </ul>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <div class="container body-content">
+    <div class="container">
         @RenderBody()
         <hr />
         <footer>

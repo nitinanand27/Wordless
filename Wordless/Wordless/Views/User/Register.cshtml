@@ -2,58 +2,57 @@
 @{
     ViewBag.Title = "Register";
 }
-
-
-<div class="container">
-    <div class="siteBody">
-        <h5 class="info-text">@TempData["error"]</h5>
-        <div class="form">
-
-            <ul class="tab-group">
-                <li class="tab active"><a href="/User/Register">Register</a></li>
-                <li class="tab"><a href="/User/Register">Log In</a></li>
-            </ul>
-            <center>
-                <div class="tab-content">
-                    <div id="signup">
-                        <h1>Sign Up Now</h1>
-                        <form action="/User/Register" method="post">
-                            <div class="field-wrap">
-                                <div class="field-wrap">
-                                    <input type="text" name="username" required autocomplete="off" placeholder="username (2-15 chars)" />
+<body>
+    <div class="container">        
+        <div class="row">
+            <div class="col-md-8">
+                <div class="bodyDiv">
+                    <div class="main-Content">
+                        <h5 class="info-text">@TempData["error"]</h5>                        
+                                <div id="signup">
+                                    <h1>Sign Up Now</h1>
+                                    <form action="/User/Register" method="post">
+                                        <div class="field-wrap">
+                                            <div class="field-wrap">
+                                                <input type="text" name="username" required autocomplete="off" placeholder="username (2-15 chars)" />
+                                            </div>
+                                        </div>
+                                        <div class="field-wrap">
+                                            <input type="email" name="email" required autocomplete="off" placeholder="email" />
+                                        </div>
+                                        <div class="field-wrap">
+                                            <input type="password" name="password" required autocomplete="off" placeholder="password (min 6 chars)" />
+                                        </div>
+                                        <button type="submit" class="button button-block">Register</button>
+                                    </form>
                                 </div>
-                            </div>
-                            <div class="field-wrap">
-                                <input type="email" name="email" required autocomplete="off" placeholder="email" />
-                            </div>
-                            <div class="field-wrap">
-                                <input type="password" name="password" required autocomplete="off" placeholder="password (min 6 chars)" />
-                            </div>
-                            <button type="submit" class="button button-block">Register</button>
-                        </form>
+                                <div id="login">
+                                    <h1>Welcome Back!</h1>
+                                    <form action="/User/Login" method="post">
+                                        <div class="field-wrap">
+                                            <input type="text" name="username" required autocomplete="off" placeholder="username" />
+                                        </div>
 
+                                        <div class="field-wrap">
+                                            <input type="password" name="password" required autocomplete="off" placeholder="password" />
+                                        </div>
+                                        <button type="submit" class="button button-block">Go!</button>
+                                    </form>
+                                </div>
                     </div>
-
-                    <div id="login">
-                        <h1>Welcome Back!</h1>
-
-                        <form action="/User/Login" method="post">
-
-                            <div class="field-wrap">
-                                <input type="text" name="username" required autocomplete="off" placeholder="username" />
-                            </div>
-
-                            <div class="field-wrap">
-                                <input type="password" name="password" required autocomplete="off" placeholder="password" />
-                            </div>
-
-
-                            <button type="submit" class="button button-block">Go!</button>
-
-                        </form>
-                    </div>
-                </div><!-- tab-content -->
-            </center>
-        </div> <!-- /form -->
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="sidebar-Top sidebar-nav hidden-sm hidden-xs">
+                    Most downloaded!
+                </div>
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                    Best rating!
+                </div>
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                    Most commented!
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</body>
