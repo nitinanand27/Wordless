@@ -14,7 +14,7 @@ namespace Wordless.Controllers
         public ActionResult Index()
         {
             WordlessContext db = new WordlessContext();
-            var bookList = db.Book.Include(b => b.Author).Include(c => c.Comments).ToList();
+            var bookList = db.Books.Include(b => b.Author).Include(c => c.Comments).ToList();
             return View(bookList);
         }
 
@@ -25,7 +25,7 @@ namespace Wordless.Controllers
 
             string searchString = Request["searchString"];
 
-            var bookList = db.Book.ToList();
+            var bookList = db.Books.ToList();
 
             if (!String.IsNullOrEmpty(searchString))
             {
