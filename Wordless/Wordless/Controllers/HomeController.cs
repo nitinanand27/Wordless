@@ -14,7 +14,7 @@ namespace Wordless.Controllers
         public ActionResult Index()
         {
             WordlessContext db = new WordlessContext();
-            var bookList = db.Books.Include(b => b.Author).Include(c => c.Comments).ToList();
+            var bookList = db.Books.ToList();
             return View(bookList);
         }
 
