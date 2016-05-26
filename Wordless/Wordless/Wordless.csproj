@@ -132,6 +132,10 @@
     <Compile Include="Migrations\201605261121578_fix db.Designer.cs">
       <DependentUpon>201605261121578_fix db.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605261206026_lastchange.cs" />
+    <Compile Include="Migrations\201605261206026_lastchange.Designer.cs">
+      <DependentUpon>201605261206026_lastchange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -171,6 +175,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605261121578_fix db.resx">
       <DependentUpon>201605261121578_fix db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605261206026_lastchange.resx">
+      <DependentUpon>201605261206026_lastchange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
