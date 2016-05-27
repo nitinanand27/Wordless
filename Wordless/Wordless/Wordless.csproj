@@ -153,6 +153,7 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\UserHome.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
+    <Content Include="Views\User\RegisterLogin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

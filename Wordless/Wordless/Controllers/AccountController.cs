@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Wordless.Models;
 
 namespace Wordless.Controllers
 {
@@ -74,6 +75,19 @@ namespace Wordless.Controllers
             Session["currentUsername"] = currentUsername;
             string currentUserLastName = me.last_name;
             Session["currentUserLastName"] = currentUserLastName;
+            string currentUserId = me.id;
+            Session["currentUserId"] = currentUserId;
+
+            //adds a new user on fb login in database
+            User fbUser = new User {Username = currentUsername,
+                                    Email = email, Funds= 0, Name=(currentUsername +" " + currentUserLastName)};
+
+            WordlessContext context = new WordlessContext();
+            if (context.Users.Where(e=>e.Email == email).Count() == 0)
+            {
+                context.Users.Add(fbUser);
+                context.SaveChanges();
+            }            
 
             // Set the auth cookie
             FormsAuthentication.SetAuthCookie(email, false);
