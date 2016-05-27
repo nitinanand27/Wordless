@@ -8,23 +8,7 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <!--Facebook Api script-->
-    <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '1774392159446483',
-                xfbml: true,
-                version: 'v2.6'
-            });
-        };
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) { return; }
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
+    <script type="text/javascript" src="~/Scripts/FacebookLogin.js"></script>
 
 </head>
 <body id="LayoutBody">
@@ -49,6 +33,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     @if ((bool)Session["loginStatus"])
                     {
+                        <li><a>Welcome, @Session["currentUsername"] @Session["currentUserLastName"]</a></li>
                         <li><a href="/User/Logout">Logout</a></li>
                     }
                     @if (!(bool)Session["loginStatus"])
