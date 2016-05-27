@@ -59,7 +59,7 @@ namespace Wordless.Controllers
                 else
                 {
                     TempData["error"] = "Check username and/or password";
-                    return View(); // Redirect("/Default/Login");
+                    return RedirectToAction("Register"); // Redirect("/Default/Login");
                 }
             }
             catch
@@ -74,9 +74,10 @@ namespace Wordless.Controllers
             ///reset session values
             Session["currentUserId"] = "";
             Session["currentUsername"] = "";
+            Session["currentUserLastName"] = "";
             Session["loginStatus"] = false;
                         
-            return View(); //Redirect("/Default/Index");
+            return Redirect("Register"); //Go back to register view on succesful logout
         }
         public ActionResult UserHome()
         {
