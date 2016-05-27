@@ -60,6 +60,7 @@ namespace Wordless.Controllers
             // TODO: Authenticate User
             // Store the access token in the session
             Session["AccessToken"] = accessToken;
+            Session["loginStatus"] = true;
 
             // update the facebook client with the access token so
             // we can make requests on behalf of the user
@@ -68,6 +69,11 @@ namespace Wordless.Controllers
             // Get the user's information
             dynamic me = fb.Get("me?fields=first_name,last_name,id,email");
             string email = me.email;
+
+            string currentUsername = me.first_name;
+            Session["currentUsername"] = currentUsername;
+            string currentUserLastName = me.last_name;
+            Session["currentUserLastName"] = currentUserLastName;
 
             // Set the auth cookie
             FormsAuthentication.SetAuthCookie(email, false);

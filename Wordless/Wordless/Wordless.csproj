@@ -111,8 +111,8 @@
     <Content Include="Img\WorlessBannerSmall.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Properties\PublishProfiles\Wordless.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\FacebookLogin.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -129,15 +129,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605261121578_fix db.cs" />
-    <Compile Include="Migrations\201605261121578_fix db.Designer.cs">
-      <DependentUpon>201605261121578_fix db.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605261230200_reloaded.cs" />
-    <Compile Include="Migrations\201605261230200_reloaded.Designer.cs">
-      <DependentUpon>201605261230200_reloaded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\File.cs" />
@@ -156,7 +147,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Facebook\Index.cshtml" />
     <Content Include="Views\Account\FbLogin.cshtml" />
     <Content Include="Views\File\Index.cshtml" />
     <Content Include="Views\File\PDFPartialView.cshtml" />
@@ -172,14 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605261121578_fix db.resx">
-      <DependentUpon>201605261121578_fix db.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605261230200_reloaded.resx">
-      <DependentUpon>201605261230200_reloaded.cs</DependentUpon>
-    </EmbeddedResource>
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
