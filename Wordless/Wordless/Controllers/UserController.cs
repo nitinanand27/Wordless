@@ -23,16 +23,21 @@ namespace Wordless.Controllers
             {
                 User user = new User { Name = name, Username = username, Password = password, Email = email };
                 db.Users.Add(user);
-                db.SaveChanges();               
+                db.SaveChanges();
+                TempData["error"] = "Registered Successfully!";
+                return View();              
+            }
+
+            else if (db.Users.Where(u=>u.Username == username).Count() > 0 || db.Users.Where(e=>e.Email == email).Count() > 0)
+            {
+                TempData["error"] = "User already exists!";
+                return View();
             }
 
             else
             {
-                TempData["error"] = "User exists!";
-                return View(); // Redirect("/Default/Login");
+                return View();
             }
-
-            return View();  //redirect
         }
 
         public ActionResult Login()
@@ -53,8 +58,7 @@ namespace Wordless.Controllers
                     Session["loginStatus"] = true;
 
                     TempData["error"] = "Welcome "+ Session["currentUsername"];
-                    return Redirect("Register");
-                    //return RedirectToAction("Register");
+                    return Redirect("/Home/Index");                    
                 }
                 else
                 {
@@ -77,14 +81,14 @@ namespace Wordless.Controllers
             Session["currentUserLastName"] = "";
             Session["loginStatus"] = false;
                         
-            return Redirect("Register"); //Go back to register view on succesful logout
+            return RedirectToAction("RegisterLogin"); //Go back to register view on succesful logout
         }
         public ActionResult UserHome()
         {
             if ((bool)Session["loginStatus"])
             {
-                ViewBag.Message = "Välkommen " + (string)Session["currentUsername"];
-                var userId = (int)Session["currentUserId"];
+                ViewBag.Message = "Welcome " + Session["currentUsername"];
+                var userId = Convert.ToDouble(Session["currentUserId"]);
                 WordlessContext db = new WordlessContext();
                 var userInfo = (db.Users
                     .Include(b => b.WrittenBooks)
@@ -98,6 +102,11 @@ namespace Wordless.Controllers
                 return Redirect("/user/Register");
             }
 
+        }
+
+        public ActionResult RegisterLogin()
+        {
+            return View();
         }
     }
 }
