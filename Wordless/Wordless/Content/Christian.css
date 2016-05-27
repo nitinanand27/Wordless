@@ -1,0 +1,14 @@
+﻿body {
+}
+#Main{
+    position:center;
+}
+#playerDiv{
+    object-position:center;
+}
+#player{
+    padding:0;
+}
+#Welcome{
+    font-family:'Engravers MT';
+}
