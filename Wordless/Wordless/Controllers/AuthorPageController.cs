@@ -50,7 +50,7 @@ namespace Wordless.Controllers
 
         public ActionResult Details(int id)
         {
-            Book book = db.Book.Single(b => b.BookId == id);
+            Book book = db.Books.Single(b => b.BookId == id);
             
             return View(book);
         }
@@ -67,7 +67,7 @@ namespace Wordless.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Book.Add(book);
+                db.Books.Add(book);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -78,7 +78,7 @@ namespace Wordless.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            Book book = db.Book.Single(b => b.BookId == id);
+            Book book = db.Books.Single(b => b.BookId == id);
 
             return View(book);
         }
@@ -89,7 +89,7 @@ namespace Wordless.Controllers
         {
             if (ModelState.IsValid)
             {
-                Book bookFromDB = db.Book.Single(b => b.BookId == book.BookId);
+                Book bookFromDB = db.Books.Single(b => b.BookId == book.BookId);
 
                 bookFromDB.Title = book.Title;
                 bookFromDB.TimesPurchased = book.TimesPurchased;
@@ -112,7 +112,7 @@ namespace Wordless.Controllers
                 return HttpNotFound();
             }
 
-            Book book = db.Book.Single(b => b.BookId == id);
+            Book book = db.Books.Single(b => b.BookId == id);
 
             if (book == null)
             {
@@ -126,8 +126,8 @@ namespace Wordless.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
-            Book book = db.Book.Single(b => b.BookId == id);
-            db.Book.Remove(book);
+            Book book = db.Books.Single(b => b.BookId == id);
+            db.Books.Remove(book);
             db.SaveChanges();
 
             return RedirectToAction("Index");
