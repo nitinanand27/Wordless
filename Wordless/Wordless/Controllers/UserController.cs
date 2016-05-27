@@ -13,7 +13,6 @@ namespace Wordless.Controllers
         public ActionResult Register()
         {
             WordlessContext db = new WordlessContext();
-
             string username = Request["username"];
             string password= Request["password"];
             string email = Request["email"]; 
@@ -28,8 +27,9 @@ namespace Wordless.Controllers
 
             else
             {
-                TempData["error"] = "User exists!";
-                return View(); // Redirect("/Default/Login");
+                TempData["error"] = "Username taken";
+                return View();
+                //return Redirect("/User/Register");
             }
 
             return View();  //redirect
@@ -45,7 +45,7 @@ namespace Wordless.Controllers
 
                 var userList = db.Users.Where(u => u.Username.ToLower() == username.ToLower()).ToList();
 
-                if (userList.Count() == 1 && userList.First().Password == password)
+                if (userList.Count() >= 1 && userList.First().Password == password)
                 {
                     ///Set session values
                     Session["currentUserId"] = userList.First().UserId;
@@ -53,8 +53,8 @@ namespace Wordless.Controllers
                     Session["loginStatus"] = true;
 
                     TempData["error"] = "Welcome "+ Session["currentUsername"];
-                    return Redirect("Register");
-                    //return RedirectToAction("Register");
+                    //return Redirect("Register");
+                    return Redirect("/Home/Index");
                 }
                 else
                 {
@@ -76,27 +76,7 @@ namespace Wordless.Controllers
             Session["currentUsername"] = "";
             Session["loginStatus"] = false;
                         
-            return View(); //Redirect("/Default/Index");
-        }
-        public ActionResult UserHome()
-        {
-            if ((bool)Session["loginStatus"])
-            {
-                ViewBag.Message = "Välkommen " + (string)Session["currentUsername"];
-                var userId = (int)Session["currentUserId"];
-                WordlessContext db = new WordlessContext();
-                var userInfo = (db.Users
-                    .Include(b => b.WrittenBooks)
-                    .Include(c => c.Comments)
-                    .Include(p =>p.PurchasedBooks)
-                    .Where(u => u.UserId == userId)).SingleOrDefault();
-                return View(userInfo);
-            }
-            else
-            {
-                return Redirect("/user/Register");
-            }
-
+            return Redirect("/Home/Index");
         }
     }
 }

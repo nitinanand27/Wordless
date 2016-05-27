@@ -5,7 +5,6 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-
 /* Set padding to keep content from hitting the edges */
 .body-content {
     max-width:720px!important;
@@ -21,8 +20,7 @@ textarea {
     width:100%;
     width:600px;
     height: 150px;
-    padding-top:125px;
-    
+    padding-top:125px;   
     
 }
 /*rutan där man ser PDF:en*/
@@ -35,54 +33,117 @@ textarea {
 }
 
 .navbar-inverse a {
-    color:wheat!important;
-}
-.navbar-inverse a:hover {
-    background-color:wheat!important;
-    color:black!important;
-}
-.li a {
-    border-color: black;
+    font-family:"Engravers MT", "Engravers MT",sans-serif;
 }
 .navbar-img-left{
     margin-left: 2px!important;
 }
-.bodyDiv {
-    background-color: wheat;
-    opacity: 0.9;
-    margin:auto;
-    width:100%;
-    border-radius: 5px;
-    border-style:solid;
-    border-width: 1px;
-    
-}
+
 .sidebar-Top {
     height:200px;
-    width: 200px;
+    width: 100px;
     background-color:wheat;
     opacity: 0.9;
     border-radius: 5px;
-    position:relative;
-    border-color:black;
     padding: 5px;
-    border-style:solid;
-    border-width: 1px;
 }
 .sidebar-mid-bot {
     height:200px;
-    width: 200px;
+    width: 100px;
     background-color:wheat;
     opacity: 0.9;
     border-radius: 5px;
-    position:relative;
-    border-color:black;
     padding: 5px;
     margin-top: 5px;
-    border-style:solid;
-    border-width: 1px;
 }
 
 .max-width-navbar {
     max-width:970px;
+}
+.bodyDiv {
+    background-color: wheat;
+    opacity: 0.9;
+    width:100%;
+    border-radius: 5px;
+    border-width: 1px;
+    margin-right:10px;
+    margin-bottom: 10px;
+}
+.book-Box {
+    border-width: 5px;
+}
+.bookTitle{
+    font-size:20px;
+    padding:10px;
+    margin-bottom:1px!important;
+}
+.bookAuthor{
+    font-size:smaller;
+    padding-left:10px;
+}
+.booktText{
+    padding-left: 10px;
+    
+}
+.searchField {
+    padding:2px;
+}
+.dropbtn {
+    background-color: black;
+    color: wheat;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+    margin-left: 3px;
+}
+.btn:hover {
+    background-color: wheat;
+}
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    background-color: wheat;
+    display: none;
+    position: absolute;
+    min-width: 160px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-menu>{
+     background-color: wheat!important;
+     color:black!important;
+}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus 
+{
+    background-color: black!important;
+    color:wheat!important;
+}
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover 
+{
+    background-color: black!important;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+    background-color: wheat!important;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: wheat!important;
+}
+.dropdown-menu {
+    background-color: wheat!important;
 }

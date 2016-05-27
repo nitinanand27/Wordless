@@ -71,19 +71,22 @@ namespace Wordless.Controllers
             else
             {                
                 //skall ändras till Find(vilken-änvändare-som-är-inloggad)
-                var user = db.Users.Find(5);
+                var user = db.Users.Find(2);
+                
                 var newFile = new File
                 {
                     FileName = System.IO.Path.GetFileName(upload.FileName),
                     ContentType = upload.ContentType,
-                    User = user
+                    User = user,
+                    UploadedOn = DateTime.Now
+                    
                 };
                 if (newFile.ContentType == "application/pdf")
                 {
                     using (var reader = new System.IO.BinaryReader(upload.InputStream))
                     {
                         newFile.Content = reader.ReadBytes(upload.ContentLength);
-                    }
+                    }        
                     db.Files.Add(newFile);
                     db.SaveChanges();
                     return View("Index", CreateFileList());
