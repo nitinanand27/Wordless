@@ -18,5 +18,12 @@ namespace Wordless.Controllers
             
             return View(bookList);
         }
+        public ActionResult BookByGenre(int id)
+        {
+            WordlessContext db = new WordlessContext();
+            var booklist = db.Books.Include(b => b.Author).Include(c => c.Comments).Where(b => b.Genre== (Genres)id).ToList();
+            return View("Index", booklist);
+        }
+
     }
 }
