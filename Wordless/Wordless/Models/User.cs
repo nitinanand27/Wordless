@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -25,7 +26,14 @@ namespace Wordless.Models
         public virtual IList<PurchasedBook> PurchasedBooks { get; set; }    //lista av böcker användaren har köpt
         public virtual IList<Book> WrittenBooks { get; set; }               //lista av böcken användaren har skrivit        
         public virtual IList<Comment> Comments { get; set; }                //list av kommentarer användaren har skrivit
-        public virtual IList<File> Files { get; set; }                  
+        public virtual IList<File> Files { get; set; }
 
+
+        WordlessContext db = new WordlessContext();
+        [NotMapped]
+        public List<User> GetAll
+        {
+            get { return db.Users.ToList(); }
+        }
     }
 }

@@ -66,19 +66,33 @@
                         </ul>
                 </div>
                 <div class="nav navbar-nav navbar-right">
-                    @if ((bool)Session["loginStatus"])
-                    {
-                        <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
-                            Logout
-                        </button>
-                    }
-                    @if (!(bool)Session["loginStatus"])
-                    {
+                    @{
+                        if ((bool)Session["loginStatus"] && (bool)Session["Admin"])
+                        {
+                            
+                            @Html.ActionLink("Admin", "Index", "Admin")
+                            <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
+                                Logout
+                            </button>
+                        }
 
+                        else if ((bool)Session["loginStatus"])
+                        {
+                            @Html.ActionLink("My page", "Index", "AuthorPage")
+                            <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
+                                Logout
+                            </button>
+                        }                     
+                    
+                    }                   
+
+                    @if (!(bool)Session["loginStatus"])
+                    {                        
                         <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Register", "User")'">
                             Login
                         </button>
                     }
+                    
 
                 </div>
             </div>

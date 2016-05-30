@@ -33,7 +33,6 @@ namespace Wordless.Models
         [NotMapped]
         public List<Book> GetAll
         {
-
             get { return db.Books.ToList(); } 
         }        
 
