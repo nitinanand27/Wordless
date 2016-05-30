@@ -18,7 +18,7 @@ namespace Wordless.ViewModel
         [Range(0,240, ErrorMessage = "Time must be between 0 and 240 hours")]
         public int TimesPurchased { get; set; }
 
-        //public Genres Genre { get; set; }
+        public Genres Genre { get; set; }
 
         [Required(ErrorMessage = "Please enter a price")]
         [Range(0, 10000, ErrorMessage = "Price must have a price between 0 and 10000 dollares")]

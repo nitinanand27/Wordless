@@ -28,23 +28,25 @@ namespace Wordless.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Index(AuthorPageViewModel author)
         {
-            Book book = new Book();
-
-            var books = book.GetAll;
-
-            if (author.Price > 0)
+            if (ModelState.IsValid)
             {
-                books = books.Where(b => b.Price >= author.Price).ToList();
-            }
-            
-            books = books.Where(b => b.TimesPurchased >= author.TimesPurchased).ToList();
+                Book book = new Book();
 
-            if (!String.IsNullOrEmpty(author.Keyword))
-            {
-                books = books.Where(b => b.Title.ToLower().Contains(author.Keyword.ToLower())).ToList();
-            }
-            author.BooksResult = books;
+                var books = book.GetAll;
 
+                //if (author.Price > 0)
+                //{
+                //    books = books.Where(b => b.Price >= author.Price).ToList();
+                //}
+
+                //books = books.Where(b => b.TimesPurchased >= author.TimesPurchased).ToList();
+               
+                if (!String.IsNullOrEmpty(author.Keyword))
+                {
+                    books = books.Where(b => b.Title.ToLower().Contains(author.Keyword.ToLower())).ToList();
+                }
+                author.BooksResult = books;
+            }
             return View(author);
         }
 

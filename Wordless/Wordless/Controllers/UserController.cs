@@ -48,7 +48,10 @@ namespace Wordless.Controllers
                 string username = Request["username"];
                 string password = Request["password"];
 
+                
                 var userList = db.Users.Where(u => u.Username.ToLower() == username.ToLower()).ToList();
+                
+               
 
                 if (userList.Count() == 1 && userList.First().Password == password)
                 {
@@ -56,6 +59,11 @@ namespace Wordless.Controllers
                     Session["currentUserId"] = userList.First().UserId;
                     Session["currentUsername"] = userList.First().Username;
                     Session["loginStatus"] = true;
+
+                    if (username.ToLower() == "patrik")
+                    {
+                        Session["Admin"] = true;
+                    }
 
                     TempData["error"] = "Welcome "+ Session["currentUsername"];
                     return Redirect("/Home/Index");                    
@@ -80,7 +88,8 @@ namespace Wordless.Controllers
             Session["currentUsername"] = "";
             Session["currentUserLastName"] = "";
             Session["loginStatus"] = false;
-                        
+            Session["Admin"] = false;
+
             return RedirectToAction("RegisterLogin"); //Go back to register view on succesful logout
         }
         public ActionResult UserHome()
