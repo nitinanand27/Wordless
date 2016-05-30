@@ -50,7 +50,7 @@ namespace Wordless.Controllers
 
                 var userList = db.Users.Where(u => u.Username.ToLower() == username.ToLower()).ToList();
 
-                if (userList.Count() == 1 && userList.First().Password == password)
+                if (userList.Count() >= 1 && userList.First().Password == password)
                 {
                     ///Set session values
                     Session["currentUserId"] = userList.First().UserId;
@@ -58,6 +58,10 @@ namespace Wordless.Controllers
                     Session["loginStatus"] = true;
 
                     TempData["error"] = "Welcome "+ Session["currentUsername"];
+
+                    
+
+
                     return Redirect("/Home/Index");                    
                 }
                 else
