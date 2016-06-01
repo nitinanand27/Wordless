@@ -10,7 +10,7 @@
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
     <WebStackScaffolding_DbContextTypeFullName>Wordless.Models.WordlessContext</WebStackScaffolding_DbContextTypeFullName>
     <UseIISExpress>true</UseIISExpress>
-    <NameOfLastUsedPublishProfile>wordless</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>Wordless</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

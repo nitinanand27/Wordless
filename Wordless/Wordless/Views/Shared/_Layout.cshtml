@@ -66,6 +66,7 @@
                         </ul>
                 </div>
                 <div class="nav navbar-nav navbar-right">
+
                     @{
                         if ((bool)Session["loginStatus"] && (bool)Session["Admin"])
                         {
@@ -76,24 +77,33 @@
                             </button>
                         }
 
-                        else if ((bool)Session["loginStatus"])
-                    {
-                            @Html.ActionLink("My page", "Index", "AuthorPage")
-                        <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
-                            Logout
-                        </button>
-                    }
+                        else if ((bool)Session["loginStatus"] && (bool)Session["isAuthor"])
+                        {
+                            @Html.ActionLink("Author page", "Index", "AuthorPage")
+                            <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
+                                Logout
+                            </button>
+                        }
+
+                        else if ((bool)Session["loginStatus"] && (bool)Session["isAuthor"] == false && (bool)Session["Admin"] == false)
+                        {
+                            @Html.ActionLink("My page", "Index", "UserPage")
+                            <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
+                                Logout
+                            </button>
+                        }                     
                     
                     }                   
 
+
                     @if (!(bool)Session["loginStatus"])
-                    {
+                    {                        
+
                         <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Register", "User")'">
                             Login
                         </button>
                     }
-
-
+                    
                 </div>
             </div>
         </div>
@@ -109,5 +119,6 @@
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/ChristianJavascript.js"></script>
 </body>
 </html>

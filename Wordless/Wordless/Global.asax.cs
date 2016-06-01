@@ -29,6 +29,8 @@ namespace Wordless
             Session["loginStatus"] = false;
             //list of purchase
             Session["bookPurchaseList"] = new List<PurchasedBook>();
+            Session["Admin"] = false;
+            Session["isAuthor"] = false;
         }
     }
 }
