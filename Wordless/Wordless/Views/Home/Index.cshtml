@@ -17,10 +17,10 @@
                                 seamingly unkown Authors so that their work can be known to the world. We offer a place on the internet for authors to upload books and for a
                                 small sum allow interested readers to access their work. Hopefully this will be a way for authors to get published later on.
                             </p>
-                            
+
                             @*<div class="col-xs-12 col-sm-1 col-md-1 col-lg-1"></div>*@
                             <p></p>
-                        
+
                             <p class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">With that being said, neither more or less</p>
                             <p class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12"> Welcome to Wordless</p>
                             <p></p>
@@ -42,13 +42,56 @@
             </div>
             <div class="col-md-4">
                 <div class="sidebar-Top sidebar-nav hidden-sm hidden-xs">
-                    Most downloaded!
+                    @{
+                        var mostDownloadedList = Session["MostDownloaded"] as List<Wordless.Models.Book>;
+                    }
+                    @if (mostDownloadedList.Count > 0)
+                    {
+                        <p>Most downloaded</p>
+                        foreach (var book in mostDownloadedList)
+                        {
+                            <ul>
+                                <li>@book.Title</li>
+                                <li>@book.TimesPurchased</li>
+                            </ul>
+                        }
+                    }
+                    
                 </div>
                 <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
-                    Best rating!
+                    @{
+                        var bestRatedList = Session["BestRating"] as List<Wordless.Models.PurchasedBook>;
+                    }
+                    @if (bestRatedList.Count > 0)
+                    {
+                        <p>Best rating</p>
+                        foreach (var item in bestRatedList)
+                        {
+                            <ul>
+                                <li>@item.Book.Title</li>
+                                <li>@item.Rating</li>
+                            </ul>
+                        }
+                    }
+                    
+                   
                 </div>
                 <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
-                    Most commented!
+                    @{
+                        var mostCommentedList = Session["MostCommented"] as List<Wordless.Models.Book>;
+                    }
+                    @if (mostCommentedList.Count() > 0)
+                    {
+                        <p>Most commented</p>
+                        foreach (var book in mostCommentedList)
+                        {
+                            <ul>
+                                <li>@book.Title</li>
+                                <li>@book.Comments.Count()</li>
+                            </ul>
+                        }
+                    }
+                    
                 </div>
             </div>
         </div>

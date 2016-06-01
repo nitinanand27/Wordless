@@ -41,8 +41,8 @@ textarea {
 }
 /*the top sidebar*/
 .sidebar-Top {
-    height:200px;
-    width: 100px;
+    height:300px;
+    width: 200px;
     background-color:wheat;
     opacity: 0.9;
     border-radius: 5px;
@@ -50,8 +50,8 @@ textarea {
 }
 /*middle and bottom sidebar*/
 .sidebar-mid-bot {
-    height:200px;
-    width: 100px;
+    height:300px;
+    width: 200px;
     background-color:wheat;
     opacity: 0.9;
     border-radius: 5px;

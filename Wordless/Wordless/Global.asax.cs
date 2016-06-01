@@ -28,6 +28,9 @@ namespace Wordless
             ///Logged in or not (bool)
             Session["loginStatus"] = false;
             //list of purchase
+            Session["MostDownloaded"] = new List<Book>();
+            Session["BestRating"] = new List<Book>();
+            Session["MostCommented"] = new List<Book>();
             Session["bookPurchaseList"] = new List<PurchasedBook>();
             Session["Admin"] = false;
             Session["isAuthor"] = false;
