@@ -27,6 +27,8 @@ namespace Wordless
             Session["currentUsername"] = "";
             ///Logged in or not (bool)
             Session["loginStatus"] = false;
+            Session["Admin"] = false;
+            Session["isAuthor"] = false;
         }
     }
 }

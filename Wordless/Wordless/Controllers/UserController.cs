@@ -14,21 +14,28 @@ namespace Wordless.Controllers
         {
             WordlessContext db = new WordlessContext();
 
-            string username = Request["username"];
-            string password= Request["password"];
-            string email = Request["email"]; 
             string name = Request["name"];
-           
+            string username = Request["username"];
+            string password = Request["password"];
+            string email = Request["email"];
+            bool author = false;
+
+            if (Request["isAuthor"] != null)
+            {
+                author = bool.Parse(Request["isAuthor"]);
+            }
+                       
+
             if (db.Users.Where(n => n.Username.ToLower() == username.ToLower()).Count() == 0)
             {
-                User user = new User { Name = name, Username = username, Password = password, Email = email };
+                User user = new User { Name = name, Username = username, Password = password, Email = email, Author = author };
                 db.Users.Add(user);
                 db.SaveChanges();
                 TempData["error"] = "Registered Successfully!";
-                return View();              
+                return View();
             }
 
-            else if (db.Users.Where(u=>u.Username == username).Count() > 0 || db.Users.Where(e=>e.Email == email).Count() > 0)
+            else if (db.Users.Where(u => u.Username == username).Count() > 0 || db.Users.Where(e => e.Email == email).Count() > 0)
             {
                 TempData["error"] = "User already exists!";
                 return View();
@@ -48,10 +55,10 @@ namespace Wordless.Controllers
                 string username = Request["username"];
                 string password = Request["password"];
 
-                
+
                 var userList = db.Users.Where(u => u.Username.ToLower() == username.ToLower()).ToList();
-                
-               
+
+
 
                 if (userList.Count() == 1 && userList.First().Password == password)
                 {
@@ -65,8 +72,13 @@ namespace Wordless.Controllers
                         Session["Admin"] = true;
                     }
 
-                    TempData["error"] = "Welcome "+ Session["currentUsername"];
-                    return Redirect("/Home/Index");                    
+                    else if (userList.Where(u => u.Username == username).First().Author)
+                    {
+                        Session["isAuthor"] = true;
+                    }
+
+                    TempData["error"] = "Welcome " + Session["currentUsername"];
+                    return Redirect("/Home/Index");
                 }
                 else
                 {
@@ -75,7 +87,7 @@ namespace Wordless.Controllers
                 }
             }
             catch
-            {              
+            {
                 ///Return to login/register -view to try again
                 TempData["error"] = "Database fail!";
                 return View(); // Redirect("/Default/Login");           
@@ -89,6 +101,7 @@ namespace Wordless.Controllers
             Session["currentUserLastName"] = "";
             Session["loginStatus"] = false;
             Session["Admin"] = false;
+            Session["isAuthor"] = false;
 
             return RedirectToAction("RegisterLogin"); //Go back to register view on succesful logout
         }
@@ -102,7 +115,7 @@ namespace Wordless.Controllers
                 var userInfo = (db.Users
                     .Include(b => b.WrittenBooks)
                     .Include(c => c.Comments)
-                    .Include(p =>p.PurchasedBooks)
+                    .Include(p => p.PurchasedBooks)
                     .Where(u => u.UserId == userId)).SingleOrDefault();
                 return View(userInfo);
             }
