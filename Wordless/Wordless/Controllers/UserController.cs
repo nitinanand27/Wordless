@@ -55,8 +55,7 @@ namespace Wordless.Controllers
                     ///Set session values
                     Session["currentUserId"] = userList.First().UserId;
                     Session["currentUsername"] = userList.First().Username;
-                    Session["loginStatus"] = true;
-
+                    Session["loginStatus"] = true;                    
                     TempData["error"] = "Welcome "+ Session["currentUsername"];
 
                     

@@ -54,17 +54,12 @@
                     </button>
                     <ul class="dropdown-menu">
                         @*FOREACH*@
-                        <li><a href="#">Thriller</a></li>
-                        <li><a href="#">Romance</a></li>
-                        <li><a href="#">ScienceFiction</a></li>
-                        <li><a href="#">Fantasy</a></li>
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Mystery</a></li>
-                        <li><a href="#">Philosophy</a></li>
-                        <li><a href="#">Religion</a></li>
-                        <li><a href="#">Crime</a></li>
-                        <li><a href="#">History</a></li>
-                        </ul>
+                        @foreach (int val in Enum.GetValues(typeof(Wordless.Models.Genres)))
+                        {
+                            var name = Enum.GetName(typeof(Wordless.Models.Genres), val);
+                            <li><a href="@Url.Action("Index", "Book", new { genre = name })">@name</a></li>
+                        }
+                    </ul>
                 </div>
                 <div class="nav navbar-nav navbar-right">
                     @if ((bool)Session["loginStatus"])
