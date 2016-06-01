@@ -27,6 +27,8 @@ namespace Wordless
             Session["currentUsername"] = "";
             ///Logged in or not (bool)
             Session["loginStatus"] = false;
+            //list of purchase
+            Session["bookPurchaseList"] = new List<PurchasedBook>();
         }
     }
 }

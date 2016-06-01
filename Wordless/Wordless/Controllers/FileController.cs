@@ -88,7 +88,25 @@ namespace Wordless.Controllers
                         newFile.Content = reader.ReadBytes(upload.ContentLength);
                     }        
                     db.Files.Add(newFile);
+
+                    Book book = new Book
+                    {
+                        Title = "Mästerdetektiven Blomkvist",
+                        TimesPurchased = 10,
+                        BookText = "Det är sommarlov och de tre 13-åriga kompisarna Kalle, Anders och Eva-Lotta har det lite småtråkigt.",
+                        Price = 20,
+                        Author = user,
+                        Genre = Genres.Crime,
+                        File = newFile
+                    };
+                    db.Books.Add(book);
+
+
                     db.SaveChanges();
+
+
+
+
                     return View("Index", CreateFileList());
                 }
                 else

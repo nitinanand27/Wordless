@@ -14,8 +14,8 @@ namespace Wordless.Controllers
         public ActionResult Index()
         {
             WordlessContext db = new WordlessContext();
-            var bookList = db.Books.ToList();
-            return View(bookList);
+            
+            return View();
         }
 
         //Need books in Database to Run Search Function

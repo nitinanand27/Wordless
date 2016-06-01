@@ -11,7 +11,7 @@ namespace Wordless.Models
     {
         public int PurchasedBookId { get; set; }
 
-        [Range(1, 5)]
+        [Range(0, 5)]
         public int Rating { get; set; }             //varje bokköp kan ha ett betyg som användaren har gett
         public string Recension { get; set; }       //om användaren har skrivit en recension på köpet max 200 tecken     
         public DateTime DateOfPurchase { get; set; }    //datum för köp
