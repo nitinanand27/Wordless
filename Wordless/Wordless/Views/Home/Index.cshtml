@@ -47,12 +47,14 @@
                     }
                     @if (mostDownloadedList.Count > 0)
                     {
-                        <p>Most downloaded</p>
+                        <p class="sidebar-name">Most downloaded</p>
                         foreach (var book in mostDownloadedList)
                         {
-                            <ul>
-                                <li>@book.Title</li>
-                                <li>@book.TimesPurchased</li>
+                            
+                            <ul class="sidebar-list">
+                                <li><a href="@Url.Action("BuyBook", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
+                                <li class="sidebar-list-text-author">Written by: @book.Author.Name</li>
+                                <li>@book.TimesPurchased <span class="glyphicon glyphicon-credit-card"></span></li>
                             </ul>
                         }
                     }
@@ -64,17 +66,16 @@
                     }
                     @if (bestRatedList.Count > 0)
                     {
-                        <p>Best rating</p>
+                        <p class="sidebar-name">Best rating</p>
                         foreach (var item in bestRatedList)
                         {
-                            <ul>
-                                <li>@item.Book.Title</li>
-                                <li>@item.Rating</li>
+                            <ul class="sidebar-list">
+                                <li><a href="@Url.Action("BuyBook", "Book", new { bookId = item.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @item.Book.Title</strong></a></li>
+                                <li class="sidebar-list-text-author">Written by: @item.Book.Author.Name</li>
+                                <li>@item.Rating <span class="glyphicon glyphicon-star"></span></li>
                             </ul>
                         }
                     }
-                    
-                   
                 </div>
                 <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
                     @{
@@ -82,12 +83,13 @@
                     }
                     @if (mostCommentedList.Count() > 0)
                     {
-                        <p>Most commented</p>
+                        <p class="sidebar-name">Most commented</p>
                         foreach (var book in mostCommentedList)
                         {
-                            <ul>
-                                <li>@book.Title</li>
-                                <li>@book.Comments.Count()</li>
+                            <ul class="sidebar-list">
+                                <li><a href="@Url.Action("BuyBook", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
+                                <li class="sidebar-list-text-author">Written by: @book.Author.Name</li>
+                                <li>@book.Comments.Count() <span class="glyphicon glyphicon-comment"></span></li>
                             </ul>
                         }
                     }

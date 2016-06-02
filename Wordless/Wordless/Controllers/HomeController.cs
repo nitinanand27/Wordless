@@ -18,7 +18,7 @@ namespace Wordless.Controllers
                 Session["MostDownloaded"] = (from d in db.Books
                                              orderby d.TimesPurchased descending
                                              select d).ToList();
-                var listFromDb = db.PurchasedBooks.Include(b => b.Book).ToList();
+                var listFromDb = db.PurchasedBooks.Include(b => b.Book).Include(a => a.Book.Author).ToList();
                 List<PurchasedBook> purchasedList = new List<PurchasedBook>();
                 foreach (var item in listFromDb)
                 {
@@ -34,7 +34,10 @@ namespace Wordless.Controllers
                         purchasedList.Add(item);
                     }
                 }
-                Session["BestRating"] = purchasedList;
+                var sortedList = (from x in purchasedList
+                                 orderby x.Rating descending
+                                 select x).ToList();
+                Session["BestRating"] = sortedList;
                 Session["MostCommented"] = (from c in db.Books.Include(b => b.Comments)
                                             orderby c.Comments.Count() descending
                                             select c).ToList();

@@ -41,15 +41,15 @@ namespace Wordless.Controllers
         }       
         public ActionResult BuyBook (int bookId, bool? confirmed)
         {
+            WordlessContext db = new WordlessContext();
             //check if logged in
-            if (!(bool)Session["loginStatus"])
+            if (!(bool)Session["loginStatus"] && bookId == 0)
             {
                 return RedirectToAction("Index");
             }
             //if logged in and a bookId is provided
             if (bookId != 0 && (bool)Session["loginStatus"])
             {
-                WordlessContext db = new WordlessContext();
                 //get userId
                 var userId = (int)Session["currentUserId"];
                 //get book
@@ -91,7 +91,10 @@ namespace Wordless.Controllers
             }
             else
             {
-                return RedirectToAction("Index");
+                var book = (from b in db.Books
+                             where b.BookId == bookId
+                             select b).ToList();
+                return View("Index", book);
             }          
 
             
