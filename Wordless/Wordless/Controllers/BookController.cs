@@ -99,6 +99,24 @@ namespace Wordless.Controllers
 
             
         }
+        public ActionResult BookDetails (int? bookId)
+        {
+            WordlessContext db = new WordlessContext();
+            List<Book> bookList = new List<Book>();
+            if (bookId != 0)
+            {
+                bookList = (from b in db.Books
+                            where b.BookId == bookId
+                            select b).ToList();
+            }
+            else
+            {
+                bookList = (from b in db.Books
+                                select b).ToList();
+            }
+            
+            return View(bookList);
+        }
         public ActionResult BookByGenre(int id)
         {
             WordlessContext db = new WordlessContext();

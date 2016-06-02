@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Wordless.Models.Book>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="col-lg-10 col-md-10">
+                    @foreach (var book in Model)
+                    {
+                        <div class="bodyDiv col-md-5 col-lg-5">
+                            <p class="bookTitle">@book.Title </p>
+                            <p class="bookAuthor">Written by: @book.Author.Name</p>
+                            <p class="bookAuthor">Genre: @book.Genre</p>
+                            <p class="booktText">Price: @book.Price</p>
+                            <p class="booktText">@book.BookText</p>
+                            @foreach (var comments in book.Comments)
+                            {
+                                <p class="book-comments">@comments.CommentText</p>
+                            }                            
+                        </div>
+                    }
+                </div>
+                <div class="col-md-2 col-lg-2">
+                    <div class="sidebar-Top sidebar-nav hidden-sm hidden-xs">
+                        Most downloaded!
+                    </div>
+                    <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                        Best rating!
+                    </div>
+                    <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                        Most commented!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
