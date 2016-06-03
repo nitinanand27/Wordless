@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<Wordless.Models.Book>
-
+@using Wordless.Models;
+@{WordlessContext db = new WordlessContext(); }
 @{
     ViewBag.Title = "Index";
 }
@@ -50,10 +51,12 @@
                         <p class="sidebar-name">Most downloaded</p>
                         foreach (var book in mostDownloadedList)
                         {
-                            
+                            var AuthorName = (from x in db.Books
+                                             where x.BookId == book.BookId
+                                             select x.Author.Name).First();
                             <ul class="sidebar-list">
                                 <li><a href="@Url.Action("BuyBook", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
-                                <li class="sidebar-list-text-author">Written by: @book.Author.Name</li>
+                                <li class="sidebar-list-text-author">Written by: @AuthorName</li>
                                 <li>@book.TimesPurchased <span class="glyphicon glyphicon-credit-card"></span></li>
                             </ul>
                         }
@@ -69,9 +72,12 @@
                         <p class="sidebar-name">Best rating</p>
                         foreach (var item in bestRatedList)
                         {
+                            var AuthorName = (from x in db.Books
+                                              where x.BookId == item.Book.BookId
+                                              select x.Author.Name).First();
                             <ul class="sidebar-list">
                                 <li><a href="@Url.Action("BuyBook", "Book", new { bookId = item.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @item.Book.Title</strong></a></li>
-                                <li class="sidebar-list-text-author">Written by: @item.Book.Author.Name</li>
+                                <li class="sidebar-list-text-author">Written by: @AuthorName</li>
                                 <li>@item.Rating <span class="glyphicon glyphicon-star"></span></li>
                             </ul>
                         }
@@ -86,9 +92,12 @@
                         <p class="sidebar-name">Most commented</p>
                         foreach (var book in mostCommentedList)
                         {
+                            var AuthorName = (from x in db.Books
+                                              where x.BookId == book.BookId
+                                              select x.Author.Name).First();
                             <ul class="sidebar-list">
                                 <li><a href="@Url.Action("BuyBook", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
-                                <li class="sidebar-list-text-author">Written by: @book.Author.Name</li>
+                                <li class="sidebar-list-text-author">Written by: @AuthorName</li>
                                 <li>@book.Comments.Count() <span class="glyphicon glyphicon-comment"></span></li>
                             </ul>
                         }

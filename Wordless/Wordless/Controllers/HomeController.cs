@@ -74,6 +74,11 @@ namespace Wordless.Controllers
             return RedirectToAction("Index");
 
         }
-
+        public ActionResult Test()
+        {
+            WordlessContext db = new WordlessContext();
+            db.Books.Count();
+            return View();
+        }
     }
 }
