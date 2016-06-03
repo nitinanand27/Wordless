@@ -90,7 +90,7 @@ namespace Wordless.Controllers
             {
                 ///Return to login/register -view to try again
                 TempData["error"] = "Database fail!";
-                return View(); // Redirect("/Default/Login");           
+                return View("Register"); // Redirect("/Default/Login");           
             }
         }
         public ActionResult Logout()

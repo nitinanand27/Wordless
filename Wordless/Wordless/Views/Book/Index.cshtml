@@ -7,9 +7,38 @@
                 <div id="BookDisplay" class="col-lg-10 col-md-10">
                     @foreach (var book in Model)
                     {
-
                         <div class="bodyDiv col-md-5 col-lg-5">
-                            <p class="bookTitle">@book.Title <button class="pull-right btn btn-default" type="button" onclick="location.href='@Url.Action("Buy", "Book")'">Buy</button></p>
+                            <p class="bookTitle">@book.Title </p>
+                            @if ((bool)Session["loginStatus"])
+                            {
+                                var showButton = false;
+                                var purchaseList = Session["bookPurchaseList"] as List<Wordless.Models.PurchasedBook>;
+                                if (purchaseList.Count == 0)
+                                {
+                                    showButton = true;
+                                }
+                                foreach (var item in purchaseList)
+                                {
+                                    if (item.BookId == book.BookId)
+                                    {
+                                        showButton = false;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        showButton = true;
+                                    }
+                                }
+                                if (showButton)
+                                {
+                                    <button class="pull-right btn btn-default" type="button" onclick="location.href='@Url.Action("BuyBook", "Book", new { bookId = book.BookId })'">Buy</button>
+                                }
+                            }
+                            else
+                            {
+                                <button class="pull-right btn btn-default" type="button" onclick="location.href='@Url.Action("BuyBook", "Book", new { bookId = book.BookId })'">Buy</button>
+                            }
+
                             <p class="bookAuthor">Written by: @book.Author.Name</p>
                             <p class="bookAuthor">Genre: @book.Genre</p>
                             <p class="booktText">Price: @book.Price</p>
@@ -37,6 +66,9 @@
     </div>
 
 </body>
+
+
+
 
 
 @*<div class="bodyDiv searchField">

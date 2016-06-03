@@ -13,9 +13,38 @@ namespace Wordless.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            WordlessContext db = new WordlessContext();
-            var bookList = db.Books.ToList();
-            return View(bookList);
+            using (WordlessContext db = new WordlessContext())
+            {
+                Session["MostDownloaded"] = (from d in db.Books
+                                             orderby d.TimesPurchased descending
+                                             select d).ToList();
+                var listFromDb = db.PurchasedBooks.Include(b => b.Book).Include(a => a.Book.Author).ToList();
+                List<PurchasedBook> purchasedList = new List<PurchasedBook>();
+                foreach (var item in listFromDb)
+                {
+                    var times = db.PurchasedBooks.Where(t => t.BookId == item.BookId).Count();
+                    if (times > 1 && purchasedList.Any(f => f.BookId == item.BookId) == false)
+                    {
+                        var sum = db.PurchasedBooks.Where(t => t.BookId == item.BookId).Sum(t => t.Rating);
+                        var avgRating = sum / times;
+                        item.Rating = avgRating;
+                    }
+                    if (purchasedList.Any(f => f.BookId == item.BookId) == false)
+                    {
+                        purchasedList.Add(item);
+                    }
+                }
+                var sortedList = (from x in purchasedList
+                                 orderby x.Rating descending
+                                 select x).ToList();
+                Session["BestRating"] = sortedList;
+                Session["MostCommented"] = (from c in db.Books.Include(b => b.Comments)
+                                            orderby c.Comments.Count() descending
+                                            select c).ToList();
+            }
+            
+           
+            return View();
         }
 
         //Need books in Database to Run Search Function

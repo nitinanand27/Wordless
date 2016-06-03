@@ -53,16 +53,16 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="#">@Html.ActionLink("Thriller","BookByGenre","Book", new {id=0 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("Romance", "BookByGenre","Book", new {id=1 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("ScienceFiction", "BookByGenre","Book", new {id=2 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("Fantasy", "BookByGenre","Book", new {id=3 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("Travel", "BookByGenre","Book", new {id=4 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("Mystery", "BookByGenre","Book", new {id=5 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("Philosophy", "BookByGenre","Book", new {id=6 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("Religion", "BookByGenre","Book", new {id=7 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("Crime", "BookByGenre","Book", new {id=8 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("History", "BookByGenre","Book", new {id=9 },new object { })</a></li>
+                        <li>@Html.ActionLink("Thriller","BookByGenre","Book", new {id=0 },new object { })</li>
+                        <li>@Html.ActionLink("Romance", "BookByGenre","Book", new {id=1 },new object { })</li>
+                        <li>@Html.ActionLink("ScienceFiction", "BookByGenre","Book", new {id=2 },new object { })</li>
+                        <li>@Html.ActionLink("Fantasy", "BookByGenre","Book", new {id=3 },new object { })</li>
+                        <li>@Html.ActionLink("Travel", "BookByGenre","Book", new {id=4 },new object { })</li>
+                        <li>@Html.ActionLink("Mystery", "BookByGenre","Book", new {id=5 },new object { })</li>
+                        <li>@Html.ActionLink("Philosophy", "BookByGenre","Book", new {id=6 },new object { })</li>
+                        <li>@Html.ActionLink("Religion", "BookByGenre","Book", new {id=7 },new object { })</li>
+                        <li>@Html.ActionLink("Crime", "BookByGenre","Book", new {id=8 },new object { })</li>
+                        <li>@Html.ActionLink("History", "BookByGenre","Book", new {id=9 },new object { })</li>
                         </ul>
                 </div>
                 <div class="nav navbar-nav navbar-right">
@@ -91,19 +91,19 @@
                             <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
                                 Logout
                             </button>
-                        }
-
+                        }                     
+                    
                     }                   
 
 
                     @if (!(bool)Session["loginStatus"])
-                    {
+                    {                        
 
                         <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Register", "User")'">
                             Login
                         </button>
                     }
-
+                    
                 </div>
             </div>
         </div>

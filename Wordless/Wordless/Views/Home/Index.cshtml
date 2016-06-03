@@ -10,17 +10,17 @@
             <div class="col-md-8">
                 <div class="bodyDiv">
                     <div class="header-Text">
-                        <h2 class="text-center label-warning" id="Welcome">Welcome to Wordless!</h2>
+                        <header class="text-center" style="font-size:32px" id="Welcome">Welcome to Wordless!</header>
                         <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
                             <p class="text-center  ">
                                 This is the home for unpublished writer and soon to be shooting stars in the book industry. Our goal is to spread novels and writings from
                                 seamingly unkown Authors so that their work can be known to the world. We offer a place on the internet for authors to upload books and for a
                                 small sum allow interested readers to access their work. Hopefully this will be a way for authors to get published later on.
                             </p>
-                            
+
                             @*<div class="col-xs-12 col-sm-1 col-md-1 col-lg-1"></div>*@
                             <p></p>
-                        
+
                             <p class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">With that being said, neither more or less</p>
                             <p class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12"> Welcome to Wordless</p>
                             <p></p>
@@ -42,13 +42,58 @@
             </div>
             <div class="col-md-4">
                 <div class="sidebar-Top sidebar-nav hidden-sm hidden-xs">
-                    Most downloaded!
+                    @{
+                        var mostDownloadedList = Session["MostDownloaded"] as List<Wordless.Models.Book>;
+                    }
+                    @if (mostDownloadedList.Count > 0)
+                    {
+                        <p class="sidebar-name">Most downloaded</p>
+                        foreach (var book in mostDownloadedList)
+                        {
+                            
+                            <ul class="sidebar-list">
+                                <li><a href="@Url.Action("BuyBook", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
+                                <li class="sidebar-list-text-author">Written by: @book.Author.Name</li>
+                                <li>@book.TimesPurchased <span class="glyphicon glyphicon-credit-card"></span></li>
+                            </ul>
+                        }
+                    }
+                    
                 </div>
                 <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
-                    Best rating!
+                    @{
+                        var bestRatedList = Session["BestRating"] as List<Wordless.Models.PurchasedBook>;
+                    }
+                    @if (bestRatedList.Count > 0)
+                    {
+                        <p class="sidebar-name">Best rating</p>
+                        foreach (var item in bestRatedList)
+                        {
+                            <ul class="sidebar-list">
+                                <li><a href="@Url.Action("BuyBook", "Book", new { bookId = item.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @item.Book.Title</strong></a></li>
+                                <li class="sidebar-list-text-author">Written by: @item.Book.Author.Name</li>
+                                <li>@item.Rating <span class="glyphicon glyphicon-star"></span></li>
+                            </ul>
+                        }
+                    }
                 </div>
                 <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
-                    Most commented!
+                    @{
+                        var mostCommentedList = Session["MostCommented"] as List<Wordless.Models.Book>;
+                    }
+                    @if (mostCommentedList.Count() > 0)
+                    {
+                        <p class="sidebar-name">Most commented</p>
+                        foreach (var book in mostCommentedList)
+                        {
+                            <ul class="sidebar-list">
+                                <li><a href="@Url.Action("BuyBook", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
+                                <li class="sidebar-list-text-author">Written by: @book.Author.Name</li>
+                                <li>@book.Comments.Count() <span class="glyphicon glyphicon-comment"></span></li>
+                            </ul>
+                        }
+                    }
+                    
                 </div>
             </div>
         </div>
