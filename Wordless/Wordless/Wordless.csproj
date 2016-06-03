@@ -132,6 +132,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606030837426_Inför publish.cs" />
+    <Compile Include="Migrations\201606030837426_Inför publish.Designer.cs">
+      <DependentUpon>201606030837426_Inför publish.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -182,6 +186,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\UserPage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201606030837426_Inför publish.resx">
+      <DependentUpon>201606030837426_Inför publish.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
