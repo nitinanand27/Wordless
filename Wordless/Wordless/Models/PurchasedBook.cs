@@ -7,6 +7,7 @@ using System.Web;
 
 namespace Wordless.Models
 {
+    [Serializable]
     public class PurchasedBook
     {
         public int PurchasedBookId { get; set; }
