@@ -34,7 +34,7 @@
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <img style="margin-left:30px; margin-right:3px; border-radius:5px;" src="~/Img/minibanner.jpg" />
+                <a href="~/Home/Index"> <img style="margin-left:30px; margin-right:3px; border-radius:5px;" src="~/Img/minibanner.jpg" /></a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -64,7 +64,11 @@
                         <li>@Html.ActionLink("Crime", "BookByGenre","Book", new {id=8 },new object { })</li>
                         <li>@Html.ActionLink("History", "BookByGenre","Book", new {id=9 },new object { })</li>
                         </ul>
+
                 </div>
+                <button class="btn dropbtn" href="/Home/Index" type="button" onclick="location.href='@Url.Action("ReadPDF", "File")'">
+                    Read books
+                </button>
                 <div class="nav navbar-nav navbar-right">
 
                     @{
@@ -113,7 +117,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; WORDLESS @DateTime.Now</p>
         </footer>
     </div>
 

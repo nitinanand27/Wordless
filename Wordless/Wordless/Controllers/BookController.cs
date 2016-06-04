@@ -43,7 +43,7 @@ namespace Wordless.Controllers
         {
             WordlessContext db = new WordlessContext();
             //check if logged in
-            if (!(bool)Session["loginStatus"] && bookId == 0)
+            if (!(bool)Session["loginStatus"] || bookId == 0)
             {
                 return RedirectToAction("Index");
             }

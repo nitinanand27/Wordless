@@ -161,7 +161,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\FbLogin.cshtml" />
-    <Content Include="Views\File\Index.cshtml" />
+    <Content Include="Views\File\ReadPDF.cshtml" />
     <Content Include="Views\File\PDFPartialView.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
@@ -176,6 +176,7 @@
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Book\BuyBook.cshtml" />
     <Content Include="Views\Book\BookDetails.cshtml" />
+    <Content Include="Views\File\UploadPDF.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
