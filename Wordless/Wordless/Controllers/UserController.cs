@@ -103,7 +103,7 @@ namespace Wordless.Controllers
             Session["Admin"] = false;
             Session["isAuthor"] = false;
 
-            return RedirectToAction("RegisterLogin"); //Go back to register view on succesful logout
+            return RedirectToAction("Register"); //Go back to register view on succesful logout
         }
         public ActionResult UserHome()
         {
