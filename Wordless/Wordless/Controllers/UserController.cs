@@ -24,20 +24,24 @@ namespace Wordless.Controllers
             {
                 author = bool.Parse(Request["isAuthor"]);
             }
-                       
+            if (name == null || username == null || password == null || email == null)
+            {
+                TempData["error"] = "";
+                return View();
+            }       
 
             if (db.Users.Where(n => n.Username.ToLower() == username.ToLower()).Count() == 0)
             {
                 User user = new User { Name = name, Username = username, Password = password, Email = email, Author = author };
                 db.Users.Add(user);
                 db.SaveChanges();
-                TempData["error"] = "Registered Successfully!";
+                TempData["error"] = "Registered successfully";
                 return View();
             }
 
             else if (db.Users.Where(u => u.Username == username).Count() > 0 || db.Users.Where(e => e.Email == email).Count() > 0)
             {
-                TempData["error"] = "User already exists!";
+                TempData["error"] = "User already exists";
                 return View();
             }
 

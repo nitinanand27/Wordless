@@ -13,18 +13,24 @@ namespace Wordless.Controllers
         List<File> fileList = new List<File>();
         public List<File> CreateFileList()
         {
+            var userId = (int)Session["currentUserId"];
             fileList = (from l in db.Files
+                        where l.UserId == userId
                         select l).ToList();
             return fileList;
         }
-        public ActionResult Index()
+        public ActionResult UploadPDF()
+        {
+            return View();
+        }
+        public ActionResult ReadPDF()
         {
             return View(CreateFileList());
         }
-        public ActionResult ChangeFile(int id)
+        public ActionResult ChangeFile(int fileId)
         {
-            Session["pdfIdToShow"] = id;
-            return RedirectToAction("Index");
+            Session["pdfIdToShow"] = fileId;
+            return RedirectToAction("ReadPDF");
         }
         public ActionResult ShowFile()
         {

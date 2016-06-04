@@ -4,58 +4,36 @@
 <body>
     <div class="container">
         <div class="row">
-            <label for="Search">Search:</label><input class="bodyDiv" type="text" id="Search" />
-        </div>
-        <div class="row">
-                <div id="BookDisplay" class="col-lg-8 col-md-8">
-                    @if (Model.Count() > 0)
+                <div class="col-lg-8 col-md-8">
+                    @foreach (var book in Model)
                     {
-                        foreach (var book in Model)
-                        {
-                            <div class="bodyDiv col-md-5 col-lg-5 book-divs">
-                                <p class="bookTitle">@book.Title </p>
-                                @if ((bool)Session["loginStatus"])
-                                {
-                                    var showButton = false;
-                                    var purchaseList = Session["bookPurchaseList"] as List<Wordless.Models.PurchasedBook>;
-                                    if (purchaseList.Count == 0)
-                                    {
-                                        showButton = true;
-                                    }
-                                    foreach (var item in purchaseList)
-                                    {
-                                        if (item.BookId == book.BookId)
-                                        {
-                                            showButton = false;
-                                            break;
-                                        }
-                                        else
-                                        {
-                                            showButton = true;
-                                        }
-                                    }
-                                    if (showButton)
-                                    {
-                                        <button class="pull-right btn btn-default" type="button" onclick="location.href='@Url.Action("BookDetails", "Book", new { bookId = book.BookId })'">Details</button>
-                                    }
-                                    else if ((bool)Session["loginStatus"])
-                                    {
-                                        <button class="pull-right btn btn-default" type="button" onclick="location.href='@Url.Action("BookDetails", "Book", new { bookId = book.BookId })'">Details</button>
-                                    }
+                        <div class="bodyDiv register-page-div col-md-5 col-lg-5">
+                            <p class="bookTitle">@book.Title </p>
+                            <p class="bookAuthor">Written by: @book.Author.Name</p>
+                            <p class="bookAuthor">Genre: @book.Genre</p>
+                            <p class="booktText">Price: @book.Price</p>
+                            <p class="booktText">@book.BookText</p>
+                            <p class="book-comments"><strong>Comments</strong></p>
+                            <hr />
+                            @foreach (var comments in book.Comments)
+                            {
+                                <p class="book-comments">@comments.CommentText</p>
+                                <hr />
+                            }
+                            <p class="book-comments"><strong>Downloads @book.TimesPurchased </strong></p>
+                            @{
+                                var bookDetails = Session["BestRating"] as List<Wordless.Models.PurchasedBook>;
+                                var sum = db.PurchasedBooks.Where(t => t.BookId == book.BookId).Sum(t => t.Rating);
+                                sum = sum / db.PurchasedBooks.Where(t => t.BookId == book.BookId).Count();
+                            }
+                            <p class="book-comments"><strong>Rating:</strong> @sum</p>
+                            <button class="pull-right btn btn-default" type="button" onclick="location.href='@Url.Action("Index", "Book")'">Back</button>
+                            @if ((bool)Session["loginStatus"])
+                            {
+                                <button class="pull-right btn btn-default" type="button" onclick="location.href='@Url.Action("BuyBook", "Book", new { bookId = book.BookId })'">Buy</button>
+                            }
+                        </div>
                                 }
-                                else
-                                {
-                                    <button class="pull-right btn btn-default" type="button" onclick="location.href='@Url.Action("BookDetails", "Book", new { bookId = book.BookId })'">Details</button>
-                                }
-
-                                <p class="bookAuthor">Written by: @book.Author.Name</p>
-                                <p class="bookAuthor">Genre: @book.Genre</p>
-                                <p class="booktText">Price: @book.Price</p>
-                                <p class="booktText" style="margin-right:5px; padding:5px;">@book.BookText</p>
-                            </div>
-
-                        }
-                    }
 
                 </div>
                 <div class="col-md-4 col-lg-4">
@@ -72,7 +50,7 @@
                                                   where x.BookId == book.BookId
                                                   select x.Author.Name).First();
                                 <ul class="sidebar-list">
-                                    <li><a href="@Url.Action("BookDetails", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
+                                    <li><a href="@Url.Action("BuyBook", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
                                     <li class="sidebar-list-text-author">Written by: @AuthorName</li>
                                     <li>@book.TimesPurchased <span class="glyphicon glyphicon-credit-card"></span></li>
                                 </ul>
@@ -123,18 +101,5 @@
             </div>
         </div>
 
-
 </body>
 
-
-
-
-
-@*<div class="bodyDiv searchField">
-        <form action="/Book/" method="post" class="form-inline">
-            <div class="form-group">
-                <input class="form-control searchButton" name="search" placeholder="Search" type="text" />
-            </div>
-            <button type="submit" class="btn btn-default">Search</button>
-        </form>
-    </div>*@
