@@ -20,7 +20,7 @@ namespace Wordless
         protected void Session_Start()
         {
             //Id for which pdf to show
-            Session["pdfIdToShow"] = 6;
+            Session["pdfIdToShow"] = 0;
             ///Id for the current logged in user(int)
             Session["currentUserId"] = 0;
             ///Name for the current logged in user (string)
@@ -39,10 +39,10 @@ namespace Wordless
 
             using (WordlessContext db = new WordlessContext())
             {
-                Session["MostDownloaded"] = (from d in db.Books
+                Session["MostDownloaded"] = (from d in db.Books.Include(a => a.Author)
                                              orderby d.TimesPurchased descending
-                                             select d).ToList();
-                var listFromDb = db.PurchasedBooks.ToList();
+                                             select d).Take(4).ToList();
+                var listFromDb = db.PurchasedBooks.Include(u => u.Buyer).ToList();
                 List<PurchasedBook> purchasedList = new List<PurchasedBook>();
                 foreach (var item in listFromDb)
                 {
@@ -60,11 +60,11 @@ namespace Wordless
                 }
                 var sortedList = (from x in purchasedList
                                   orderby x.Rating descending
-                                  select x).ToList();
+                                  select x).Take(4).ToList();
                 Session["BestRating"] = sortedList;
-                Session["MostCommented"] = (from c in db.Books.Include(b => b.Comments)
-                                            orderby c.Comments.Count() descending
-                                            select c).ToList();
+                Session["MostCommented"] = (from b in db.Books.Include(c => c.Comments)
+                                            orderby b.Comments.Count() descending
+                                            select b).Take(4).ToList();
             }
         }
     }

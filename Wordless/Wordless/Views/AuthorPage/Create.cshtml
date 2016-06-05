@@ -43,7 +43,6 @@
                                         @Html.LabelFor(model => model.FileId, htmlAttributes: new { @class = "control-label col-md-2" })
                                         @Html.EditorFor(model => model.FileId, new { htmlAttributes = new { @class = "form-control" } })
                                     </div>
-
                                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                                     <div class="form-group col-md-offset-2 col-md-10">
@@ -71,7 +70,7 @@
                                                       where x.BookId == book.BookId
                                                       select x.Author.Name).First();
                                     <ul class="sidebar-list">
-                                        <li><a href="@Url.Action(" BookDetails", "Book" , new { bookId=book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
+                                        <li><a href="@Url.Action("BookDetails", "Book" , new { bookId=book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
                                         <li class="sidebar-list-text-author">Written by: @AuthorName</li>
                                         <li>@book.TimesPurchased <span class="glyphicon glyphicon-credit-card"></span></li>
                                     </ul>
@@ -91,7 +90,7 @@
                                                       where x.BookId == item.Book.BookId
                                                       select x.Author.Name).First();
                                     <ul class="sidebar-list">
-                                        <li><a href="@Url.Action(" BuyBook", "Book" , new { bookId=item.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @item.Book.Title</strong></a></li>
+                                        <li><a href="@Url.Action("BookDetails", "Book" , new { bookId=item.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @item.Book.Title</strong></a></li>
                                         <li class="sidebar-list-text-author">Written by: @AuthorName</li>
                                         <li>@item.Rating <span class="glyphicon glyphicon-star"></span></li>
                                     </ul>
@@ -111,7 +110,7 @@
                                                       where x.BookId == book.BookId
                                                       select x.Author.Name).First();
                                     <ul class="sidebar-list">
-                                        <li><a href="@Url.Action(" BuyBook", "Book" , new { bookId=book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
+                                        <li><a href="@Url.Action("BookDetails", "Book" , new { bookId=book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
                                         <li class="sidebar-list-text-author">Written by: @AuthorName</li>
                                         <li>@book.Comments.Count() <span class="glyphicon glyphicon-comment"></span></li>
                                     </ul>

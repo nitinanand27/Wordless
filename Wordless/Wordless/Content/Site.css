@@ -34,10 +34,15 @@ textarea {
 .pdfBoxBig{
         height: 650px;
         width: 450px;
+        margin-bottom: 10px;
 }
 .pdfBoxSmall{
         height: 200px;
         width: 200px;
+        margin-bottom: 10px;
+}
+.comment-box{
+    margin-left:5px;
 }
 /*change font nabar*/
 .navbar-inverse a {
@@ -81,12 +86,8 @@ textarea {
     margin-bottom: 10px;
 }
 .book-divs{
-    max-height: 600px!important;
-    max-width: 450px!important;
-    white-space:nowrap;
-    overflow:hidden;
-    display: block;
-    Text-overflow:ellipsis;
+    max-height: 500px!important;
+    max-width: 350px!important;
 }
 .book-Box {
     border-width: 5px;
@@ -102,10 +103,16 @@ textarea {
     font-size:smaller;
     padding-left:10px;
 }
-/*font-changes to summary inside Books*/
-.booktText{
-    padding-left: 10px;
-    
+/*username of comment*/
+.commentUser {
+    font-size: 10px;
+    padding: 10px;
+}
+.ownedBookText {
+    font-size: 10px;
+}
+.bookPrice {
+    padding: 10px;
 }
 /*font-changes to searchField inside Books*/
 .searchField {
