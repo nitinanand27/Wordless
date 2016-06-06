@@ -159,6 +159,16 @@ namespace Wordless.Controllers
         {
             SetListsForViews();
             WordlessContext db = new WordlessContext();
+            if ((bool)Session["loginStatus"])
+            {
+                
+                var purchasedbooks = db.PurchasedBooks.ToList();
+                var userId = (int)Session["currentUserId"];
+                var userPurchases = (from p in purchasedbooks
+                                     where p.BuyerId == userId
+                                     select p).ToList();
+                ViewBag.PurchaseList = userPurchases;
+            }
             List<Book> bookList = new List<Book>();
             if (bookId != 0)
             {

@@ -58,12 +58,7 @@ namespace Wordless.Controllers
                 WordlessContext db = new WordlessContext();
                 string username = Request["username"];
                 string password = Request["password"];
-
-
                 var userList = db.Users.Where(u => u.Username.ToLower() == username.ToLower()).ToList();
-
-
-
                 if (userList.Count() == 1 && userList.First().Password == password)
                 {
                     ///Set session values
@@ -75,7 +70,6 @@ namespace Wordless.Controllers
                     {
                         Session["Admin"] = true;
                     }
-
                     else if (userList.Where(u => u.Username == username).First().Author)
                     {
                         Session["isAuthor"] = true;
