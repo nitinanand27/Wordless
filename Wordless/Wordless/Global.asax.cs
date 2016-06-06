@@ -9,6 +9,7 @@ using Wordless.Models;
 
 namespace Wordless
 {
+   
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
@@ -16,7 +17,7 @@ namespace Wordless
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
-
+        
         protected void Session_Start()
         {
             //Id for which pdf to show

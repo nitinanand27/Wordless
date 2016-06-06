@@ -7,6 +7,7 @@ using System.Web;
 
 namespace Wordless.Models
 {
+    
     public class User
     {
         public int UserId { get; set; }         //användarens ID 

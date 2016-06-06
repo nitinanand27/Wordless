@@ -38,41 +38,7 @@ namespace Wordless.Controllers
             }            
             
             
-        }    
-        [HttpPost]
-        public ActionResult SaveComment (string comment, int bookId)
-        {
-            var hej = comment.Replace("\r\n", "<br />");
-
-            WordlessContext db = new WordlessContext();
-            if (!(bool)Session["loginStatus"] || comment == null)
-            {
-                List<Book> bookReturn = (from b in db.Books
-                                  select b).ToList();
-                return View("Book", bookReturn);
-            }
-            if ((bool)Session["loginStatus"])
-            {
-
-            
-            var findBook = db.Books.Where(b => b.BookId == bookId).FirstOrDefault();
-            var userId = (int)Session["currentUserId"];
-            var newComment = new Comment()
-            {
-                BookId = findBook.BookId,
-                CommentText = hej,
-                Date = DateTime.Now,
-                UserId = (int)Session["currentUserId"]
-            };
-            db.Comments.Add(newComment);
-            db.SaveChanges();
-            }
-            db = new WordlessContext();
-            List<Book> book = (from b in db.Books
-                        where b.BookId == bookId
-                        select b).ToList();
-            return View("BookDetails", book);
-        }
+        }       
         public ActionResult BuyBook (int bookId, bool? confirmed)
         {
             WordlessContext db = new WordlessContext();
@@ -120,16 +86,13 @@ namespace Wordless.Controllers
                         return RedirectToAction("Index");
                     }               
                 }
-                List<Book> bookToBuyView = new List<Book>()
-                {
-                    book
-                };
+                List<Book> bookToBuyView = new List<Book>() { book };
                 return View(bookToBuyView);
             }
             else
             {
-                var book = (from b in db.Books.Include(c => c.Comments)
-                            where b.BookId == bookId
+                var book = (from b in db.Books
+                             where b.BookId == bookId
                              select b).ToList();
                 return View("Index", book);
             }          
@@ -161,7 +124,6 @@ namespace Wordless.Controllers
             return View("Index", booklist);
         }
         public ActionResult BooksAPI( string searchstring)
-
         {
             WordlessContext context = new WordlessContext();
             var booklist1 = context.Books.Where(b => b.Title.ToLower().Contains(searchstring.ToLower()));
@@ -206,8 +168,9 @@ namespace Wordless.Controllers
                             + "<p class='booktText'>"+ b.BookText+" </p>"
                         + "</div>";
             }
-            return Json( FinalBookList.ToArray(),
-                JsonRequestBehavior.AllowGet);
+            
+            
+                
             return Json(new { HtmlString = htmlstring },
                 JsonRequestBehavior.AllowGet);
         }
