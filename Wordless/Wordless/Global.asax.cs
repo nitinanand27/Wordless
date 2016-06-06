@@ -39,7 +39,7 @@ namespace Wordless
 
             using (WordlessContext db = new WordlessContext())
             {
-                Session["MostDownloaded"] = (from d in db.Books.Include(a => a.Author)
+                Session["MostDownloaded"] = (from d in db.Books
                                              orderby d.TimesPurchased descending
                                              select d).Take(4).ToList();
                 var listFromDb = db.PurchasedBooks.Include(u => u.Buyer).ToList();

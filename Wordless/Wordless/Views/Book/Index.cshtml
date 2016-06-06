@@ -11,7 +11,7 @@
                         {
                             <div class="bodyDiv col-md-5 col-lg-5 book-divs">
                                 <p class="bookTitle">@book.Title </p>
-                                <button class="pull-right btn btn-default" type="button" onclick="location.href='@Url.Action("BookDetails", "Book", new { bookId = book.BookId })'"><strong>Details</strong></button>
+                                <button class="pull-right btn btn-default bookButton" type="button" onclick="location.href='@Url.Action("BookDetails", "Book", new { bookId = book.BookId })'"><strong>Details</strong></button>
 
                                 <p class="bookAuthor">Written by: @book.Author.Name</p>
                                 <p class="bookAuthor">Genre: @book.Genre</p>

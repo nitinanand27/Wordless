@@ -75,7 +75,10 @@
                         if ((bool)Session["loginStatus"] && (bool)Session["Admin"])
                         {
 
-                            @Html.ActionLink("Admin", "Index", "Admin")
+                            @*@Html.ActionLink("Admin", "Index", "Admin")*@
+                            <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Index", "Admin")'">
+                                Admin
+                            </button>
                             <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
                                 Logout
                             </button>
@@ -83,7 +86,10 @@
 
                         else if ((bool)Session["loginStatus"] && (bool)Session["isAuthor"])
                         {
-                            @Html.ActionLink("Author page", "Index", "AuthorPage")
+                            @*@Html.ActionLink("Author page", "Index", "AuthorPage")*@
+                            <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Index", "AuthorPage")'">
+                                Author page
+                            </button>
                             <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
                                 Logout
                             </button>
@@ -91,7 +97,10 @@
 
                         else if ((bool)Session["loginStatus"] && (bool)Session["isAuthor"] == false && (bool)Session["Admin"] == false)
                         {
-                            @Html.ActionLink("My page", "Index", "UserPage")
+                            @*@Html.ActionLink("My page", "Index", "UserPage")*@
+                            <button style="margin-left:18px;" class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Index", "UserPage")'">
+                                My page
+                            </button>
                             <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
                                 Logout
                             </button>

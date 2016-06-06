@@ -31,7 +31,7 @@
                             }
                             if (showButton)
                             {
-                                <button class="pull-right btn btn-default" type="button" onclick="location.href='@Url.Action("BuyBook", "Book", new { bookId = book.BookId, confirmed = true })'"><strong>Buy</strong></button>
+                                <button class="pull-right btn btn-default bookButton" type="button" onclick="location.href='@Url.Action("BuyBook", "Book", new { bookId = book.BookId, confirmed = true })'"><strong>Buy</strong></button>
                             }
                         }
                         <p class="bookAuthor">Written by: @book.Author.Name</p>
@@ -55,7 +55,7 @@
                             var sum = db.PurchasedBooks.Where(t => t.BookId == book.BookId).Sum(t => t.Rating);
                             sum = sum / db.PurchasedBooks.Where(t => t.BookId == book.BookId).Count();
                             <p class="book-comments"><strong>Rating:</strong> @sum</p>
-                            <button class="btn pull-right btn-default" type="button" onclick="location.href='@Url.Action("Index", "Book")'"><strong>Back</strong></button>
+                            <button class="btn pull-right btn-default bookButton" type="button" onclick="location.href='@Url.Action("Index", "Book")'"><strong>Back</strong></button>
                         }
 
                         @if ((bool)Session["loginStatus"])
@@ -67,7 +67,7 @@
                                     <textarea class="form-control" rows="8" name="comment" id="comment"></textarea>
                                     <input type="hidden" value="@book.BookId" name="bookId" id="bookId" class="form-control">
                                     <br />
-                                    <button class="btn btn-default" type="submit">Post</button>
+                                    <button class="btn btn-default bookButton" type="submit"><strong>Post</strong></button>
                                 </div>
                                 <br /><br />
                             </form>
