@@ -168,6 +168,8 @@ namespace Wordless.Controllers
                             + "<p class='booktText'>"+ b.BookText+" </p>"
                         + "</div>";
             }
+            return Json( FinalBookList.ToArray(),
+                JsonRequestBehavior.AllowGet);
             return Json(new { HtmlString = htmlstring },
                 JsonRequestBehavior.AllowGet);
         }
