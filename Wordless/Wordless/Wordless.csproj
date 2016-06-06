@@ -176,6 +176,7 @@
     <Content Include="Views\Book\BuyBook.cshtml" />
     <Content Include="Views\Book\BookDetails.cshtml" />
     <Content Include="Views\File\UploadPDF.cshtml" />
+    <Content Include="Views\File\ReadPDF.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
