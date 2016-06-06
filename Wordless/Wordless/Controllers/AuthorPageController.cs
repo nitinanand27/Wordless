@@ -65,14 +65,33 @@ namespace Wordless.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Book book)
+        public ActionResult Create(Book book, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                db.Books.Add(book);
-                db.SaveChanges();
+                var userId = (int)Session["currentUserId"];
+                var user = db.Users.Find(userId);
+                var newFile = new File
+                {
+                    FileName = System.IO.Path.GetFileName(upload.FileName),
+                    ContentType = upload.ContentType,
+                    User = user,
+                    UploadedOn = DateTime.Now
 
-                return RedirectToAction("Index");
+                };
+                if (newFile.ContentType == "application/pdf")
+                {
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        newFile.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    db.Files.Add(newFile);
+                }
+                book.File = newFile;
+                book.Author = user;
+                db.Books.Add(book);   
+                db.SaveChanges();
+                return Redirect("AuthorPage/Create");                
             }
             return View(book);
         }

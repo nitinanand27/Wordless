@@ -4,21 +4,23 @@ using Wordless.Models;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace Wordless.Controllers
 {
     public class FileController : Controller
     {
-        WordlessContext db = new WordlessContext();
-        List<File> fileList = new List<File>();
-        public List<File> CreateFileList()
+        WordlessContext db = new WordlessContext();        
+        public List<PurchasedBook> CreateFileList()
         {
             var userId = (int)Session["currentUserId"];
-            fileList = (from l in db.Files
-                        where l.UserId == userId
+            var purchasedBookList = (from l in db.PurchasedBooks
+                        where l.BuyerId == userId
                         select l).ToList();
-            return fileList;
+            return purchasedBookList;
         }
+        //var bookList = db.PurchasedBooks.Include(b => b.Book).ToList();
+        //List<Book> bookList = db.Books.Include(b => b.Author).Include(c => c.Comments).ToList();
         public ActionResult UploadPDF()
         {
             return View();
@@ -68,16 +70,16 @@ namespace Wordless.Controllers
             }
         }
         [HttpPost]
-        public ActionResult UploadFile(HttpPostedFileBase upload, int? id)
+        public ActionResult UploadFile(HttpPostedFileBase upload)
         {
             if (upload == null)
             {
                 return View("Index");
             }
             else
-            {                
-                //skall ändras till Find(vilken-änvändare-som-är-inloggad)
-                var user = db.Users.Find(2);
+            {
+                var userId = (int)Session["currentUserId"];
+                var user = db.Users.Find(userId);
                 
                 var newFile = new File
                 {
@@ -113,7 +115,7 @@ namespace Wordless.Controllers
 
 
 
-                    return View("Index", CreateFileList());
+                    return Redirect("/AuthorPage/Create");
                 }
                 else
                 {

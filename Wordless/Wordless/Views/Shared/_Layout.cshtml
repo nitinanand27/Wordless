@@ -44,26 +44,26 @@
             </div>
             <div class="collapse navbar-collapse max-width-navbar" id="navbar-collapse">
                 <button class="btn dropbtn" href="/Home/Index" type="button" onclick="location.href='@Url.Action("Index", "Home")'">
-                        Home
+                    Home
                 </button>
                 <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Index", "Book")'">Books</button>
                 <div class="dropdown">
-                    <button  class="btn dropbtn dropdown-toggle hidden-sm hidden-xs" href="/Book/Index"type="button" data-toggle="dropdown">
+                    <button class="btn dropbtn dropdown-toggle hidden-sm hidden-xs" href="/Book/Index" type="button" data-toggle="dropdown">
                         Books by genre
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Thriller","BookByGenre","Book", new {id=0 },new object { })</li>
-                        <li>@Html.ActionLink("Romance", "BookByGenre","Book", new {id=1 },new object { })</li>
-                        <li>@Html.ActionLink("ScienceFiction", "BookByGenre","Book", new {id=2 },new object { })</li>
-                        <li>@Html.ActionLink("Fantasy", "BookByGenre","Book", new {id=3 },new object { })</li>
-                        <li>@Html.ActionLink("Travel", "BookByGenre","Book", new {id=4 },new object { })</li>
-                        <li>@Html.ActionLink("Mystery", "BookByGenre","Book", new {id=5 },new object { })</li>
-                        <li>@Html.ActionLink("Philosophy", "BookByGenre","Book", new {id=6 },new object { })</li>
-                        <li>@Html.ActionLink("Religion", "BookByGenre","Book", new {id=7 },new object { })</li>
-                        <li>@Html.ActionLink("Crime", "BookByGenre","Book", new {id=8 },new object { })</li>
-                        <li>@Html.ActionLink("History", "BookByGenre","Book", new {id=9 },new object { })</li>
-                        </ul>
+                        <li>@Html.ActionLink("Thriller", "BookByGenre", "Book", new { id = 0 }, new object { })</li>
+                        <li>@Html.ActionLink("Romance", "BookByGenre", "Book", new { id = 1 }, new object { })</li>
+                        <li>@Html.ActionLink("ScienceFiction", "BookByGenre", "Book", new { id = 2 }, new object { })</li>
+                        <li>@Html.ActionLink("Fantasy", "BookByGenre", "Book", new { id = 3 }, new object { })</li>
+                        <li>@Html.ActionLink("Travel", "BookByGenre", "Book", new { id = 4 }, new object { })</li>
+                        <li>@Html.ActionLink("Mystery", "BookByGenre", "Book", new { id = 5 }, new object { })</li>
+                        <li>@Html.ActionLink("Philosophy", "BookByGenre", "Book", new { id = 6 }, new object { })</li>
+                        <li>@Html.ActionLink("Religion", "BookByGenre", "Book", new { id = 7 }, new object { })</li>
+                        <li>@Html.ActionLink("Crime", "BookByGenre", "Book", new { id = 8 }, new object { })</li>
+                        <li>@Html.ActionLink("History", "BookByGenre", "Book", new { id = 9 }, new object { })</li>
+                    </ul>
 
                 </div>
                 <button class="btn dropbtn" href="/Home/Index" type="button" onclick="location.href='@Url.Action("ReadPDF", "File")'">
@@ -74,8 +74,11 @@
                     @{
                         if ((bool)Session["loginStatus"] && (bool)Session["Admin"])
                         {
-                            
-                            @Html.ActionLink("Admin", "Index", "Admin")
+
+                            @*@Html.ActionLink("Admin", "Index", "Admin")*@
+                            <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Index", "Admin")'">
+                                Admin
+                            </button>
                             <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
                                 Logout
                             </button>
@@ -83,7 +86,10 @@
 
                         else if ((bool)Session["loginStatus"] && (bool)Session["isAuthor"])
                         {
-                            @Html.ActionLink("Author page", "Index", "AuthorPage")
+                            @*@Html.ActionLink("Author page", "Index", "AuthorPage")*@
+                            <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Index", "AuthorPage")'">
+                                Author page
+                            </button>
                             <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
                                 Logout
                             </button>
@@ -91,23 +97,26 @@
 
                         else if ((bool)Session["loginStatus"] && (bool)Session["isAuthor"] == false && (bool)Session["Admin"] == false)
                         {
-                            @Html.ActionLink("My page", "Index", "UserPage")
+                            @*@Html.ActionLink("My page", "Index", "UserPage")*@
+                            <button style="margin-left:18px;" class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Index", "UserPage")'">
+                                My page
+                            </button>
                             <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
                                 Logout
                             </button>
-                        }                     
-                    
-                    }                   
+                        }
+
+                    }
 
 
                     @if (!(bool)Session["loginStatus"])
-                    {                        
+                    {
 
                         <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Register", "User")'">
                             Login
                         </button>
                     }
-                    
+
                 </div>
             </div>
         </div>
@@ -124,5 +133,7 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/ChristianJavascript.js"></script>
+    <script src="~/Scripts/rating.js"></script>
 </body>
+
 </html>
