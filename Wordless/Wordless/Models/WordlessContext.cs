@@ -8,7 +8,7 @@ namespace Wordless.Models
 {
     public class WordlessContext : DbContext
     {
-        public WordlessContext() : base ("Webb")
+        public WordlessContext() : base ("Wordless")
         {           
         }
 
