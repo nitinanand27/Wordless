@@ -16,8 +16,11 @@
                             <p class="booktText">@book.BookText</p>
                             <hr />
                             <p class="text-right"><strong>Are you sure you want to purchase this book?</strong></p>
+
+
+
                             <button class="pull-right btn btn-default" type="button" onclick="location.href='@Url.Action("BookDetails", "Book", new { bookid = book.BookId } )'">Back</button>
-                            <button class="pull-right btn btn-default" type="button" onclick="location.href='@Url.Action("BuyBook", "Book", new { bookId = book.BookId, confirmed = true })'">Buy</button>                            
+                            <button class="pull-right btn btn-default" type="button" onclick="location.href='@Url.Action("BuyBook", "Book", new { bookId = book.BookId, confirmed = true })'">Buy</button>
                         </div>
                     }
                 </div>
@@ -35,7 +38,7 @@
                                                   where x.BookId == book.BookId
                                                   select x.Author.Name).First();
                                 <ul class="sidebar-list">
-                                    <li><a href="@Url.Action("BuyBook", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
+                                    <li><a href="@Url.Action("BookDetails", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
                                     <li class="sidebar-list-text-author">Written by: @AuthorName</li>
                                     <li>@book.TimesPurchased <span class="glyphicon glyphicon-credit-card"></span></li>
                                 </ul>
@@ -55,7 +58,7 @@
                                                   where x.BookId == item.Book.BookId
                                                   select x.Author.Name).First();
                                 <ul class="sidebar-list">
-                                    <li><a href="@Url.Action("BuyBook", "Book", new { bookId = item.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @item.Book.Title</strong></a></li>
+                                    <li><a href="@Url.Action("BookDetails", "Book", new { bookId = item.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @item.Book.Title</strong></a></li>
                                     <li class="sidebar-list-text-author">Written by: @AuthorName</li>
                                     <li>@item.Rating <span class="glyphicon glyphicon-star"></span></li>
                                 </ul>
@@ -75,7 +78,7 @@
                                                   where x.BookId == book.BookId
                                                   select x.Author.Name).First();
                                 <ul class="sidebar-list">
-                                    <li><a href="@Url.Action("BuyBook", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
+                                    <li><a href="@Url.Action("BookDetails", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
                                     <li class="sidebar-list-text-author">Written by: @AuthorName</li>
                                     <li>@book.Comments.Count() <span class="glyphicon glyphicon-comment"></span></li>
                                 </ul>
