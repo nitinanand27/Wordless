@@ -13,7 +13,9 @@ namespace Wordless.Controllers
         // GET: Book
         public ActionResult Index(string genre)
         {
+            SetListsForViews();
             WordlessContext db = new WordlessContext();
+            //kollar vilka  böcker den aktuella användaren har köpt
             if ((bool)Session["loginStatus"])
             {                
                 var purchasedbooks = db.PurchasedBooks.ToList();
@@ -39,12 +41,28 @@ namespace Wordless.Controllers
             
             
         }    
+        public ActionResult RateBook (int bookId, int rating)
+        {
+            WordlessContext db = new WordlessContext();
+            var userId = (int)Session["currentUserId"];
+            var findPurchase = db.PurchasedBooks.Where(x => x.BookId == bookId && x.BuyerId == userId).First();
+            findPurchase.Rating = rating;
+            db.SaveChanges();
+            db = new WordlessContext();
+            var book = (from b in db.Books
+                               where b.BookId == bookId
+                               select b).ToList();
+            return RedirectToAction("Index");
+        }
         [HttpPost]
+        //sparar kommentaren i databasen
         public ActionResult SaveComment (string comment, int bookId)
         {
-            var hej = comment.Replace("\r\n", "<br />");
+           //gör om \n till br istället så det blir html istället
+            var bookText = comment.Replace("\r\n", "<br />");
 
             WordlessContext db = new WordlessContext();
+            // om man iunte är inlogggad och försöker kommentera
             if (!(bool)Session["loginStatus"] || comment == null)
             {
                 List<Book> bookReturn = (from b in db.Books
@@ -53,14 +71,15 @@ namespace Wordless.Controllers
             }
             if ((bool)Session["loginStatus"])
             {
-
-            
+                // om inloggad            
             var findBook = db.Books.Where(b => b.BookId == bookId).FirstOrDefault();
             var userId = (int)Session["currentUserId"];
+                //skapa nytt kommentars-objekt
             var newComment = new Comment()
             {
+                //hämtar bokID
                 BookId = findBook.BookId,
-                CommentText = hej,
+                CommentText = bookText,
                 Date = DateTime.Now,
                 UserId = (int)Session["currentUserId"]
             };
@@ -138,6 +157,7 @@ namespace Wordless.Controllers
         }
         public ActionResult BookDetails (int? bookId)
         {
+            SetListsForViews();
             WordlessContext db = new WordlessContext();
             List<Book> bookList = new List<Book>();
             if (bookId != 0)
@@ -156,6 +176,7 @@ namespace Wordless.Controllers
         }
         public ActionResult BookByGenre(int id)
         {
+            SetListsForViews();
             WordlessContext db = new WordlessContext();
             var booklist = db.Books.Include(b => b.Author).Include(c => c.Comments).Where(b => b.Genre== (Genres)id).ToList();
             return View("Index", booklist);
@@ -209,6 +230,42 @@ namespace Wordless.Controllers
             return Json(new { HtmlString = htmlstring },
                 JsonRequestBehavior.AllowGet);
         }
-
+        public void SetListsForViews()
+        {
+            WordlessContext db = new WordlessContext();
+            //sparar mest nedladdade i en lista
+            ViewBag.MostDownloaded = (from d in db.Books
+                                      orderby d.TimesPurchased descending
+                                      select d).Take(4).ToList();
+            var listFromDb = db.PurchasedBooks.Include(u => u.Buyer).ToList();
+            List<PurchasedBook> purchasedList = new List<PurchasedBook>();
+            //räknar ut snittet på rating
+            foreach (var item in listFromDb)
+            {
+                //hur många gånger en bok har blvit köpt
+                var times = db.PurchasedBooks.Where(t => t.BookId == item.BookId).Count();
+                if (times > 1 && purchasedList.Any(f => f.BookId == item.BookId) == false)
+                {
+                    //totala summan av alla ratings
+                    var sum = db.PurchasedBooks.Where(t => t.BookId == item.BookId).Sum(t => t.Rating);
+                    //summan delat på antalet nedladdingar(förutsatt att alla har gett en rating :) ) 
+                    var avgRating = sum / times;
+                    item.Rating = avgRating;
+                }
+                if (purchasedList.Any(f => f.BookId == item.BookId) == false)
+                {
+                    purchasedList.Add(item);
+                }
+                //sorterar listan
+                var sortedList = (from x in purchasedList
+                                  orderby x.Rating descending
+                                  select x).Take(4).ToList();
+                ViewBag.BestRating = sortedList;
+                //skapar en lista av antalet kommentarer
+                ViewBag.MostCommented = (from b in db.Books
+                                         orderby b.Comments.Count() descending
+                                         select b).Take(4).ToList();
+            }
+        }
     }
 }

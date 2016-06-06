@@ -7,11 +7,14 @@
             <div class="col-lg-8 col-md-8">
                 @foreach (var book in Model)
                 {
+                    bool ownedBook = false;
+                    int currentRating = 0;
                     <div class="bodyDiv register-page-div col-md-12 col-lg-12">
                         <p class="bookTitle">@book.Title </p>
                         @if ((bool)Session["loginStatus"])
                         {
                             var showButton = false;
+                            
                             var purchaseList = Session["bookPurchaseList"] as List<Wordless.Models.PurchasedBook>;
                             if (purchaseList.Count == 0)
                             {
@@ -22,6 +25,8 @@
                                 if (item.BookId == book.BookId)
                                 {
                                     showButton = false;
+                                    ownedBook = true;
+                                    currentRating = item.Rating;
                                     break;
                                 }
                                 else
@@ -60,6 +65,27 @@
 
                         @if ((bool)Session["loginStatus"])
                         {
+                            if (ownedBook)
+                            {
+                                <form role="form" action="~/Book/RateBook" method="post">
+                                    <div class="form-group comment-box">
+                                        <label for="comment">Rate:</label>
+                                        <select class="form-control" name="rating">
+                                            <option value="@currentRating">@currentRating</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <input type="hidden" value="@book.BookId" name="bookId" id="bookId" class="form-control">
+                                        <br />
+                                        <button class="btn btn-default bookButton" type="submit"><strong>Save</strong></button>
+                                    </div>
+                                    <br /><br />
+                                </form>     
+                            }
+
                             <br />
                             <form role="form" action="~/Book/SaveComment" method="post">
                                 <div class="form-group comment-box">
@@ -78,10 +104,10 @@
                 }
 
             </div>
-            <div class="col-md-4 col-lg-4">
-                <div class="sidebar-Top sidebar-nav hidden-sm hidden-xs">
+            <div class="col-md-4">
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
                     @{
-                        var mostDownloadedList = Session["MostDownloaded"] as List<Wordless.Models.Book>;
+                        var mostDownloadedList = ViewBag.MostDownloaded as List<Wordless.Models.Book>;
                     }
                     @if (mostDownloadedList.Count > 0)
                     {
@@ -98,7 +124,7 @@
                 </div>
                 <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
                     @{
-                        var bestRatedList = Session["BestRating"] as List<Wordless.Models.PurchasedBook>;
+                        var bestRatedList = ViewBag.BestRating as List<Wordless.Models.PurchasedBook>;
                     }
                     @if (bestRatedList.Count > 0)
                     {
@@ -115,7 +141,7 @@
                 </div>
                 <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
                     @{
-                        var mostCommentedList = Session["MostCommented"] as List<Wordless.Models.Book>;
+                        var mostCommentedList = ViewBag.MostCommented as List<Wordless.Models.Book>;
                     }
                     @if (mostCommentedList.Count() > 0)
                     {
