@@ -10,8 +10,7 @@
                     {
                         foreach (var item in Model)
                         {
-                            if (item.Book.File != null)
-                            {
+                            
                                 <div>
                                     @*@{
                                             var bookTitle = (from t in db.Books
@@ -27,7 +26,7 @@
                                     <button class="btn btn-default Read-Book-Button" type="button" onclick="location.href='@Url.Action("ChangeFile", "File", new {fileId = item.Book.FileId })'"><strong>View in browser</strong></button>
 
                                 </div>
-                            }
+                            
 
                         }
 
