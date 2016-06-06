@@ -7,6 +7,7 @@ using System.Web;
 
 namespace Wordless.Models
 {
+    
     public class Comment
     {
         public int CommentId { get; set; }        

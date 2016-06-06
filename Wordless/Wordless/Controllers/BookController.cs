@@ -37,11 +37,15 @@ namespace Wordless.Controllers
             else
             {
                 return View(bookList);
-            }
 
+            }            
+            
+            
 
-        }
-        public ActionResult RateBook(int bookId, int rating)
+               
+        }    
+        public ActionResult RateBook (int bookId, int rating)
+
         {
             WordlessContext db = new WordlessContext();
             var userId = (int)Session["currentUserId"];
@@ -103,7 +107,10 @@ namespace Wordless.Controllers
                                select b).ToList();
             return View("BookDetails", book);
         }
-        public ActionResult BuyBook(int bookId, bool? confirmed)
+
+
+        public ActionResult BuyBook (int bookId, bool? confirmed)
+
         {
             WordlessContext db = new WordlessContext();
             //check if logged in
@@ -150,17 +157,16 @@ namespace Wordless.Controllers
                         return RedirectToAction("Index");
                     }
                 }
-                List<Book> bookToBuyView = new List<Book>()
-                {
-                    book
-                };
+                List<Book> bookToBuyView = new List<Book>() { book };
                 return View(bookToBuyView);
             }
             else
             {
+
                 var book = (from b in db.Books.Include(c => c.Comments)
                             where b.BookId == bookId
                             select b).ToList();
+
                 return View("Index", book);
             }
 
@@ -202,7 +208,8 @@ namespace Wordless.Controllers
             var booklist = db.Books.Include(b => b.Author).Include(c => c.Comments).Where(b => b.Genre == (Genres)id).ToList();
             return View("Index", booklist);
         }
-        public ActionResult BooksAPI(string searchstring)
+
+        public ActionResult BooksAPI( string searchstring)
 
         {
             WordlessContext context = new WordlessContext();
@@ -248,6 +255,9 @@ namespace Wordless.Controllers
                             + "<p class='booktText'>" + b.BookText + " </p>"
                         + "</div>";
             }
+            
+            
+                
             return Json(new { HtmlString = htmlstring },
                 JsonRequestBehavior.AllowGet);
         }

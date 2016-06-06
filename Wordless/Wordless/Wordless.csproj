@@ -98,6 +98,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Christian.css" />
+    <Content Include="Content\login.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -113,8 +114,8 @@
     <Content Include="Scripts\FacebookLogin.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\login.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\rating.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -162,7 +163,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\FbLogin.cshtml" />
-    <Content Include="Views\File\ReadPDF.cshtml" />
     <Content Include="Views\File\PDFPartialView.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
@@ -178,6 +178,7 @@
     <Content Include="Views\Book\BuyBook.cshtml" />
     <Content Include="Views\Book\BookDetails.cshtml" />
     <Content Include="Views\File\UploadPDF.cshtml" />
+    <Content Include="Views\File\ReadPDF.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
