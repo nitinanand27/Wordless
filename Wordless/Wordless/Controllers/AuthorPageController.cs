@@ -16,6 +16,7 @@ namespace Wordless.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
+            SetListsForViews();
             Book book = new Book();
             AuthorPageViewModel author = new AuthorPageViewModel();
 
@@ -62,6 +63,7 @@ namespace Wordless.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            SetListsForViews();
             return View();
         }
 
@@ -69,6 +71,7 @@ namespace Wordless.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Book book, HttpPostedFileBase upload)
         {
+            SetListsForViews();
             if (ModelState.IsValid)
             {
                 var userId = (int)Session["currentUserId"];
@@ -89,6 +92,7 @@ namespace Wordless.Controllers
                     }
                     db.Files.Add(newFile);
                 }
+                
                 book.File = newFile;
                 book.Author = user;
                 db.Books.Add(book);   
