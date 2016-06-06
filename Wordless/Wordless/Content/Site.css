@@ -79,6 +79,7 @@ textarea {
 /*max-width on navbar*/
 .max-width-navbar {
     max-width:970px;
+    max-height:10px;
 }
 /*the divbox on every page*/
 .bodyDiv {
@@ -132,6 +133,7 @@ textarea {
     cursor: pointer;
     height: 50px;
     margin-left: 3px;
+    vertical-align: top!important;
 }
 /* dropdown-menu-hover */
 .btn:hover {
@@ -161,7 +163,6 @@ background-color: wheat;
     position: absolute;
     min-width: 160px;
 }
-
 /* Links inside the dropdown */
 .dropdown-content a {
     padding: 12px 16px;
@@ -243,4 +244,7 @@ li a {
 background-color:#f0ad4e!important;
     opacity: 1;
     padding: 12px;
+}
+.login-logout-button {
+    margin-left: 18px;
 }
