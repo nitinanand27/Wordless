@@ -47,6 +47,11 @@ namespace Wordless.Controllers
             var userId = (int)Session["currentUserId"];
             var findPurchase = db.PurchasedBooks.Where(x => x.BookId == bookId && x.BuyerId == userId).First();
             findPurchase.Rating = rating;
+            var purchasedbooks = db.PurchasedBooks.ToList();
+            var userPurchases = (from p in purchasedbooks
+                                 where p.BuyerId == userId
+                                 select p).ToList();
+            ViewBag.PurchaseList = userPurchases;
             db.SaveChanges();
             db = new WordlessContext();
             var book = (from b in db.Books
@@ -83,7 +88,12 @@ namespace Wordless.Controllers
                 Date = DateTime.Now,
                 UserId = (int)Session["currentUserId"]
             };
-            db.Comments.Add(newComment);
+                var purchasedbooks = db.PurchasedBooks.ToList();
+                var userPurchases = (from p in purchasedbooks
+                                     where p.BuyerId == userId
+                                     select p).ToList();
+                ViewBag.PurchaseList = userPurchases;
+                db.Comments.Add(newComment);
             db.SaveChanges();
             }
             db = new WordlessContext();
