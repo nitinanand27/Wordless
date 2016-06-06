@@ -91,7 +91,7 @@ namespace Wordless.Controllers
                 book.Author = user;
                 db.Books.Add(book);   
                 db.SaveChanges();
-                return Redirect("AuthorPage/Create");                
+                return Redirect("Create");               
             }
             return View(book);
         }

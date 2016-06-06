@@ -46,7 +46,10 @@
                 <button class="btn dropbtn" href="/Home/Index" type="button" onclick="location.href='@Url.Action("Index", "Home")'">
                     Home
                 </button>
-                <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Index", "Book")'">Books</button>
+                <button class="btn dropbtn top" type="button" onclick="location.href='@Url.Action("Index", "Book")'">Books</button>
+                <button class="btn dropbtn top" href="/Home/Index" type="button" onclick="location.href='@Url.Action("ReadPDF", "File")'">
+                    Read books
+                </button>
                 <div class="dropdown">
                     <button class="btn dropbtn dropdown-toggle hidden-sm hidden-xs" href="/Book/Index" type="button" data-toggle="dropdown">
                         Books by genre
@@ -66,9 +69,7 @@
                     </ul>
 
                 </div>
-                <button class="btn dropbtn" href="/Home/Index" type="button" onclick="location.href='@Url.Action("ReadPDF", "File")'">
-                    Read books
-                </button>
+                
                 <div class="nav navbar-nav navbar-right">
 
                     @{
@@ -76,7 +77,7 @@
                         {
 
                             @*@Html.ActionLink("Admin", "Index", "Admin")*@
-                            <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Index", "Admin")'">
+                            <button class="btn dropbtn login-logout-button" type="button" onclick="location.href='@Url.Action("Index", "Admin")'">
                                 Admin
                             </button>
                             <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
@@ -87,7 +88,7 @@
                         else if ((bool)Session["loginStatus"] && (bool)Session["isAuthor"])
                         {
                             @*@Html.ActionLink("Author page", "Index", "AuthorPage")*@
-                            <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Index", "AuthorPage")'">
+                            <button class="btn dropbtn login-logout-button" type="button" onclick="location.href='@Url.Action("Index", "AuthorPage")'">
                                 Author page
                             </button>
                             <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
@@ -98,7 +99,7 @@
                         else if ((bool)Session["loginStatus"] && (bool)Session["isAuthor"] == false && (bool)Session["Admin"] == false)
                         {
                             @*@Html.ActionLink("My page", "Index", "UserPage")*@
-                            <button style="margin-left:18px;" class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Index", "UserPage")'">
+                            <button style="margin-left:18px;" class="btn dropbtn login-logout-button" type="button" onclick="location.href='@Url.Action("Index", "UserPage")'">
                                 My page
                             </button>
                             <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
@@ -112,7 +113,7 @@
                     @if (!(bool)Session["loginStatus"])
                     {
 
-                        <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Register", "User")'">
+                        <button class="btn dropbtn login-logout-button" type="button" onclick="location.href='@Url.Action("Register", "User")'">
                             Login
                         </button>
                     }
