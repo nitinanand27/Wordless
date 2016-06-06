@@ -69,9 +69,9 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="sidebar-Top sidebar-nav hidden-sm hidden-xs">
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
                     @{
-                        var mostDownloadedList = Session["MostDownloaded"] as List<Wordless.Models.Book>;
+                        var mostDownloadedList = ViewBag.MostDownloaded as List<Wordless.Models.Book>;
                     }
                     @if (mostDownloadedList.Count > 0)
                     {
@@ -88,7 +88,7 @@
                 </div>
                 <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
                     @{
-                        var bestRatedList = Session["BestRating"] as List<Wordless.Models.PurchasedBook>;
+                        var bestRatedList = ViewBag.BestRating as List<Wordless.Models.PurchasedBook>;
                     }
                     @if (bestRatedList.Count > 0)
                     {
@@ -105,7 +105,7 @@
                 </div>
                 <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
                     @{
-                        var mostCommentedList = Session["MostCommented"] as List<Wordless.Models.Book>;
+                        var mostCommentedList = ViewBag.MostCommented as List<Wordless.Models.Book>;
                     }
                     @if (mostCommentedList.Count() > 0)
                     {
@@ -119,8 +119,8 @@
                             </ul>
                         }
                     }
-                </div>
 
+                </div>
             </div>
         </div>
     </div>

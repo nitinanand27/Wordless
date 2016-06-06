@@ -35,17 +35,21 @@ textarea {
         max-width: 450px;
         border: 1px solid;
 }
+/*hur pdf-boxen ska vara på stor skörm*/
 .pdfBoxBig{
         height: 650px;
         width: 450px;
         margin-bottom: 10px;
 }
+/*hur pdf-boxen ska vara på liten skörm*/
+
 .pdfBoxSmall{
         height: 200px;
         width: 200px;
         margin-bottom: 10px;
         margin-right:75%;
 }
+/*kommentars-div-box*/
 .comment-box{
     margin-left:5px;
 }
@@ -95,6 +99,7 @@ textarea {
     max-height: 500px!important;
     max-width: 350px!important;
 }
+/*bok-boxarna*/
 .book-Box {
     border-width: 5px;
 }
@@ -114,13 +119,15 @@ textarea {
     font-size: 10px;
     padding: 10px;
 }
+/*om man har köpt en bok*/
 .ownedBookText {
     font-size: 10px;
 }
+/*priset på böcker*/
 .bookPrice {
     padding: 10px;
 }
-/*font-changes to searchField inside Books*/
+/*sökfält*/
 .searchField {
     padding:2px;
 }
@@ -163,12 +170,13 @@ background-color: wheat;
     position: absolute;
     min-width: 160px;
 }
-/* Links inside the dropdown */
+/* hur länkarna ska se ut */
 .dropdown-content a {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
+/*färger på knappar i dropdown-menyn*/
 .dropdown-menu>{
      background-color: wheat!important;
      color:black!important;
@@ -219,15 +227,19 @@ li:hover a
 {
      color: black;  
 }
+/*färgen på länkarna*/
 li a {
     color:black;
 }
+/*att kommentarerna kommer ut lite från kanten*/
 .book-comments {
     padding-left:10px;
 }
+/*fonten när man registrerar sig*/
 .register-page-text {
     font-family:'Engravers MT';
 }
+/*register-sidan*/
 .register-page-div {
     padding: 5px;
     margin-bottom: 5px;
@@ -236,10 +248,12 @@ li a {
     height:300px;
     width: 250px;
 }
+/*färg på knappar i book-details*/
 .bookButton {
     background-color:#f0ad4e!important;
     opacity: 1;
 }
+/*färg på knappar när man ska läsa*/
 .Read-Book-Button {
 background-color:#f0ad4e!important;
     opacity: 1;
