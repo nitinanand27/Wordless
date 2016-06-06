@@ -83,7 +83,7 @@ textarea {
 /*max-width on navbar*/
 .max-width-navbar {
     max-width:970px;
-    max-height:10px;
+    /*max-height:10px;*/
 }
 /*the divbox on every page*/
 .bodyDiv {
