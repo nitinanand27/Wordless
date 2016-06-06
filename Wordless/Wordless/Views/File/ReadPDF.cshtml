@@ -10,21 +10,24 @@
                     {
                         foreach (var item in Model)
                         {
-                            <div>
-                                @*@{
-                                        var bookTitle = (from t in db.Books
-                                                        where t.FileId == item.Book.FileId
-                                                        select t).ToList().FirstOrDefault();
-                                    }*@
-                                <p><strong>@item.Book.Title</strong></p>
+                            
+                                <div>
+                                    @*@{
+                                            var bookTitle = (from t in db.Books
+                                                            where t.FileId == item.Book.FileId
+                                                            select t).ToList().FirstOrDefault();
+                                        }*@
+                                    <p><strong>@item.Book.Title</strong></p>
 
-                                <button class="btn btn-default Read-Book-Button" type="button" onclick="location.href='@Url.Action("GetFile", "File", new {fileId = item.Book.FileId })'"><strong>Fullscreen</strong></button>
+                                    <button class="btn btn-default Read-Book-Button" type="button" onclick="location.href='@Url.Action("GetFile", "File", new {fileId = item.Book.FileId })'"><strong>Fullscreen</strong></button>
 
-                                <button class="btn btn-default Read-Book-Button" type="button" onclick="location.href='@Url.Action("DownloadFile", "File", new {fileId = item.Book.FileId })'"><strong>Download</strong></button>
+                                    <button class="btn btn-default Read-Book-Button" type="button" onclick="location.href='@Url.Action("DownloadFile", "File", new {fileId = item.Book.FileId })'"><strong>Download</strong></button>
 
-                                <button class="btn btn-default Read-Book-Button" type="button" onclick="location.href='@Url.Action("ChangeFile", "File", new {fileId = item.Book.FileId })'"><strong>View in browser</strong></button>
+                                    <button class="btn btn-default Read-Book-Button" type="button" onclick="location.href='@Url.Action("ChangeFile", "File", new {fileId = item.Book.FileId })'"><strong>View in browser</strong></button>
 
-                            </div>
+                                </div>
+                            
+
                         }
 
                     }
