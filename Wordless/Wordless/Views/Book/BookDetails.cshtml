@@ -15,7 +15,7 @@
                         {
                             var showButton = false;
                             
-                            var purchaseList = Session["bookPurchaseList"] as List<Wordless.Models.PurchasedBook>;
+                            var purchaseList = ViewBag.PurchaseList as List<Wordless.Models.PurchasedBook>;
                             if (purchaseList.Count == 0)
                             {
                                 showButton = true;

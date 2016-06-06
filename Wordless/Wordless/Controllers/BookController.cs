@@ -23,7 +23,7 @@ namespace Wordless.Controllers
                 var userPurchases = (from p in purchasedbooks
                                      where p.BuyerId == userId
                                      select p).ToList();
-                Session["bookPurchaseList"] = userPurchases;
+                ViewBag.PurchaseList = userPurchases;
             }           
             //if a genre was provided, return a list of books of the genre
             List<Book> bookList = db.Books.Include(b => b.Author).Include(c => c.Comments).ToList();

@@ -1,0 +1,238 @@
+﻿@model IEnumerable<Wordless.Models.PurchasedBook>
+@using Wordless.Models;
+@{WordlessContext db = new WordlessContext(); }
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8">
+                <div class="bodyDiv register-page-div">
+                    @if (Model.Count() > 0)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <div>
+                                @*@{
+                                        var bookTitle = (from t in db.Books
+                                                        where t.FileId == item.Book.FileId
+                                                        select t).ToList().FirstOrDefault();
+                                    }*@
+                                <p><strong>@item.Book.Title</strong></p>
+
+                                <button class="btn btn-default Read-Book-Button" type="button" onclick="location.href='@Url.Action("GetFile", "File", new {fileId = item.Book.FileId })'"><strong>Fullscreen</strong></button>
+
+                                <button class="btn btn-default Read-Book-Button" type="button" onclick="location.href='@Url.Action("DownloadFile", "File", new {fileId = item.Book.FileId })'"><strong>Download</strong></button>
+
+                                <button class="btn btn-default Read-Book-Button" type="button" onclick="location.href='@Url.Action("ChangeFile", "File", new {fileId = item.Book.FileId })'"><strong>View in browser</strong></button>
+
+                            </div>
+                        }
+
+                    }
+                    
+                    @if (Model.Count() > 0)
+                    {
+                        <hr />
+                        <div class="container">
+                            <div class="pdfBoxSmall hidden-lg hidden-md">
+                                @{
+                                    Html.RenderAction("PDFPartialView");
+                                }
+                            </div>
+                            <div class="pdfBoxBig hidden-sm hidden-xs">
+                                @{
+                                    Html.RenderAction("PDFPartialView");
+                                }
+                            </div>
+                        </div>
+                                    }
+                                    else
+
+                                    {<br />
+                                        <p><strong> You haven't bought any books yet</strong></p>
+                                        <hr />
+                                    }
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                    @{
+                        var mostDownloadedList = ViewBag.MostDownloaded as List<Wordless.Models.Book>;
+                    }
+                    @if (mostDownloadedList.Count > 0)
+                    {
+                        <p class="sidebar-name">Most downloaded</p>
+                        foreach (var book in mostDownloadedList)
+                        {
+                            <ul class="sidebar-list">
+                                <li><a href="@Url.Action("BookDetails", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
+                                <li class="sidebar-list-text-author">Written by: @book.Author.Name</li>
+                                <li>@book.TimesPurchased <span class="glyphicon glyphicon-credit-card"></span></li>
+                            </ul>
+                        }
+                    }
+                </div>
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                    @{
+                        var bestRatedList = ViewBag.BestRating as List<Wordless.Models.PurchasedBook>;
+                    }
+                    @if (bestRatedList.Count > 0)
+                    {
+                        <p class="sidebar-name">Best rating</p>
+                        foreach (var item in bestRatedList)
+                        {
+                            <ul class="sidebar-list">
+                                <li><a href="@Url.Action("BookDetails", "Book", new { bookId = item.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @item.Book.Title</strong></a></li>
+                                <li class="sidebar-list-text-author">Written by: @item.Book.Author.Name</li>
+                                <li>@item.Rating <span class="glyphicon glyphicon-star"></span></li>
+                            </ul>
+                        }
+                    }
+                </div>
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                    @{
+                        var mostCommentedList = ViewBag.MostCommented as List<Wordless.Models.Book>;
+                    }
+                    @if (mostCommentedList.Count() > 0)
+                    {
+                        <p class="sidebar-name">Most commented</p>
+                        foreach (var book in mostCommentedList)
+                        {
+                            <ul class="sidebar-list">
+                                <li><a href="@Url.Action("BookDetails", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
+                                <li class="sidebar-list-text-author">Written by: @book.Author.Name</li>
+                                <li>@book.Comments.Count() <span class="glyphicon glyphicon-comment"></span></li>
+                            </ul>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="bodyDiv searchField">
+        <form action="/Book/" method="post" class="form-inline">
+            <div class="form-group">
+                <input class="form-control searchButton" name="search" placeholder="Search" type="text" />
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+        </form>
+    </div>*@
+
+@*<div class="container">
+        <div class="siteBody">
+
+            @using (Html.BeginForm("UploadFile", "File", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="form-group">
+                    <div>
+                        <label for="upload">Upload PDF</label>
+                        <input type="file" id="upload" name="upload" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <input type="submit" value="Upload" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+            <hr />
+
+            @using (Html.BeginForm("GetFile", "File"))
+                {
+                <div class="form-group">
+                    <div>
+                        <label for="fileId">View file in browser</label>
+                        <input type="text" id="fileId" name="fileId" />
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <div>
+                            <input type="submit" value="View file" class="btn btn-default" />
+                        </div>
+                    </div>
+            }
+            @using (Html.BeginForm("DownloadFile", "File"))
+                {
+                <div class="form-group">
+                    <div>
+                        <label for="fileId">Download file</label>
+                        <input type="text" id="fileId" name="fileId" />
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <div>
+                            <input type="submit" value="Download file" class="btn btn-default" />
+                        </div>
+                    </div>
+            }
+
+            @if (Model.Count() > 0)
+                {
+                <table class="table">
+                    <tr>
+                        <th>
+                            File-Id in database:
+                        </th>
+                        <th>
+                            Filename:
+                        </th>
+                        <th>
+                            Filetype
+                        </th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FileId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FileName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContentType)
+                            </td>
+                        </tr>
+                            @Html.ActionLink("Show PDF", "ChangeFile", new { id = item.FileId });
+                    }
+                </table>
+            }
+            <div class="container">
+                <div class="pdfBox">
+                    @{
+                        Html.RenderAction("PDFPartialView");
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>*@
+
+
+
