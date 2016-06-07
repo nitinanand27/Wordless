@@ -1,6 +1,24 @@
 ﻿$(document).ready(function () {
-    $('#Search').on('input', function () {
+    function Javel(data) {
+        $('#Jävel').html(data.Name + " " + data.Score);
+    }
+    $.ajax({
+        method: "GET",
+        url: 'http://beta.jaaveel.ecstudenter.se/Api/HighScore',
+        data:{},
+        dataType: 'jsonp',
+        callback: 'Javel',
+        //success: function (data) {
+        //    $('#Jävel').html(data.Name + " " + data.Score);
+        //},
+        error: function (jqXHR, statusText, errorThrown) {
+            $('#Jävel').html('Ett fel inträffade: <br>'
+                + statusText + errorThrown);
+        }
+    });
     
+    $('#Search').on('input', function () {
+        
         $.ajax({
             method:"GET",
             url: '/Book/BooksAPI',
