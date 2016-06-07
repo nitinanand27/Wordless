@@ -249,16 +249,16 @@ namespace Wordless.Controllers
             foreach (Book b in FinalBookList)
             {
                 htmlstring = htmlstring + "<div class='bodyDiv col-md-5 col-lg-5'>"
-                            + "<p class='bookTitle'>" + b.Title + "<button class='pull-right btn btn-default' type='button' onclick='location.href='@Url.Action('Buy', 'Book')''>Buy</button></p>"
-                            + "<p class='bookAuthor'>Written by: " + b.Author.Name + "</p>"
+                            + "<p class='bookTitle'>" + b.Title + "<button class='pull-right btn btn-default bookButton' type='button' onclick='location.href = @'/Book/BookDetails?bookId="+b.BookId+ "''><strong>Details</strong></button>"
+                                + "<p class='bookAuthor'>Written by: " + b.Author.Name + "</p>"
                             + "<p class='bookAuthor'>Genre: " + b.Genre + "</p>"
                             + "<p class='booktText'>Price: " + b.Price + "</p>"
                             + "<p class='booktText'>" + b.BookText + " </p>"
                         + "</div>";
             }
-            
-            
-                
+
+            //'@Url.Action('BookDetails', 'Book', new { bookId = " + b.BookId + " })'
+
             return Json(new { HtmlString = htmlstring },
                 JsonRequestBehavior.AllowGet);
         }
