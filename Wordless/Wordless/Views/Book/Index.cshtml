@@ -14,7 +14,6 @@
                             <p class="bookTitle">@book.Title </p>
                             <button class="pull-right btn btn-default bookButton" type="button" onclick="location.href='@Url.Action("BookDetails", "Book", new { bookId = book.BookId })'"><strong>Details</strong></button>
 
-                            <button class="pull-right btn btn-default bookButton" type="button" onclick="location.href='@Url.Action("BuyBook", "Book", new { bookId = book.BookId}, null)'"><strong>Buy</strong></button>
                             <p class="bookAuthor">Written by: @book.Author.Name</p>
                             <p class="bookAuthor">Genre: @book.Genre</p>
                             <p class="bookPrice">Price: @book.Price</p>
