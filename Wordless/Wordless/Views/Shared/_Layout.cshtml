@@ -10,29 +10,10 @@
     <!--Login stylesheet-->
     <link href="~/Content/login.css" type="text/css" rel="stylesheet"/>
     <!--Facebook Api script-->
-    <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '1774392159446483',
-                xfbml: true,
-                version: 'v2.6'
-            });
-        };
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) { return; }
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
+    <script type="text/javascript" src="~/Scripts/FacebookLogin.js"></script>
 
 </head>
 <body id="LayoutBody">
-    @*<div id="Banner">
-            <img src="~/Img/WordlessBannerBig.jpg" id="BannerImg" />
-        </div>*@
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -69,7 +50,7 @@
                         <li>@Html.ActionLink("Crime", "BookByGenre", "Book", new { id = 8 }, new object { })</li>
                         <li>@Html.ActionLink("History", "BookByGenre", "Book", new { id = 9 }, new object { })</li>
                     </ul>
-
+                    
                 </div>
                 
                 <div class="nav navbar-nav navbar-right">
@@ -125,7 +106,7 @@
                         <button class="btn dropbtn login-logout-button" type="button" onclick="location.href='@Url.Action("Register", "User")'">
                             Login
                         </button>
-                    }
+                    }                    
 
                 </div>
             </div>
@@ -137,6 +118,8 @@
         <hr />
         <footer>
             <p>&copy; WORDLESS @DateTime.Now</p>
+            <div id="fb-root"></div>
+            <div class="fb-like" data-href="https://www.facebook.com/WordlesECStudenter/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
         </footer>
     </div>
 

@@ -19,7 +19,7 @@ namespace Wordless.Controllers
             if ((bool)Session["loginStatus"])
             {
                 var purchasedbooks = db.PurchasedBooks.ToList();
-                var userId = (int)Session["currentUserId"];
+                var userId = (int)Session["currentUserId"]; 
                 var userPurchases = (from p in purchasedbooks
                                      where p.BuyerId == userId
                                      select p).ToList();
