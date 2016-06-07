@@ -14,7 +14,7 @@ namespace Wordless.Controllers
         public List<PurchasedBook> CreateFileList()
         {
             //en lista på vilka filer en användare har laddat upp
-            var userId = (int)Session["currentUserId"];
+            var userId = Convert.ToInt64(Session["currentUserId"]); //int64 coz of fb userid
             var purchasedBookList = (from l in db.PurchasedBooks
                         where l.BuyerId == userId
                         select l).ToList();

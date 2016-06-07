@@ -13,11 +13,6 @@
                         <div class="bodyDiv col-md-5 col-lg-5 book-divs">
                             <p class="bookTitle">@book.Title </p>
                             <button class="pull-right btn btn-default bookButton" type="button" onclick="location.href='@Url.Action("BookDetails", "Book", new { bookId = book.BookId })'"><strong>Details</strong></button>
-
-                        <div class="bodyDiv col-md-5 col-lg-5">
-                            @*<p class="bookTitle">@book.Title <button class="pull-right btn btn-default" type="button" @Html.ActionLink("Buy", "AddBook", "UserPage", new { id = book.BookId }, null)>Buy</button></p>*@
-
-                            <p class="bookTitle">@book.Title @Html.ActionLink("Buy", "AddBook", "UserPage", new { id = book.BookId },null)</p>
                             <p class="bookAuthor">Written by: @book.Author.Name</p>
                             <p class="bookAuthor">Genre: @book.Genre</p>
                             <p class="bookPrice">Price: @book.Price</p>

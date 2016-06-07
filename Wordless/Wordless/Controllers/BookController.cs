@@ -19,7 +19,7 @@ namespace Wordless.Controllers
             if ((bool)Session["loginStatus"])
             {
                 var purchasedbooks = db.PurchasedBooks.ToList();
-                var userId = (int)Session["currentUserId"];
+                var userId = Convert.ToInt64(Session["currentUserId"]); //changed/converted to int64 bcoz facebook userid is long int
                 var userPurchases = (from p in purchasedbooks
                                      where p.BuyerId == userId
                                      select p).ToList();
