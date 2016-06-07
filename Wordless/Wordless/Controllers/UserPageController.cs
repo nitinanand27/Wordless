@@ -15,32 +15,79 @@ namespace Wordless.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            User user = new User();
+            PurchasedBook PurchasedBook = new PurchasedBook();
+            PurchasedBookViewModel PurchasedBookViewModel = new PurchasedBookViewModel();
 
-            UserPageViewModel userfilter = new UserPageViewModel();
+            //ViewBag.List = author.BooksResult.ToList();
 
-            userfilter.UserResult = user.GetAll;
+            PurchasedBookViewModel.PurchasedBookResult = PurchasedBook.GetAll();
 
-            return View(userfilter);
+            return View(PurchasedBookViewModel);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Index(UserPageViewModel userfilter)
+        public ActionResult Index(PurchasedBookViewModel PurchasedBookViewModel)
         {
             if (ModelState.IsValid)
             {
-                User user = new User();
+                PurchasedBook PurchasedBook = new PurchasedBook();
 
-                var users = user.GetAll;
-
-                if (!String.IsNullOrEmpty(userfilter.username))
+                var books = PurchasedBook.GetAll();
+                
+                if (!String.IsNullOrEmpty(PurchasedBookViewModel.Keyword))
                 {
-                    users = users.Where(u => u.Username.ToLower().Contains(userfilter.username.ToLower())).ToList();
+                    books = books.Where(b => b.Book.Title.ToLower().Contains(PurchasedBookViewModel.Keyword.ToLower())).ToList();
                 }
-                userfilter.UserResult = users;
+                PurchasedBookViewModel.PurchasedBookResult = books;
             }
+            return View(PurchasedBookViewModel);
+        }
 
-            return View(userfilter);
+        public ActionResult Details(int id)
+        {
+            Book book = db.Books.Single(b => b.BookId == id);
+
+            return View(book);
+        }
+        
+        public ActionResult AddBook(int id)
+        {
+            Book book = new Book();
+            PurchasedBook PurchasedBook = new PurchasedBook();
+
+            if (ModelState.IsValid)
+            {
+                book = db.Books.Where(b => b.BookId == id).First();
+
+                var currentUserId = int.Parse(Session["currentUserId"].ToString());
+                var user = db.Users.Where(u => u.UserId == currentUserId).First();
+
+
+
+                db.PurchasedBooks.Add(new PurchasedBook()
+                {
+                    //Book = book.Title,
+                    BookId = book.BookId,
+                    //DateOfPurchase = DateTime.Now,
+                    //Rating = 0,
+                    //Recension = "a",
+                    //Buyer = user,
+                    BuyerId =user.UserId
+                });
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+        }
+         
+        public ActionResult RemoveBook(int id)
+        {
+            PurchasedBook book = db.PurchasedBooks.Single(b => b.BookId == id);
+            db.PurchasedBooks.Remove(book);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

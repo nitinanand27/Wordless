@@ -1,26 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Wordless.Models;
 
 namespace Wordless.ViewModel
 {
-    public class UserPageViewModel
+    public class PurchasedBookViewModel
     {
         public string Keyword { get; set; }
-            
-        public string Title { get; set; }
         
+        public string Title { get; set; }
+
         public int TimesPurchased { get; set; }
 
         public Genres Genre { get; set; }
-        
+
         public decimal Price { get; set; }
 
-        public List<Book> BooksResult { get; set; }
+        public List<PurchasedBook> PurchasedBookResult { get; set; }
 
-        public UserPageViewModel()
+        public PurchasedBookViewModel()
         {
             Keyword = "";
 
@@ -28,7 +29,7 @@ namespace Wordless.ViewModel
             TimesPurchased = 0;
             Price = 0;
 
-            BooksResult = new List<Book>();
+            PurchasedBookResult = new List<PurchasedBook>();
         }
     }
 }

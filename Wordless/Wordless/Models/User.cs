@@ -29,11 +29,12 @@ namespace Wordless.Models
         public virtual IList<File> Files { get; set; }
 
 
-        WordlessContext db = new WordlessContext();
-        [NotMapped]
-        public List<User> GetAll
+        public List<User> GetAll()
         {
-            get { return db.Users.ToList(); }
+            WordlessContext db = new WordlessContext();
+
+            return db.Users.ToList();
         }
+        
     }
 }

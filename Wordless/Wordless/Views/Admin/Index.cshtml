@@ -36,8 +36,18 @@
                 {
                     @Html.Raw("<div>");
                     @Html.Raw("<strong>" + u.Username + "</strong><br />");
-                    @Html.Raw("WrittenBooks: " + u.WrittenBooks + "<br />");
-                    @Html.Raw("Author: " + u.Author + "<br />");
+                    foreach (var item in u.WrittenBooks)
+                    {
+                        @Html.Raw("WrittenBooks: " + item.Title + "<br />");
+                    }
+                    if (u.Author == true)
+                    {
+                        @Html.Raw("Author: YES" + "<br />");
+                    }
+                    if (u.Author == false)
+                    {
+                        @Html.Raw("Author: NO" + "<br />");
+                    }
                     @Html.Raw("Name: " + u.Name + "<br />");
                     @Html.ActionLink("Edit", "Edit", new { id = u.UserId })
                     @Html.Raw("<br />")

@@ -6,7 +6,6 @@ using System.Web.Mvc;
 
 namespace Wordless.Controllers
 {
-    [Authorize]
     public class FacebookController : Controller
     {
         // GET: Facebook

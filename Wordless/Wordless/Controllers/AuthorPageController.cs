@@ -20,7 +20,7 @@ namespace Wordless.Controllers
 
             //ViewBag.List = author.BooksResult.ToList();
 
-            author.BooksResult = book.GetAll;
+            author.BooksResult = book.GetAll();
             
             return View(author);
         }
@@ -32,7 +32,7 @@ namespace Wordless.Controllers
             {
                 Book book = new Book();
 
-                var books = book.GetAll;
+                var books = book.GetAll();
 
                 //if (author.Price > 0)
                 //{
