@@ -180,6 +180,8 @@
     <Content Include="Views\Book\BookDetails.cshtml" />
     <Content Include="Views\File\UploadPDF.cshtml" />
     <Content Include="Views\File\ReadPDF.cshtml" />
+    <Content Include="Views\UserPage\Details.cshtml" />
+    <Content Include="Views\UserPage\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -190,7 +192,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\UserPage\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201606030837426_Inför publish.resx">
