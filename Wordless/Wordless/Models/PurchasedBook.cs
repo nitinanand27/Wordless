@@ -11,6 +11,7 @@ namespace Wordless.Models
     public class PurchasedBook
     {
         public int PurchasedBookId { get; set; }
+        
 
         [Range(0, 5)]
         public int Rating { get; set; }             //varje bokköp kan ha ett betyg som användaren har gett
@@ -26,5 +27,13 @@ namespace Wordless.Models
         public int BuyerId { get; set; }
         [ForeignKey("BuyerId")]
         public virtual User Buyer { get; set; }     //en köpare tillhör varje köp4
+
+        
+
+        public List<PurchasedBook> GetAll()
+        {
+            WordlessContext db = new WordlessContext();
+            return db.PurchasedBooks.ToList(); 
+        }
     }
 }

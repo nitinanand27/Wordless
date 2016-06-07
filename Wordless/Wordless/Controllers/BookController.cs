@@ -201,6 +201,7 @@ namespace Wordless.Controllers
 
             return View(bookList);
         }
+
         public ActionResult BookByGenre(int id)
         {
             SetListsForViews();

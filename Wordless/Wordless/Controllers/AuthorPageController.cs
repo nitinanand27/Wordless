@@ -16,12 +16,13 @@ namespace Wordless.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
+            SetListsForViews();
             Book book = new Book();
             AuthorPageViewModel author = new AuthorPageViewModel();
 
             //ViewBag.List = author.BooksResult.ToList();
 
-            author.BooksResult = book.GetAll;
+            author.BooksResult = book.GetAll();
             
             return View(author);
         }
@@ -34,7 +35,7 @@ namespace Wordless.Controllers
             {
                 Book book = new Book();
 
-                var books = book.GetAll;
+                var books = book.GetAll();
 
                 //if (author.Price > 0)
                 //{
@@ -62,6 +63,7 @@ namespace Wordless.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            SetListsForViews();
             return View();
         }
 
@@ -69,6 +71,7 @@ namespace Wordless.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Book book, HttpPostedFileBase upload)
         {
+            SetListsForViews();
             if (ModelState.IsValid)
             {
                 var userId = (int)Session["currentUserId"];
@@ -89,6 +92,7 @@ namespace Wordless.Controllers
                     }
                     db.Files.Add(newFile);
                 }
+                
                 book.File = newFile;
                 book.Author = user;
                 db.Books.Add(book);   

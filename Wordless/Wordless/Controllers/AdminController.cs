@@ -19,7 +19,7 @@ namespace Wordless.Controllers
 
             AdminViewModel admin = new AdminViewModel();
 
-            admin.UserResult = user.GetAll;
+            admin.UserResult = user.GetAll();
 
             return View(admin);
         }
@@ -31,7 +31,7 @@ namespace Wordless.Controllers
             {
                 User user = new User();
 
-                var users = user.GetAll;
+                var users = user.GetAll();
 
                 if (!String.IsNullOrEmpty(admin.username))
                 {

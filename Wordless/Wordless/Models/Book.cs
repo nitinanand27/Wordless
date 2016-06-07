@@ -30,11 +30,11 @@ namespace Wordless.Models
         [ForeignKey("FileId")]
         public File File { get; set; }                  //varje bok har en pdf fil
 
-        WordlessContext db = new WordlessContext();
-        [NotMapped]
-        public List<Book> GetAll
+        public List<Book> GetAll()
         {
-            get { return db.Books.ToList(); } 
+            WordlessContext db = new WordlessContext();
+
+            return db.Books.ToList();
         }        
 
     }

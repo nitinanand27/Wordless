@@ -27,7 +27,12 @@
                                     showButton = false;
                                     ownedBook = true;
                                     currentRating = item.Rating;
+                                    
+                                    <button class="pull-right btn btn-default bookButton" href="/Home/Index" type="button" onclick="location.href='@Url.Action("ReadPDF", "File")'">
+                                        Read books
+                                    </button>
                                     break;
+
                                 }
                                 else
                                 {
