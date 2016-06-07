@@ -2,70 +2,72 @@
 @using Wordless.ViewModel
 @using Wordless.Models
 
-@{
-    ViewBag.Title = "Index";
-}
 
-<h2>Index</h2>
 
-@Html.ActionLink("Create", "Create", "Admin")
 
-<div class="form-horizontal row">
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <h2>Filter</h2>
-        <form role="form" action="~/Admin/Index" method="post">
-            @Html.AntiForgeryToken()
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                @Html.LabelFor(m => m.username)
-                @Html.TextBoxFor(m => m.username, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(m => m.username)
+
+
+<div class="container">
+    <div class="bodyDiv register-page-div">
+        <div class="form-horizontal row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                @Html.ActionLink("Create", "Create", "Admin")
+                <h2>Filter</h2>
+                <form role="form" action="~/Admin/Index" method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        @Html.LabelFor(m => m.username)
+                        @Html.TextBoxFor(m => m.username, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.username)
+                    </div>
+
+                    <div class="form-group col-md-offset-2 col-md-10">
+                        <input type="submit" value="Filter" class="btn btn-default" />
+                    </div>
+                </form>
             </div>
-
-            <div class="form-group col-md-offset-2 col-md-10">
-                <input type="submit" value="Filter" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        @{
-            if (Model.UserResult.Count() > 0)
-            {
-                <h2>Found <strong>@Model.UserResult.Count()</strong> properties</h2>
-                @Html.Raw("<div class = 'books'>");
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                @{
+                    if (Model.UserResult.Count() > 0)
+                    {
+                        <h2>Found <strong>@Model.UserResult.Count()</strong> properties</h2>
+                        @Html.Raw("<div class = 'books'>");
                 foreach (User u in Model.UserResult)
                 {
-                    @Html.Raw("<div>");
-                    @Html.Raw("<strong>" + u.Username + "</strong><br />");
+                            @Html.Raw("<div>");
+                            @Html.Raw("<strong>" + u.Username + "</strong><br />");
                     foreach (var item in u.WrittenBooks)
                     {
-                        @Html.Raw("WrittenBooks: " + item.Title + "<br />");
+                                @Html.Raw("WrittenBooks: " + item.Title + "<br />");
                     }
                     if (u.Author == true)
                     {
-                        @Html.Raw("Author: YES" + "<br />");
+                                @Html.Raw("Author: YES" + "<br />");
                     }
                     if (u.Author == false)
                     {
-                        @Html.Raw("Author: NO" + "<br />");
+                                @Html.Raw("Author: NO" + "<br />");
                     }
-                    @Html.Raw("Name: " + u.Name + "<br />");
-                    @Html.ActionLink("Edit", "Edit", new { id = u.UserId })
-                    @Html.Raw("<br />")
-                    @Html.ActionLink("Details", "Details", new { id = u.UserId })
-                    @Html.Raw("<br />")
-                    @Html.ActionLink("Delete", "Delete", new { id = u.UserId })
-                    @Html.Raw("</div>")
-                    @Html.Raw("<br />")
+                            @Html.Raw("Name: " + u.Name + "<br />");
+                            @Html.ActionLink("Edit", "Edit", new { id = u.UserId })
+                            @Html.Raw("<br />")
+                            @Html.ActionLink("Details", "Details", new { id = u.UserId })
+                            @Html.Raw("<br />")
+                            @Html.ActionLink("Delete", "Delete", new { id = u.UserId })
+                            @Html.Raw("</div>")
+                            @Html.Raw("<br />")
+                        }
+                        @Html.Raw("</div>")
+                    }
+
+                    else
+                    {
+                        <h2>Sorry!</h2>
+                        <p>No Users could be found =(</p>
+                    }
                 }
-                @Html.Raw("</div>")
-            }
 
-            else
-            {
-                <h2>Sorry!</h2>
-                <p>No Users could be found =(</p>
-            }
-        }
-
-    </div>
+            </div>
+        </div>
+        </div>
 </div>
