@@ -6,47 +6,49 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<div class="form-horizontal row">
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <h2>Filter</h2>
-        <form role="form" action="~/UserPage/Index" method="post">
-            @Html.AntiForgeryToken()
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                @Html.LabelFor(m => m.Keyword)
-                @Html.TextBoxFor(m => m.Keyword, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(m => m.Keyword)
+<div class="container">
+    <div class="bodyDiv register-page-div">
+        <div class="form-horizontal row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <h2>Filter</h2>
+                <form role="form" action="~/UserPage/Index" method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        @Html.LabelFor(m => m.Keyword)
+                        @Html.TextBoxFor(m => m.Keyword, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.Keyword)
+                    </div>
+                    <div class="form-group col-md-offset-2 col-md-10">
+                        <input type="submit" value="Filter" class="btn btn-default" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group col-md-offset-2 col-md-10">
-                <input type="submit" value="Filter" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        @{
-            if (Model.PurchasedBookResult.Count() > 0)
-            {
-                <h2>Found <strong>@Model.PurchasedBookResult.Count()</strong> properties</h2>
-                @Html.Raw("<div class = 'books'>");
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                @{
+                    if (Model.PurchasedBookResult.Count() > 0)
+                    {
+                        <h2>Found <strong>@Model.PurchasedBookResult.Count()</strong> properties</h2>
+                        @Html.Raw("<div class = 'books'>");
                 foreach (PurchasedBook b in Model.PurchasedBookResult)
                 {
-                    @Html.Raw("<div>");
-                    @Html.Raw("<strong>" + b.Book.Title + "</strong><br />");
-                    @Html.Raw("TimesPurchased: " + b.Book.TimesPurchased + "<br />");
-                    @Html.Raw("Price: &#36;" + b.Book.Price + "<br />");
-                    @Html.Raw("</div>")
-                    @Html.Raw("<br />")
+                            @Html.Raw("<div>");
+                            @Html.Raw("<strong>" + b.Book.Title + "</strong><br />");
+                            @Html.Raw("TimesPurchased: " + b.Book.TimesPurchased + "<br />");
+                            @Html.Raw("Price: &#36;" + b.Book.Price + "<br />");
+                            @Html.Raw("</div>")
+                            @Html.Raw("<br />")
+                        }
+                        @Html.Raw("</div>")
+                    }
+
+                    else
+                    {
+                        <h2>Sorry!</h2>
+                        <p>No books could be found =(</p>
+                    }
                 }
-                @Html.Raw("</div>")
-            }
 
-            else
-            {
-                <h2>Sorry!</h2>
-                <p>No books could be found =(</p>
-            }
-        }
-
-    </div>
+            </div>
+        </div>
+        </div>
 </div>
