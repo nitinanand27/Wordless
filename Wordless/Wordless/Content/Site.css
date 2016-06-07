@@ -63,7 +63,7 @@ textarea {
 }
 /*the top sidebar*/
 .sidebar-Top {
-    height:300px;
+    height:350px;
     width: 200px;
     background-color:wheat;
     opacity: 0.9;
@@ -72,7 +72,7 @@ textarea {
 }
 /*middle and bottom sidebar*/
 .sidebar-mid-bot {
-    height:300px;
+    height:350px;
     width: 200px;
     background-color:wheat;
     opacity: 0.9;
