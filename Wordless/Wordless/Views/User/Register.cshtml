@@ -1,82 +1,74 @@
-﻿
+﻿@model IEnumerable<Wordless.Models.Book>
+@using Wordless.Models;
+@{WordlessContext db = new WordlessContext(); }
 @{
     ViewBag.Title = "Register";
 }
-<body>
-    <div class="container">        
-        <div class="row">
-            <div class="col-md-8">
-                <div class="bodyDiv">
-                    <div class="main-Content">
-                        <h5 class="info-text">@TempData["error"]</h5>                        
-                                <div id="signup">
-                                    <h1>Sign Up Now</h1>
-                                    <form action="/User/Register" method="post">
-                                        <div class="field-wrap">
-                                            <div class="field-wrap">
-                                                <input type="text" name="name" required autocomplete="off" placeholder="name (2-15 chars)" />
-                                            </div>
-                                        </div>
-                                        <div class="field-wrap">
-                                            <div class="field-wrap">
-                                                <input type="text" name="username" required autocomplete="off" placeholder="username (2-15 chars)" />
-                                            </div>
-                                        </div>
-                                        <div class="field-wrap">
-                                            <input type="email" name="email" required autocomplete="off" placeholder="email" />
-                                        </div>
-                                        <div class="field-wrap">
-                                            <input type="password" name="password" required autocomplete="off" placeholder="password (min 6 chars)" />
-                                        </div>
+<div class="form">
 
-                                        <div class="field-wrap">
-                                            <p>Author:<input type="checkbox" name="isAuthor" autocomplete="off" value="true" /></p>
-                                        </div>
-                                        <button type="submit" class="button button-block">Register</button>
-                                    </form>
-                                </div>
-                                <div id="login">
-                                    <h1>Welcome Back!</h1>
-                                    <form action="/User/Login" method="post">
-                                        <div class="field-wrap">
-                                            <input type="text" name="username" required autocomplete="off" placeholder="username" />
-                                        </div>
+    <ul class="tab-group">
+        <li class="tab active"><a href="#signup">Register</a></li>
+        <li class="tab"><a href="#login">Log In</a></li>
+    </ul>
+    <center>
+        <div class="tab-content">
+            <div id="signup">
+                <h1>Sign Up Now</h1>
+                <h5 class="info-text">@TempData["error"]</h5>
 
-                                        <div class="field-wrap">
-                                            <input type="password" name="password" required autocomplete="off" placeholder="password" />
-                                        </div>
-                                        <button type="submit" class="button button-block">Go!</button>
-                                    </form>
-                                </div>
+                <!--REGISTRATION FORM-->
+                <form action="/User/Register" method="post">
+                    <div class="field-wrap">
+                        <input type="text" class="form-control" name="name" required autocomplete="off" placeholder="name (2-15 chars)" />
 
-                            <!--Facebook login div-->
-                            <div id="fbLogin">
-                                <h1>Login from Facebook</h1>
-                                <form>
-                                    <a href="/Account/Facebook/">Login with Facebook</a>
-                                    <div class="fb-like"
-                                         data-share="true"
-                                         data-width="450"
-                                         data-show-faces="true">
-                                    </div>
-                                </form>
-                            <!--/Facebook login div-->
-                            
+                    </div>
+                    <div class="field-wrap">
+                        <input type="text" class="form-control" name="username" required autocomplete="off" placeholder="username (2-15 chars)" />
+
+                    </div>
+                    <div class="field-wrap">
+                        <input type="email" class="form-control" name="email" required autocomplete="off" placeholder="email" />
+                    </div>
+                    <div class="field-wrap">
+                        <input type="password" class="form-control" name="password" required autocomplete="off" placeholder="password (min 6 chars)" />
+                    </div>
+
+                    <div class="field-wrap">
+                        Register as author:<input type="checkbox" name="isAuthor" autocomplete="off" value="true" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn button-block">Register</button>
+                </form>
+
+            </div> <!--Sign up div-->
+
+            <div id="login">
+                <h1>Welcome Back!</h1>
+
+                <!--LOGIN FORM-->
+                <form action="/User/Login" method="post">
+                    <div class="field-wrap">
+                        <div class="field-wrap">
+                            <input type="text" name="username" class="form-control" required autocomplete="off" placeholder="username" />
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="sidebar-Top sidebar-nav hidden-sm hidden-xs">
-                    Most downloaded!
-                </div>
-                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
-                    Best rating!
-                </div>
-                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
-                    Most commented!
-                </div>
+
+                    <div class="field-wrap">
+                        <input type="password" name="password" class="form-control" required autocomplete="off" placeholder="password" />
+                    </div>
+                    <button type="submit" class="btn button-block">Go</button>
+                </form>
+
+                <!--FACEBOOK LOGIN FORM-->
+                <header id="Welcome">Facebook Login</header>
+                <form>
+                    <a href="/Account/Facebook/">Login with Facebook</a>
+                    <div class="fb-like"
+                         data-share="true"
+                         data-width="450"
+                         data-show-faces="true">
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
-</body>
+    </center>
+</div>

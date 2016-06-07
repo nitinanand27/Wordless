@@ -13,9 +13,8 @@ namespace Wordless.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            WordlessContext db = new WordlessContext();
-            var bookList = db.Books.ToList();
-            return View(bookList);
+            SetListsForViews();
+            return View();
         }
 
         //Need books in Database to Run Search Function
@@ -45,6 +44,48 @@ namespace Wordless.Controllers
             return RedirectToAction("Index");
 
         }
-
+        public ActionResult Test()
+        {
+            WordlessContext db = new WordlessContext();
+            db.Books.Count();
+            return View();
+        }
+        public void SetListsForViews()
+        {
+            WordlessContext db = new WordlessContext();
+            //sparar mest nedladdade i en lista
+            ViewBag.MostDownloaded = (from d in db.Books
+                                         orderby d.TimesPurchased descending
+                                         select d).Take(4).ToList();
+            var listFromDb = db.PurchasedBooks.Include(u => u.Buyer).ToList();
+            List<PurchasedBook> purchasedList = new List<PurchasedBook>();
+            //räknar ut snittet på rating
+            foreach (var item in listFromDb)
+            {
+                //hur många gånger en bok har blvit köpt
+                var times = db.PurchasedBooks.Where(t => t.BookId == item.BookId).Count();
+                if (times > 1 && purchasedList.Any(f => f.BookId == item.BookId) == false)
+                {
+                    //totala summan av alla ratings
+                    var sum = db.PurchasedBooks.Where(t => t.BookId == item.BookId).Sum(t => t.Rating);
+                    //summan delat på antalet nedladdingar(förutsatt att alla har gett en rating :) ) 
+                    var avgRating = sum / times;
+                    item.Rating = avgRating;
+                }
+                if (purchasedList.Any(f => f.BookId == item.BookId) == false)
+                {
+                    purchasedList.Add(item);
+                }
+                //sorterar listan
+                var sortedList = (from x in purchasedList
+                                  orderby x.Rating descending
+                                  select x).Take(4).ToList();
+                ViewBag.BestRating = sortedList;
+                //skapar en lista av antalet kommentarer
+                ViewBag.MostCommented = (from b in db.Books
+                                            orderby b.Comments.Count() descending
+                                            select b).Take(4).ToList();
+            }
+        }
     }
 }

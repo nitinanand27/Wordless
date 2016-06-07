@@ -1,0 +1,212 @@
+﻿@model IEnumerable<Wordless.Models.File>
+@using Wordless.Models;
+@{WordlessContext db = new WordlessContext(); }
+<body>
+    <div class="container">
+        <div class="row">
+            <div id="BookDisplay" class="col-lg-8 col-md-8">
+                <div class="bodyDiv file-page-div">
+                    @using (Html.BeginForm("UploadFile", "File", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="form-group">
+                            <div>
+                                <label for="upload">Upload PDF</label>
+                                <input type="file" id="upload" name="upload" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <input type="submit" value="Upload" class="btn btn-default" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <div class="sidebar-Top sidebar-nav hidden-sm hidden-xs">
+                    @{
+                        var mostDownloadedList = Session["MostDownloaded"] as List<Wordless.Models.Book>;
+                    }
+                    @if (mostDownloadedList.Count > 0)
+                    {
+                        <p class="sidebar-name">Most downloaded</p>
+                        foreach (var book in mostDownloadedList)
+                        {
+                            var AuthorName = (from x in db.Books
+                                              where x.BookId == book.BookId
+                                              select x.Author.Name).First();
+                            <ul class="sidebar-list">
+                                <li><a href="@Url.Action("BookDetails", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
+                                <li class="sidebar-list-text-author">Written by: @AuthorName</li>
+                                <li>@book.TimesPurchased <span class="glyphicon glyphicon-credit-card"></span></li>
+                            </ul>
+                        }
+                    }
+                </div>
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                    @{
+                        var bestRatedList = Session["BestRating"] as List<Wordless.Models.PurchasedBook>;
+                    }
+                    @if (bestRatedList.Count > 0)
+                    {
+                        <p class="sidebar-name">Best rating</p>
+                        foreach (var item in bestRatedList)
+                        {
+                            var AuthorName = (from x in db.Books
+                                              where x.BookId == item.Book.BookId
+                                              select x.Author.Name).First();
+                            <ul class="sidebar-list">
+                                <li><a href="@Url.Action("BookDetails", "Book", new { bookId = item.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @item.Book.Title</strong></a></li>
+                                <li class="sidebar-list-text-author">Written by: @AuthorName</li>
+                                <li>@item.Rating <span class="glyphicon glyphicon-star"></span></li>
+                            </ul>
+                        }
+                    }
+                </div>
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                    @{
+                        var mostCommentedList = Session["MostCommented"] as List<Wordless.Models.Book>;
+                    }
+                    @if (mostCommentedList.Count() > 0)
+                    {
+                        <p class="sidebar-name">Most commented</p>
+                        foreach (var book in mostCommentedList)
+                        {
+                            var AuthorName = (from x in db.Books
+                                              where x.BookId == book.BookId
+                                              select x.Author.Name).First();
+                            <ul class="sidebar-list">
+                                <li><a href="@Url.Action("BookDetails", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
+                                <li class="sidebar-list-text-author">Written by: @AuthorName</li>
+                                <li>@book.Comments.Count() <span class="glyphicon glyphicon-comment"></span></li>
+                            </ul>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+
+
+
+
+@*<div class="bodyDiv searchField">
+        <form action="/Book/" method="post" class="form-inline">
+            <div class="form-group">
+                <input class="form-control searchButton" name="search" placeholder="Search" type="text" />
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+        </form>
+    </div>*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="siteBody">
+
+        @using (Html.BeginForm("UploadFile", "File", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">
+                <div>
+                    <label for="upload">Upload PDF</label>
+                    <input type="file" id="upload" name="upload" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <input type="submit" value="Upload" class="btn btn-default" />
+                </div>
+            </div>
+        }
+        <hr />
+
+        @*@using (Html.BeginForm("GetFile", "File"))
+            {
+                <div class="form-group">
+                    <div>
+                        <label for="fileId">View file in browser</label>
+                        <input type="text" id="fileId" name="fileId" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <input type="submit" value="View file" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+            @using (Html.BeginForm("DownloadFile", "File"))
+            {
+                <div class="form-group">
+                    <div>
+                        <label for="fileId">Download file</label>
+                        <input type="text" id="fileId" name="fileId" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <input type="submit" value="Download file" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+
+            @if (Model.Count() > 0)
+            {
+                <table class="table">
+                    <tr>
+                        <th>
+                            File-Id in database:
+                        </th>
+                        <th>
+                            Filename:
+                        </th>
+                        <th>
+                            Filetype
+                        </th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FileId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FileName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContentType)
+                            </td>
+                        </tr>
+                        @Html.ActionLink("Show PDF", "ChangeFile", new { id = item.FileId });
+                    }
+                </table>
+            }*@
+        <div class="container">
+            <div class="pdfBox">
+                @{
+                    Html.RenderAction("PDFPartialView");
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Wordless.Models.Book>
+@using Wordless.Models;
+@{WordlessContext db = new WordlessContext(); }
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="col-lg-10 col-md-10">
+                    @foreach (var book in Model)
+                    {
+                        <div class="bodyDiv col-md-5 col-lg-5">
+                            <p class="bookTitle">@book.Title </p>
+                            <p class="bookAuthor">Written by: @book.Author.Name</p>
+                            <p class="bookAuthor">Genre: @book.Genre</p>
+                            <p class="booktText">Price: @book.Price</p>
+                            <p class="booktText">@book.BookText</p>
+                            <hr />
+                            <p class="text-right"><strong>Are you sure you want to purchase this book?</strong></p>
+
+
+
+                            <button class="pull-right btn btn-default" type="button" onclick="location.href='@Url.Action("BookDetails", "Book", new { bookid = book.BookId } )'">Back</button>
+                            <button class="pull-right btn btn-default" type="button" onclick="location.href='@Url.Action("BuyBook", "Book", new { bookId = book.BookId, confirmed = true })'">Buy</button>
+                        </div>
+                    }
+                </div>
+                <div class="col-md-2 col-lg-2">
+                    <div class="sidebar-Top sidebar-nav hidden-sm hidden-xs">
+                        @{
+                            var mostDownloadedList = Session["MostDownloaded"] as List<Wordless.Models.Book>;
+                        }
+                        @if (mostDownloadedList.Count > 0)
+                        {
+                            <p class="sidebar-name">Most downloaded</p>
+                            foreach (var book in mostDownloadedList)
+                            {
+                                var AuthorName = (from x in db.Books
+                                                  where x.BookId == book.BookId
+                                                  select x.Author.Name).First();
+                                <ul class="sidebar-list">
+                                    <li><a href="@Url.Action("BookDetails", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
+                                    <li class="sidebar-list-text-author">Written by: @AuthorName</li>
+                                    <li>@book.TimesPurchased <span class="glyphicon glyphicon-credit-card"></span></li>
+                                </ul>
+                            }
+                        }
+                    </div>
+                    <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                        @{
+                            var bestRatedList = Session["BestRating"] as List<Wordless.Models.PurchasedBook>;
+                        }
+                        @if (bestRatedList.Count > 0)
+                        {
+                            <p class="sidebar-name">Best rating</p>
+                            foreach (var item in bestRatedList)
+                            {
+                                var AuthorName = (from x in db.Books
+                                                  where x.BookId == item.Book.BookId
+                                                  select x.Author.Name).First();
+                                <ul class="sidebar-list">
+                                    <li><a href="@Url.Action("BookDetails", "Book", new { bookId = item.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @item.Book.Title</strong></a></li>
+                                    <li class="sidebar-list-text-author">Written by: @AuthorName</li>
+                                    <li>@item.Rating <span class="glyphicon glyphicon-star"></span></li>
+                                </ul>
+                            }
+                        }
+                    </div>
+                    <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                        @{
+                            var mostCommentedList = Session["MostCommented"] as List<Wordless.Models.Book>;
+                        }
+                        @if (mostCommentedList.Count() > 0)
+                        {
+                            <p class="sidebar-name">Most commented</p>
+                            foreach (var book in mostCommentedList)
+                            {
+                                var AuthorName = (from x in db.Books
+                                                  where x.BookId == book.BookId
+                                                  select x.Author.Name).First();
+                                <ul class="sidebar-list">
+                                    <li><a href="@Url.Action("BookDetails", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
+                                    <li class="sidebar-list-text-author">Written by: @AuthorName</li>
+                                    <li>@book.Comments.Count() <span class="glyphicon glyphicon-comment"></span></li>
+                                </ul>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+
+
+@*<div class="bodyDiv searchField">
+        <form action="/Book/" method="post" class="form-inline">
+            <div class="form-group">
+                <input class="form-control searchButton" name="search" placeholder="Search" type="text" />
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+        </form>
+    </div>*@

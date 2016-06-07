@@ -16,6 +16,10 @@ select,
 textarea {
     max-width: 280px;
 }
+.navbar-inverse {
+    background-color: black!important;
+    border-color: black!important;
+}
 #BannerImg{
     width:100%;
     width:600px;
@@ -27,39 +31,61 @@ textarea {
 #showPDF {
         height: 100%;
         width: 100%;
-        max-height: 450px;
+        max-height: 650px;
         max-width: 450px;
         border: 1px solid;
 }
+/*hur pdf-boxen ska vara på stor skörm*/
+.pdfBoxBig{
+        height: 650px;
+        width: 450px;
+        margin-bottom: 10px;
+}
+/*hur pdf-boxen ska vara på liten skörm*/
 
+.pdfBoxSmall{
+        height: 200px;
+        width: 200px;
+        margin-bottom: 10px;
+        margin-right:75%;
+}
+/*kommentars-div-box*/
+.comment-box{
+    margin-left:5px;
+}
+/*change font nabar*/
 .navbar-inverse a {
     font-family:"Engravers MT", "Engravers MT",sans-serif;
 }
+/*margin of the small logo in navbar*/
 .navbar-img-left{
     margin-left: 2px!important;
 }
-
+/*the top sidebar*/
 .sidebar-Top {
-    height:200px;
-    width: 100px;
+    height:300px;
+    width: 200px;
     background-color:wheat;
     opacity: 0.9;
     border-radius: 5px;
     padding: 5px;
 }
+/*middle and bottom sidebar*/
 .sidebar-mid-bot {
-    height:200px;
-    width: 100px;
+    height:300px;
+    width: 200px;
     background-color:wheat;
     opacity: 0.9;
     border-radius: 5px;
     padding: 5px;
     margin-top: 5px;
 }
-
+/*max-width on navbar*/
 .max-width-navbar {
     max-width:970px;
+    /*max-height:10px;*/
 }
+/*the divbox on every page*/
 .bodyDiv {
     background-color: wheat;
     opacity: 0.9;
@@ -69,25 +95,43 @@ textarea {
     margin-right:10px;
     margin-bottom: 10px;
 }
+.book-divs{
+    max-height: 500px!important;
+    max-width: 350px!important;
+}
+/*bok-boxarna*/
 .book-Box {
     border-width: 5px;
 }
+/*font-changes to title inside Books*/
 .bookTitle{
     font-size:20px;
     padding:10px;
     margin-bottom:1px!important;
 }
+/*font-changes to author inside Books*/
 .bookAuthor{
     font-size:smaller;
     padding-left:10px;
 }
-.booktText{
-    padding-left: 10px;
-    
+/*username of comment*/
+.commentUser {
+    font-size: 10px;
+    padding: 10px;
 }
+/*om man har köpt en bok*/
+.ownedBookText {
+    font-size: 10px;
+}
+/*priset på böcker*/
+.bookPrice {
+    padding: 10px;
+}
+/*sökfält*/
 .searchField {
     padding:2px;
 }
+/*dropdownbuttons*/
 .dropbtn {
     background-color: black;
     color: wheat;
@@ -96,11 +140,25 @@ textarea {
     cursor: pointer;
     height: 50px;
     margin-left: 3px;
+    vertical-align: top!important;
 }
+/* dropdown-menu-hover */
 .btn:hover {
     background-color: wheat;
+    color:black;
 }
-/* The container <div> - needed to position the dropdown content */
+.btn:focus{
+    color:black!important;
+}
+.btn:active {
+color:black;
+background-color: wheat;
+}
+.btn .dropbtn {
+    background-color:white;
+}
+/* dropdown-menu
+*/
 .dropdown {
     position: relative;
     display: inline-block;
@@ -112,13 +170,13 @@ textarea {
     position: absolute;
     min-width: 160px;
 }
-
-/* Links inside the dropdown */
+/* hur länkarna ska se ut */
 .dropdown-content a {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
+/*färger på knappar i dropdown-menyn*/
 .dropdown-menu>{
      background-color: wheat!important;
      color:black!important;
@@ -140,10 +198,67 @@ textarea {
     background-color: wheat!important;
 }
 
+
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
     background-color: wheat!important;
 }
 .dropdown-menu {
     background-color: wheat!important;
+}
+/*change sidebar-title*/
+.sidebar-name{
+    background-color:black;
+    color:wheat;
+    padding-left:5px;
+}
+/*change sidebar list*/
+.sidebar-list {
+    list-style:none; 
+    padding-left:2px;
+    margin-right:1px;
+}
+/*font-size for the author in sidebar*/
+.sidebar-list-text-author {
+    font-size:10px;
+}
+/*link-color in sidebar*/
+li:hover a 
+{
+     color: black;  
+}
+/*färgen på länkarna*/
+li a {
+    color:black;
+}
+/*att kommentarerna kommer ut lite från kanten*/
+.book-comments {
+    padding-left:10px;
+}
+/*fonten när man registrerar sig*/
+.register-page-text {
+    font-family:'Engravers MT';
+}
+/*register-sidan*/
+.register-page-div {
+    padding: 5px;
+    margin-bottom: 5px;
+}
+.file-page-div {
+    height:300px;
+    width: 250px;
+}
+/*färg på knappar i book-details*/
+.bookButton {
+    background-color:#f0ad4e!important;
+    opacity: 1;
+}
+/*färg på knappar när man ska läsa*/
+.Read-Book-Button {
+background-color:#f0ad4e!important;
+    opacity: 1;
+    padding: 12px;
+}
+.login-logout-button {
+    margin-left: 18px;
 }

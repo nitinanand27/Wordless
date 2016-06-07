@@ -3,10 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Wordless</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <!--Login stylesheet-->
+    <link href="~/Content/login.css" type="text/css" rel="stylesheet"/>
     <!--Facebook Api script-->
     <script>
         window.fbAsyncInit = function () {
@@ -34,7 +36,7 @@
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <img style="margin-left:30px; margin-right:3px; border-radius:5px;" src="~/Img/minibanner.jpg" />
+                <a href="~/Home/Index"> <img style="margin-left:30px; margin-right:3px; border-radius:5px;" src="~/Img/minibanner.jpg" /></a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -44,41 +46,60 @@
             </div>
             <div class="collapse navbar-collapse max-width-navbar" id="navbar-collapse">
                 <button class="btn dropbtn" href="/Home/Index" type="button" onclick="location.href='@Url.Action("Index", "Home")'">
-                        Home
+                    Home
                 </button>
-                <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Index", "Book")'">Books</button>
+                <button class="btn dropbtn top" type="button" onclick="location.href='@Url.Action("Index", "Book")'">Books</button>
+                <button class="btn dropbtn top" href="/Home/Index" type="button" onclick="location.href='@Url.Action("ReadPDF", "File")'">
+                    Read books
+                </button>
                 <div class="dropdown">
-                    <button  class="btn dropbtn dropdown-toggle hidden-sm hidden-xs" href="/Book/Index"type="button" data-toggle="dropdown">
+                    <button class="btn dropbtn dropdown-toggle hidden-sm hidden-xs" href="/Book/Index" type="button" data-toggle="dropdown">
                         Books by genre
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="#">@Html.ActionLink("Thriller","BookByGenre","Book", new {id=0 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("Romance", "BookByGenre","Book", new {id=1 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("ScienceFiction", "BookByGenre","Book", new {id=2 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("Fantasy", "BookByGenre","Book", new {id=3 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("Travel", "BookByGenre","Book", new {id=4 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("Mystery", "BookByGenre","Book", new {id=5 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("Philosophy", "BookByGenre","Book", new {id=6 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("Religion", "BookByGenre","Book", new {id=7 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("Crime", "BookByGenre","Book", new {id=8 },new object { })</a></li>
-                        <li><a href="#">@Html.ActionLink("History", "BookByGenre","Book", new {id=9 },new object { })</a></li>
-                        </ul>
+                        <li>@Html.ActionLink("Thriller", "BookByGenre", "Book", new { id = 0 }, new object { })</li>
+                        <li>@Html.ActionLink("Romance", "BookByGenre", "Book", new { id = 1 }, new object { })</li>
+                        <li>@Html.ActionLink("ScienceFiction", "BookByGenre", "Book", new { id = 2 }, new object { })</li>
+                        <li>@Html.ActionLink("Fantasy", "BookByGenre", "Book", new { id = 3 }, new object { })</li>
+                        <li>@Html.ActionLink("Travel", "BookByGenre", "Book", new { id = 4 }, new object { })</li>
+                        <li>@Html.ActionLink("Mystery", "BookByGenre", "Book", new { id = 5 }, new object { })</li>
+                        <li>@Html.ActionLink("Philosophy", "BookByGenre", "Book", new { id = 6 }, new object { })</li>
+                        <li>@Html.ActionLink("Religion", "BookByGenre", "Book", new { id = 7 }, new object { })</li>
+                        <li>@Html.ActionLink("Crime", "BookByGenre", "Book", new { id = 8 }, new object { })</li>
+                        <li>@Html.ActionLink("History", "BookByGenre", "Book", new { id = 9 }, new object { })</li>
+                    </ul>
+
                 </div>
+                
                 <div class="nav navbar-nav navbar-right">
+
                     @{
                         if ((bool)Session["loginStatus"] && (bool)Session["Admin"])
                         {
-                            
-                            @Html.ActionLink("Admin", "Index", "Admin")
+
+                            @*@Html.ActionLink("Admin", "Index", "Admin")*@
+                            <button class="btn dropbtn login-logout-button" type="button" onclick="location.href='@Url.Action("Create", "AuthorPage")'">
+                                Upload book
+                            </button>
+                            <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Index", "Admin")'">
+                                Admin
+                            </button>
                             <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
                                 Logout
                             </button>
+                           
                         }
 
                         else if ((bool)Session["loginStatus"] && (bool)Session["isAuthor"])
                         {
-                            @Html.ActionLink("Author page", "Index", "AuthorPage")
+                            @*@Html.ActionLink("Author page", "Index", "AuthorPage")*@
+                            <button class="btn dropbtn login-logout-button" type="button" onclick="location.href='@Url.Action("Create", "AuthorPage")'">
+                                Upload book
+                            </button>
+                            <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Index", "AuthorPage")'">
+                                Author page
+                            </button>
                             <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
                                 Logout
                             </button>
@@ -86,21 +107,25 @@
 
                         else if ((bool)Session["loginStatus"] && (bool)Session["isAuthor"] == false && (bool)Session["Admin"] == false)
                         {
-                            @Html.ActionLink("My page", "Index", "UserPage")
+                            @*@Html.ActionLink("My page", "Index", "UserPage")*@
+                            <button style="margin-left:18px;" class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Index", "UserPage")'">
+                                My page
+                            </button>
                             <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Logout", "User")'">
                                 Logout
                             </button>
                         }
 
-                    }                   
+                    }
+
 
                     @if (!(bool)Session["loginStatus"])
-                    {                        
-                        <button class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Register", "User")'">
+                    {
+
+                        <button class="btn dropbtn login-logout-button" type="button" onclick="location.href='@Url.Action("Register", "User")'">
                             Login
                         </button>
                     }
-                    
 
                 </div>
             </div>
@@ -111,11 +136,17 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; WORDLESS @DateTime.Now</p>
         </footer>
     </div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/ChristianJavascript.js"></script>
+    <script src="~/Scripts/rating.js"></script>
+    <!--LOGIN JQUERY-->
+    <script src="~/Scripts/login.js"></script>
+
 </body>
+
 </html>
