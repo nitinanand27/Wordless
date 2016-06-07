@@ -61,15 +61,14 @@ namespace Wordless.Controllers
 
                 var currentUserId = int.Parse(Session["currentUserId"].ToString());
                 var user = db.Users.Where(u => u.UserId == currentUserId).First();
-
-
+                
 
                 db.PurchasedBooks.Add(new PurchasedBook()
                 {
                     //Book = book.Title,
                     BookId = book.BookId,
-                    //DateOfPurchase = DateTime.Now,
-                    //Rating = 0,
+                    DateOfPurchase = DateTime.Now,
+                    Rating = 0,
                     //Recension = "a",
                     //Buyer = user,
                     BuyerId =user.UserId
@@ -83,10 +82,15 @@ namespace Wordless.Controllers
          
         public ActionResult RemoveBook(int id)
         {
-            PurchasedBook book = db.PurchasedBooks.Single(b => b.BookId == id);
-            db.PurchasedBooks.Remove(book);
-            db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                PurchasedBook book = db.PurchasedBooks.Single(b => b.PurchasedBookId == id);
+                db.PurchasedBooks.Remove(book);
+                db.SaveChanges();
 
+                return RedirectToAction("Index");
+
+            }
             return RedirectToAction("Index");
         }
     }

@@ -33,10 +33,12 @@
                 {
                     @Html.Raw("<div>");
                     @Html.Raw("<strong>" + b.Book.Title + "</strong><br />");
-                    @Html.Raw("TimesPurchased: " + b.Book.TimesPurchased + "<br />");
+                    @*@Html.Raw("TimesPurchased: " + b.Book.TimesPurchased + "<br />");*@
                     @Html.Raw("Price: &#36;" + b.Book.Price + "<br />");
                     @Html.Raw("</div>")
                     @Html.Raw("<br />")
+                    @Html.ActionLink("Remove", "RemoveBook", "UserPage", new { id = b.PurchasedBookId }, null)
+
                 }
                 @Html.Raw("</div>")
             }

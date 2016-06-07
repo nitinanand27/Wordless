@@ -148,6 +148,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\AuthorPageViewModel.cs" />
+    <Compile Include="ViewModel\PurchasedBookViewModel.cs" />
     <Compile Include="ViewModel\UserPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +180,9 @@
     <Content Include="Views\Book\BookDetails.cshtml" />
     <Content Include="Views\File\UploadPDF.cshtml" />
     <Content Include="Views\File\ReadPDF.cshtml" />
+    <Content Include="Views\UserPage\Details.cshtml" />
+    <Content Include="Views\UserPage\Index.cshtml" />
+    <Content Include="Views\User\RegisterLogin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -189,7 +193,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\UserPage\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201606030837426_Inför publish.resx">

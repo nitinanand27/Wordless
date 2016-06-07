@@ -38,9 +38,7 @@ namespace Wordless.Controllers
             {
                 return View(bookList);
 
-            }            
-            
-            
+            }               
 
                
         }    
