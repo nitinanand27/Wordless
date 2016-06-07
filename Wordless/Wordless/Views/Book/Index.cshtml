@@ -2,12 +2,12 @@
 <body>
     <div class="container">
         <div class="row">
-            <label for="Search">Search:</label><input class="bodyDiv" type="text" id="Search" />
+            <input class="bodyDiv" name="Search" type="text" id="Search" placeholder="Search..." />
         </div>
         <div class="row">
             <div id="BookDisplay" class="col-lg-8 col-md-8">
                 @if (Model.Count() > 0)
-                    {
+                {
                     foreach (var book in Model)
                     {
                         <div class="bodyDiv col-md-5 col-lg-5 book-divs">
@@ -23,13 +23,13 @@
                     }
                 }
 
-                </div>
+            </div>
             <div class="col-md-4">
-                @*<div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
                     @{
                         var mostDownloadedList = ViewBag.MostDownloaded as List<Wordless.Models.Book>;
 
-                        if (mostDownloadedList.Count > 0)
+                        if (mostDownloadedList != null && mostDownloadedList.Count > 0)
                         {
                             <p class="sidebar-name">Most downloaded</p>
                             foreach (var book in mostDownloadedList)
@@ -42,12 +42,12 @@
                             }
                         }
                     }
-                    </div>
-                    <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                </div>
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
                     @{
                         var bestRatedList = ViewBag.BestRating as List<Wordless.Models.PurchasedBook>;
 
-                        if (bestRatedList.Count() > 0)
+                        if (bestRatedList != null && bestRatedList.Count() > 0)
                         {
                             <p class="sidebar-name">Best rating</p>
                             foreach (var item in bestRatedList)
@@ -60,12 +60,12 @@
                             }
                         }
                     }
-                    </div>
-                    <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                </div>
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
                     @{
                         var mostCommentedList = ViewBag.MostCommented as List<Wordless.Models.Book>;
 
-                        if (mostCommentedList.Count() > 0)
+                        if (mostCommentedList!=null&& mostCommentedList.Count() > 0)
                         {
                             <p class="sidebar-name">Most commented</p>
                             foreach (var book in mostCommentedList)
@@ -77,8 +77,13 @@
                                 </ul>
                             }
                         }
+
+
+
+
                     }
-                </div>*@
+                </div>
+
             </div>
         </div>
     </div>
@@ -90,11 +95,17 @@
 
 
 
-@*<div class="bodyDiv searchField">
-        <form action="/Book/" method="post" class="form-inline">
-            <div class="form-group">
-                <input class="form-control searchButton" name="search" placeholder="Search" type="text" />
-            </div>
-            <button type="submit" class="btn btn-default">Search</button>
-        </form>
-    </div>*@
+
+
+
+
+
+
+        @*<div class="bodyDiv searchField">
+                <form action="/Book/" method="post" class="form-inline">
+                    <div class="form-group">
+                        <input class="form-control searchButton" name="search" placeholder="Search" type="text" />
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
+            </div>*@

@@ -76,7 +76,7 @@ namespace Wordless.Controllers
             string currentUserLastName = me.last_name;
             Session["currentUserLastName"] = currentUserLastName;
             string currentUserId = me.id;
-            Session["currentUserId"] = currentUserId;
+            Session["currentUserId"] = Int64.Parse(currentUserId);
 
             //adds a new user on fb login in database
             User fbUser = new User {Username = currentUsername,

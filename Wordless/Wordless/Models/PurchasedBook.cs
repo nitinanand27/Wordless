@@ -24,7 +24,7 @@ namespace Wordless.Models
         [ForeignKey("BookId")]
         public virtual Book Book { get; set; }      //en bok tillhör varje köp
 
-        public int BuyerId { get; set; }
+        public Int64 BuyerId { get; set; }
         [ForeignKey("BuyerId")]
         public virtual User Buyer { get; set; }     //en köpare tillhör varje köp4
 

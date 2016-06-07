@@ -94,7 +94,7 @@ namespace Wordless.Controllers
         public ActionResult Logout()
         {
             ///reset session values
-            Session["currentUserId"] = "";
+            Session["currentUserId"] = 0;
             Session["currentUsername"] = "";
             Session["currentUserLastName"] = "";
             Session["loginStatus"] = false;

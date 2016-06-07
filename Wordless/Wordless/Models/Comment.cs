@@ -16,7 +16,7 @@ namespace Wordless.Models
 
         //Navigation Properties
 
-        public int UserId { get; set; }             //användare som skrev kommentaren
+        public Int64 UserId { get; set; }             //användare som skrev kommentaren
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
         

@@ -1,0 +1,27 @@
+
+USE [215839-wordless]
+GO 
+
+SET DATEFORMAT ymd
+GO 
+
+SET NOCOUNT ON
+
+INSERT INTO [dbo].[Comments] ([CommentId], [Text], [Date], [UserId], [BookId]) VALUES (1, N'hi', '20160606 13:26:00', 12, 7)
+
+INSERT INTO [dbo].[Comments] ([CommentId], [Text], [Date], [UserId], [BookId]) VALUES (2, N'Fantastiskt bra bok!', '20160606 13:52:16', 14, 10)
+
+INSERT INTO [dbo].[Comments] ([CommentId], [Text], [Date], [UserId], [BookId]) VALUES (7, N'Hej', '20160606 13:59:56', 10, 7)
+
+INSERT INTO [dbo].[Comments] ([CommentId], [Text], [Date], [UserId], [BookId]) VALUES (8, N'Hej', '20160606 14:03:16', 10, 7)
+
+INSERT INTO [dbo].[Comments] ([CommentId], [Text], [Date], [UserId], [BookId]) VALUES (9, N'Kul att det funkar', '20160606 14:05:57', 10, 7)
+
+INSERT INTO [dbo].[Comments] ([CommentId], [Text], [Date], [UserId], [BookId]) VALUES (10, N'Asbra ju!', '20160606 14:07:55', 14, 7)
+
+INSERT INTO [dbo].[Comments] ([CommentId], [Text], [Date], [UserId], [BookId]) VALUES (11, N'another comment', '20160606 14:52:47', 16, 7)
+
+INSERT INTO [dbo].[Comments] ([CommentId], [Text], [Date], [UserId], [BookId]) VALUES (12, N'<br /><br />', '20160606 20:43:00', 19, 10)
+
+INSERT INTO [dbo].[Comments] ([CommentId], [Text], [Date], [UserId], [BookId]) VALUES (14, N'0x255044462D312E340A25E2E3CFD30A34203020 ', '20160606 22:03:16', 22, 10)
+

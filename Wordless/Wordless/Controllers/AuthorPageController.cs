@@ -67,7 +67,7 @@ namespace Wordless.Controllers
             SetListsForViews();
             if (ModelState.IsValid)
             {
-                var userId = (int)Session["currentUserId"];
+                var userId = (Int64)Session["currentUserId"];
                 var user = db.Users.Find(userId);
                 var newFile = new File
                 {

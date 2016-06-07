@@ -1,0 +1,37 @@
+
+USE [215839-wordless]
+GO 
+
+SET DATEFORMAT ymd
+GO 
+
+SET NOCOUNT ON
+
+INSERT INTO [dbo].[Purchased-Books] ([PurchasedBookId], [Rating], [Recension], [Date of Purchase], [BookId], [BuyerId]) VALUES (4, 0, NULL, '20160606 10:58:08', 7, 10)
+
+INSERT INTO [dbo].[Purchased-Books] ([PurchasedBookId], [Rating], [Recension], [Date of Purchase], [BookId], [BuyerId]) VALUES (6, 0, NULL, '20160606 11:37:55', 10, 10)
+
+INSERT INTO [dbo].[Purchased-Books] ([PurchasedBookId], [Rating], [Recension], [Date of Purchase], [BookId], [BuyerId]) VALUES (7, 5, NULL, '20160606 13:49:29', 10, 14)
+
+INSERT INTO [dbo].[Purchased-Books] ([PurchasedBookId], [Rating], [Recension], [Date of Purchase], [BookId], [BuyerId]) VALUES (9, 0, NULL, '20160606 16:13:37', 7, 17)
+
+INSERT INTO [dbo].[Purchased-Books] ([PurchasedBookId], [Rating], [Recension], [Date of Purchase], [BookId], [BuyerId]) VALUES (10, 0, NULL, '20160606 16:15:18', 10, 17)
+
+INSERT INTO [dbo].[Purchased-Books] ([PurchasedBookId], [Rating], [Recension], [Date of Purchase], [BookId], [BuyerId]) VALUES (11, 0, NULL, '20160606 20:41:22', 10, 18)
+
+INSERT INTO [dbo].[Purchased-Books] ([PurchasedBookId], [Rating], [Recension], [Date of Purchase], [BookId], [BuyerId]) VALUES (13, 0, NULL, '20160606 21:50:46', 7, 12)
+
+INSERT INTO [dbo].[Purchased-Books] ([PurchasedBookId], [Rating], [Recension], [Date of Purchase], [BookId], [BuyerId]) VALUES (14, 3, NULL, '20160606 21:52:35', 10, 22)
+
+INSERT INTO [dbo].[Purchased-Books] ([PurchasedBookId], [Rating], [Recension], [Date of Purchase], [BookId], [BuyerId]) VALUES (15, 5, NULL, '20160607 09:14:31', 7, 14)
+
+INSERT INTO [dbo].[Purchased-Books] ([PurchasedBookId], [Rating], [Recension], [Date of Purchase], [BookId], [BuyerId]) VALUES (16, 0, NULL, '20160607 11:07:06', 13, 14)
+
+INSERT INTO [dbo].[Purchased-Books] ([PurchasedBookId], [Rating], [Recension], [Date of Purchase], [BookId], [BuyerId]) VALUES (17, 0, NULL, '20160607 11:08:36', 13, 10)
+
+INSERT INTO [dbo].[Purchased-Books] ([PurchasedBookId], [Rating], [Recension], [Date of Purchase], [BookId], [BuyerId]) VALUES (18, 0, NULL, '20160607 11:12:18', 12, 10)
+
+INSERT INTO [dbo].[Purchased-Books] ([PurchasedBookId], [Rating], [Recension], [Date of Purchase], [BookId], [BuyerId]) VALUES (19, 2, NULL, '20160607 11:38:37', 15, 14)
+
+INSERT INTO [dbo].[Purchased-Books] ([PurchasedBookId], [Rating], [Recension], [Date of Purchase], [BookId], [BuyerId]) VALUES (20, 5, NULL, '20160607 11:38:45', 18, 14)
+

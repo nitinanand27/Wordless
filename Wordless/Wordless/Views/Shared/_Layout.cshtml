@@ -1,4 +1,9 @@
 ﻿<!DOCTYPE html>
+@{
+    bool IsAdmin = Session["Admin"] == null ? false : (bool)Session["Admin"];
+    bool isAuthor = Session["isAuthor"] == null ? false : (bool)Session["isAuthor"];
+    bool loginStatus = Session["loginStatus"] == null ? false : (bool)Session["loginStatus"];
+}
 <html>
 <head>
     <meta charset="utf-8" />
@@ -86,7 +91,7 @@
                             </button>
                         }
 
-                        else if ((bool)Session["loginStatus"] && (bool)Session["isAuthor"] == false && (bool)Session["Admin"] == false)
+                        else if ( Session["Admin"]!=null&&(bool)Session["loginStatus"] && (bool)Session["isAuthor"] == false && (bool)Session["Admin"] == false)
                         {
                             @*@Html.ActionLink("My page", "Index", "UserPage")*@
                             <button style="margin-left:18px;" class="btn dropbtn" type="button" onclick="location.href='@Url.Action("Index", "UserPage")'">
@@ -100,7 +105,7 @@
                     }
 
 
-                    @if (!(bool)Session["loginStatus"])
+                    @if (Session["loginStatus"]!=null&&!(bool)Session["loginStatus"])
                     {
 
                         <button class="btn dropbtn login-logout-button" type="button" onclick="location.href='@Url.Action("Register", "User")'">

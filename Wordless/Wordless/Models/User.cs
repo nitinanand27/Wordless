@@ -10,7 +10,7 @@ namespace Wordless.Models
     
     public class User
     {
-        public int UserId { get; set; }         //användarens ID 
+        public Int64 UserId { get; set; }         //användarens ID 
         
         [MinLength(2), MaxLength(15)]               
         public string Username { get; set; }    //användarens användarnamn (2-15)

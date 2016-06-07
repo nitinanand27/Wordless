@@ -27,7 +27,7 @@
                     @{
                         var mostDownloadedList = Session["MostDownloaded"] as List<Wordless.Models.Book>;
                     }
-                    @if (mostDownloadedList.Count > 0)
+                    @if (mostDownloadedList!=null&& mostDownloadedList.Count > 0)
                     {
                         <p class="sidebar-name">Most downloaded</p>
                         foreach (var book in mostDownloadedList)
@@ -47,7 +47,7 @@
                     @{
                         var bestRatedList = Session["BestRating"] as List<Wordless.Models.PurchasedBook>;
                     }
-                    @if (bestRatedList.Count > 0)
+                    @if (bestRatedList!=null&& bestRatedList.Count > 0)
                     {
                         <p class="sidebar-name">Best rating</p>
                         foreach (var item in bestRatedList)
@@ -67,7 +67,7 @@
                     @{
                         var mostCommentedList = Session["MostCommented"] as List<Wordless.Models.Book>;
                     }
-                    @if (mostCommentedList.Count() > 0)
+                    @if (mostCommentedList!=null&& mostCommentedList.Count() > 0)
                     {
                         <p class="sidebar-name">Most commented</p>
                         foreach (var book in mostCommentedList)
