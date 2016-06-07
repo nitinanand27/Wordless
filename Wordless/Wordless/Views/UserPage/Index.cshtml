@@ -37,6 +37,9 @@
                             @Html.Raw("Price: &#36;" + b.Book.Price + "<br />");
                             @Html.Raw("</div>")
                             @Html.Raw("<br />")
+                            <button class="pull-right btn btn-default bookButton" type="button" onclick="location.href='@Url.Action("RemoveBook", "UserPage", new { id = b.PurchasedBookId}, null)'"><strong>Delete</strong></button>
+                            
+
                         }
                         @Html.Raw("</div>")
                     }
