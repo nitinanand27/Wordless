@@ -7,45 +7,48 @@
 <h2>Edit</h2>
 
 
+<div class="container">
+    <div class="bodyDiv register-page-div">
+        <div class="form-horizontal row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <h4>Book</h4>
+                <hr />
+                <form role="form" action="~/Admin/Edit" method="post">
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.UserId)
 
-<div class="form-horizontal row">
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <h4>Book</h4>
-        <hr />
-        <form role="form" action="~/Admin/Edit" method="post">
-            @Html.AntiForgeryToken()
-            @Html.HiddenFor(m => m.UserId)
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        @Html.LabelFor(m => m.Name)
+                        @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        @Html.LabelFor(m => m.Username)
+                        @Html.EditorFor(m => m.Username, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        @Html.LabelFor(m => m.Funds)
+                        @Html.EditorFor(m => m.Funds, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
 
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                @Html.LabelFor(m => m.Name)
-                @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                @Html.LabelFor(m => m.Username)
-                @Html.EditorFor(m => m.Username, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                @Html.LabelFor(m => m.Password)
-                @Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                @Html.LabelFor(m => m.Email)
-                @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                @Html.LabelFor(m => m.Funds)
-                @Html.EditorFor(m => m.Funds, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-
-            <div class="form-group col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                    <div class="form-group col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-</div>
+        </div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+        </div>
 </div>

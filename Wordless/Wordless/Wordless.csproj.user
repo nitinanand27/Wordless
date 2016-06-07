@@ -11,6 +11,9 @@
     <WebStackScaffolding_DbContextTypeFullName>Wordless.Models.WordlessContext</WebStackScaffolding_DbContextTypeFullName>
     <UseIISExpress>true</UseIISExpress>
     <NameOfLastUsedPublishProfile>Wordless</NameOfLastUsedPublishProfile>
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
