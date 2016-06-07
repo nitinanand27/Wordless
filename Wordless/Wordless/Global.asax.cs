@@ -18,7 +18,7 @@ namespace Wordless
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
         
-        protected void Session_Start()
+        protected void Session_Start(object sender, EventArgs e)
         {
             //Id for which pdf to show
             Session["pdfIdToShow"] = 0;

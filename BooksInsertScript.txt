@@ -1,0 +1,27 @@
+
+USE [215839-wordless]
+GO 
+
+SET DATEFORMAT ymd
+GO 
+
+SET NOCOUNT ON
+
+INSERT INTO [dbo].[Books] ([BookId], [Book-Title], [Description], [No._of_Downloads], [Price], [AuthorId], [Genre], [FileId]) VALUES (7, N'Antagningsbevis', N'Antagningsbevis till webbutveckling', 4, 25.00, 14, 0, 2)
+
+INSERT INTO [dbo].[Books] ([BookId], [Book-Title], [Description], [No._of_Downloads], [Price], [AuthorId], [Genre], [FileId]) VALUES (10, N'Outlaw', N'Snowdenaelikk never planned to return to the city of Illharek, but that', 17, 500.00, 10, 2, 2)
+
+INSERT INTO [dbo].[Books] ([BookId], [Book-Title], [Description], [No._of_Downloads], [Price], [AuthorId], [Genre], [FileId]) VALUES (12, N'Regex Lathund', N'Lär dig Regular Expressions på några få dagar, denna boken innehåller allt du behöver veta!', 1, 120.00, 14, 7, 4)
+
+INSERT INTO [dbo].[Books] ([BookId], [Book-Title], [Description], [No._of_Downloads], [Price], [AuthorId], [Genre], [FileId]) VALUES (13, N'Karl den XII Uppgång och fall', N'Handlar om våran ärofyllda konung som gjorde allt för att expandera Sveriges gränser.', 2, 22.00, 10, 9, 5)
+
+INSERT INTO [dbo].[Books] ([BookId], [Book-Title], [Description], [No._of_Downloads], [Price], [AuthorId], [Genre], [FileId]) VALUES (14, N'Introduktion till MVC och WCF', N'Det här dokumentet är till för att ge en översikt över ASP.NET MVC samt hur WCF Services används från .NET applikationer.', 0, 59.00, 14, 0, 6)
+
+INSERT INTO [dbo].[Books] ([BookId], [Book-Title], [Description], [No._of_Downloads], [Price], [AuthorId], [Genre], [FileId]) VALUES (15, N'Det Kommunistiska Manifestet', N'Karl Marx klassiska bok om det kommunistiska systemet', 1, 48.00, 14, 0, 7)
+
+INSERT INTO [dbo].[Books] ([BookId], [Book-Title], [Description], [No._of_Downloads], [Price], [AuthorId], [Genre], [FileId]) VALUES (16, N'Bröderna Lejonhjärta', N'Bröderna Lejonhjärta är en fantasy-/äventyrsroman av Astrid Lindgren som publicerades hösten 1973. Den klassificeras som en barnbok i likhet med Lindgrens andra böcker.', 0, 65.00, 14, 7, 8)
+
+INSERT INTO [dbo].[Books] ([BookId], [Book-Title], [Description], [No._of_Downloads], [Price], [AuthorId], [Genre], [FileId]) VALUES (17, N'Änglar och demoner', N'Den handlar om Harvard-professorn Robert Langdon och dennes ständiga kamp mot klockan under jakten på en mördare tillhörande Illuminati.', 0, 142.00, 14, 0, 9)
+
+INSERT INTO [dbo].[Books] ([BookId], [Book-Title], [Description], [No._of_Downloads], [Price], [AuthorId], [Genre], [FileId]) VALUES (18, N'Da Vinci-koden', N'Den följer en professor i religionssymbolik, Robert Langdon, som blir indragen i en mordutredning i Paris.', 1, 79.00, 14, 0, 10)
+

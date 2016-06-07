@@ -1,0 +1,43 @@
+
+USE [215839-wordless]
+GO 
+
+SET DATEFORMAT ymd
+GO 
+
+SET NOCOUNT ON
+
+INSERT INTO [dbo].[Users] ([UserId], [Username], [Password], [Name], [Email], [Author], [Admin], [Funds]) VALUES (1, NULL, NULL, NULL, NULL, 0, 0, 0.00)
+
+INSERT INTO [dbo].[Users] ([UserId], [Username], [Password], [Name], [Email], [Author], [Admin], [Funds]) VALUES (2, N'Balin', N'123', N'Christian', N'c@c.com', 0, 1, 0.00)
+
+INSERT INTO [dbo].[Users] ([UserId], [Username], [Password], [Name], [Email], [Author], [Admin], [Funds]) VALUES (3, N'Nitin', N'nitin', N'Nitin Anand', N'newnitinanand1982@yahoo.com', 1, 0, 1970.00)
+
+INSERT INTO [dbo].[Users] ([UserId], [Username], [Password], [Name], [Email], [Author], [Admin], [Funds]) VALUES (4, N'Veena', NULL, N'Veena Anand', N'veenaanand1957@gmail.com', 0, 0, 0.00)
+
+INSERT INTO [dbo].[Users] ([UserId], [Username], [Password], [Name], [Email], [Author], [Admin], [Funds]) VALUES (10, N'J K Rowling', N'123', N'J K Rowling', N'JKRowling@gmail.com', 1, 0, 1527.00)
+
+INSERT INTO [dbo].[Users] ([UserId], [Username], [Password], [Name], [Email], [Author], [Admin], [Funds]) VALUES (11, N'Christian', NULL, N'Christian Jarenfors', N'christian.jarenfors@gmail.com', 0, 0, 0.00)
+
+INSERT INTO [dbo].[Users] ([UserId], [Username], [Password], [Name], [Email], [Author], [Admin], [Funds]) VALUES (12, N'valle', N'valle', N'Valentin', N'vale@valle.se', 0, 0, -375.00)
+
+INSERT INTO [dbo].[Users] ([UserId], [Username], [Password], [Name], [Email], [Author], [Admin], [Funds]) VALUES (13, N'abu', N'abu', N'abu', N'abu@abu.se', 1, 0, -230.00)
+
+INSERT INTO [dbo].[Users] ([UserId], [Username], [Password], [Name], [Email], [Author], [Admin], [Funds]) VALUES (14, N'Patrik', N'123', N'Patrik Nilsson', N'patteee@gmail.com', 1, 1, -947.00)
+
+INSERT INTO [dbo].[Users] ([UserId], [Username], [Password], [Name], [Email], [Author], [Admin], [Funds]) VALUES (15, N'ricki', N'ricki', N'ricki', N'ricki@as.se', 1, 0, 0.00)
+
+INSERT INTO [dbo].[Users] ([UserId], [Username], [Password], [Name], [Email], [Author], [Admin], [Funds]) VALUES (16, N'barak', N'barak', N'Barak Obama', N'barak@usa.se', 1, 0, 0.00)
+
+INSERT INTO [dbo].[Users] ([UserId], [Username], [Password], [Name], [Email], [Author], [Admin], [Funds]) VALUES (17, N'Karro', N'start123', N'Karro', N'k@v.com', 1, 0, -525.00)
+
+INSERT INTO [dbo].[Users] ([UserId], [Username], [Password], [Name], [Email], [Author], [Admin], [Funds]) VALUES (18, N'AlleBalle', N'123', N'Alexander Andersson', N'hej@hej.com', 1, 0, -500.00)
+
+INSERT INTO [dbo].[Users] ([UserId], [Username], [Password], [Name], [Email], [Author], [Admin], [Funds]) VALUES (19, N'AlleBalle2', N'123', N'AlleBalle2', N'hej@hej.se', 1, 0, 0.00)
+
+INSERT INTO [dbo].[Users] ([UserId], [Username], [Password], [Name], [Email], [Author], [Admin], [Funds]) VALUES (20, N'david', N'david', N'David Andersson', N'david@dv.se', 0, 0, 0.00)
+
+INSERT INTO [dbo].[Users] ([UserId], [Username], [Password], [Name], [Email], [Author], [Admin], [Funds]) VALUES (21, N'dev', N'dev', N'Dev Anand', N'dev@dev.se', 0, 0, 0.00)
+
+INSERT INTO [dbo].[Users] ([UserId], [Username], [Password], [Name], [Email], [Author], [Admin], [Funds]) VALUES (22, N'frida', N'frida', N'frida', N'frida@frida.se', 1, 0, -500.00)
+
