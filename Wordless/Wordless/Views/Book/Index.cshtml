@@ -7,86 +7,87 @@
         <div class="row">
             <div id="BookDisplay" class="col-lg-8 col-md-8">
                 @if (Model.Count() > 0)
-                {
+                    {
                     foreach (var book in Model)
                     {
                         <div class="bodyDiv col-md-5 col-lg-5 book-divs">
                             <p class="bookTitle">@book.Title </p>
                             <button class="pull-right btn btn-default bookButton" type="button" onclick="location.href='@Url.Action("BookDetails", "Book", new { bookId = book.BookId })'"><strong>Details</strong></button>
-                            @*<div class="bodyDiv col-md-5 col-lg-5">
-                                <p class="bookTitle">@book.Title <button class="pull-right btn btn-default" type="button" @Html.ActionLink("Buy", "AddBook", "UserPage", new { id = book.BookId }, null)>Buy</button></p>*@
 
-                                @*<p class="bookTitle">@book.Title @Html.ActionLink("Buy", "AddBook", "UserPage", new { id = book.BookId }, null)</p>*@
-                                <p class="bookAuthor">Written by: @book.Author.Name</p>
-                                <p class="bookAuthor">Genre: @book.Genre</p>
-                                <p class="bookPrice">Price: @book.Price</p>
-                                <p class="bookPrice">@book.BookText</p>
-                            </div>
-                        
+                            @*<p class="bookTitle">@book.Title <button class="pull-right btn btn-default" type="button" @Html.ActionLink("Buy", "AddBook", "UserPage", new { id = book.BookId }, null)>Buy</button></p>*@
+                            @*@Html.ActionLink("Buy", "AddBook", "UserPage", new { id = book.BookId }, null)*@
+                            <button class="pull-right btn btn-default bookButton" type="button" onclick="location.href='@Url.Action("BuyBook", "Book", new { bookId = book.BookId}, null)'"><strong>Buy</strong></button>
+                            <p class="bookTitle">@book.Title </p>
+                            <p class="bookAuthor">Written by: @book.Author.Name</p>
+                            <p class="bookAuthor">Genre: @book.Genre</p>
+                            <p class="bookPrice">Price: @book.Price</p>
+                            <p class="bookPrice">@book.BookText</p>
+                        </div>
 
                     }
                 }
+
                 </div>
+            <div class="col-md-4">
+                @*<div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                    @{
+                        var mostDownloadedList = ViewBag.MostDownloaded as List<Wordless.Models.Book>;
 
-
-                <div class="col-md-4">
-                    <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
-                        @{
-                            var mostDownloadedList = ViewBag.MostDownloaded as List<Wordless.Models.Book>;
-
-                            if (mostDownloadedList.Count > 0)
+                        if (mostDownloadedList.Count > 0)
+                        {
+                            <p class="sidebar-name">Most downloaded</p>
+                            foreach (var book in mostDownloadedList)
                             {
-                                <p class="sidebar-name">Most downloaded</p>
-                                foreach (var book in mostDownloadedList)
-                                {
-                                    <ul class="sidebar-list">
-                                        <li><a href="@Url.Action("BookDetails", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
-                                        <li class="sidebar-list-text-author">Written by: @book.Author.Name</li>
-                                        <li>@book.TimesPurchased <span class="glyphicon glyphicon-credit-card"></span></li>
-                                    </ul>
-                                }
+                                <ul class="sidebar-list">
+                                    <li><a href="@Url.Action("BookDetails", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
+                                    <li class="sidebar-list-text-author">Written by: @book.Author.Name</li>
+                                    <li>@book.TimesPurchased <span class="glyphicon glyphicon-credit-card"></span></li>
+                                </ul>
                             }
                         }
+                    }
                     </div>
                     <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
-                        @{
-                            var bestRatedList = ViewBag.BestRating as List<Wordless.Models.PurchasedBook>;
+                    @{
+                        var bestRatedList = ViewBag.BestRating as List<Wordless.Models.PurchasedBook>;
 
-                            if (bestRatedList.Count > 0)
+                        if (bestRatedList.Count() > 0)
+                        {
+                            <p class="sidebar-name">Best rating</p>
+                            foreach (var item in bestRatedList)
                             {
-                                <p class="sidebar-name">Best rating</p>
-                                foreach (var item in bestRatedList)
-                                {
-                                    <ul class="sidebar-list">
-                                        <li><a href="@Url.Action("BookDetails", "Book", new { bookId = item.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @item.Book.Title</strong></a></li>
-                                        <li class="sidebar-list-text-author">Written by: @item.Book.Author.Name</li>
-                                        <li>@item.Rating <span class="glyphicon glyphicon-star"></span></li>
-                                    </ul>
-                                }
+                                <ul class="sidebar-list">
+                                    <li><a href="@Url.Action("BookDetails", "Book", new { bookId = item.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @item.Book.Title</strong></a></li>
+                                    <li class="sidebar-list-text-author">Written by: @item.Book.Author.Name</li>
+                                    <li>@item.Rating <span class="glyphicon glyphicon-star"></span></li>
+                                </ul>
                             }
                         }
+                    }
                     </div>
                     <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
-                        @{
-                            var mostCommentedList = ViewBag.MostCommented as List<Wordless.Models.Book>;
+                    @{
+                        var mostCommentedList = ViewBag.MostCommented as List<Wordless.Models.Book>;
 
-                            if (mostCommentedList.Count() > 0)
+                        if (mostCommentedList.Count() > 0)
+                        {
+                            <p class="sidebar-name">Most commented</p>
+                            foreach (var book in mostCommentedList)
                             {
-                                <p class="sidebar-name">Most commented</p>
-                                foreach (var book in mostCommentedList)
-                                {
-                                    <ul class="sidebar-list">
-                                        <li><a href="@Url.Action("BookDetails", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
-                                        <li class="sidebar-list-text-author">Written by: @book.Author.Name</li>
-                                        <li>@book.Comments.Count() <span class="glyphicon glyphicon-comment"></span></li>
-                                    </ul>
-                                }
+                                <ul class="sidebar-list">
+                                    <li><a href="@Url.Action("BookDetails", "Book", new { bookId = book.BookId })"><span class="glyphicon glyphicon-book"></span><strong> @book.Title</strong></a></li>
+                                    <li class="sidebar-list-text-author">Written by: @book.Author.Name</li>
+                                    <li>@book.Comments.Count() <span class="glyphicon glyphicon-comment"></span></li>
+                                </ul>
                             }
                         }
-                    </div>
-                </div>
+                    }
+                </div>*@
             </div>
         </div>
+    </div>
+
+
 </body>
 
 
