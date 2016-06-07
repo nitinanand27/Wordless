@@ -96,8 +96,9 @@ textarea {
     margin-bottom: 10px;
 }
 .book-divs{
-    max-height: 500px!important;
-    max-width: 350px!important;
+    height: 350px!important;
+    width: 250px!important;
+    overflow:hidden;
 }
 /*bok-boxarna*/
 .book-Box {
