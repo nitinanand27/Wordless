@@ -19,7 +19,7 @@ namespace Wordless.Models
 
         //Naigation Properties
 
-        public int UserId { get; set; }             //varje fil tillhör minst en user
+        public Int64 UserId { get; set; }             //varje fil tillhör minst en user
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
 

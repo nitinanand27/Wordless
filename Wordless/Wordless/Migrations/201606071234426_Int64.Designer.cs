@@ -7,13 +7,13 @@ namespace Wordless.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Införpublish : IMigrationMetadata
+    public sealed partial class Int64 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Införpublish));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Int64));
         
         string IMigrationMetadata.Id
         {
-            get { return "201606030837426_Inför publish"; }
+            get { return "201606071234426_Int64"; }
         }
         
         string IMigrationMetadata.Source

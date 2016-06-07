@@ -102,8 +102,6 @@ C:\Users\Alexander\Desktop\Wordless\Wordless\Wordless\bin\System.Web.Mvc.xml
 C:\Users\Alexander\Desktop\Wordless\Wordless\Wordless\obj\Debug\Wordless.dll
 C:\Users\Alexander\Desktop\Wordless\Wordless\Wordless\obj\Debug\Wordless.pdb
 C:\Users\Alexander\Desktop\Wordless\Wordless\Wordless\obj\Debug\Wordless.csprojResolveAssemblyReference.cache
-C:\Users\Christian\OneDrive\WEBB\MVC2\WOrdless2\Wordless\Wordless\obj\Debug\Wordless.Migrations.Införpublish.resources
-C:\Users\Christian\OneDrive\WEBB\MVC2\WOrdless2\Wordless\Wordless\obj\Debug\Wordless.csproj.GenerateResource.Cache
 C:\Users\Patrik\Source\Repos\Wordless\Wordless\Wordless\bin\Wordless.dll.config
 C:\Users\Patrik\Source\Repos\Wordless\Wordless\Wordless\bin\Wordless.dll
 C:\Users\Patrik\Source\Repos\Wordless\Wordless\Wordless\bin\Wordless.pdb
@@ -131,3 +129,5 @@ C:\Users\Patrik\Source\Repos\Wordless\Wordless\Wordless\obj\Debug\Wordless.dll
 C:\Users\Patrik\Source\Repos\Wordless\Wordless\Wordless\obj\Debug\Wordless.pdb
 C:\Users\Patrik\Source\Repos\Wordless\Wordless\Wordless\obj\Debug\Wordless.Migrations.Införpublish.resources
 C:\Users\Patrik\Source\Repos\Wordless\Wordless\Wordless\obj\Debug\Wordless.csproj.GenerateResource.Cache
+C:\Users\Christian\OneDrive\WEBB\MVC2\WOrdless2\Wordless\Wordless\obj\Debug\Wordless.Migrations.Int64.resources
+C:\Users\Christian\OneDrive\WEBB\MVC2\WOrdless2\Wordless\Wordless\obj\Debug\Wordless.csproj.GenerateResource.Cache

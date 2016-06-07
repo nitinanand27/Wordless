@@ -134,9 +134,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606030837426_Inför publish.cs" />
-    <Compile Include="Migrations\201606030837426_Inför publish.Designer.cs">
-      <DependentUpon>201606030837426_Inför publish.cs</DependentUpon>
+    <Compile Include="Migrations\201606071234426_Int64.cs" />
+    <Compile Include="Migrations\201606071234426_Int64.Designer.cs">
+      <DependentUpon>201606071234426_Int64.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
@@ -194,8 +194,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606030837426_Inför publish.resx">
-      <DependentUpon>201606030837426_Inför publish.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606071234426_Int64.resx">
+      <DependentUpon>201606071234426_Int64.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -58,11 +58,11 @@
                 </div>
             </div>
             <div class="col-md-4">
-                @*<div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
                     @{
                         var mostDownloadedList = ViewBag.MostDownloaded as List<Wordless.Models.Book>;
                     }
-                    @if (mostDownloadedList.Count > 0)
+                    @if (mostDownloadedList!=null&& mostDownloadedList.Count > 0)
                     {
                         <p class="sidebar-name">Most downloaded</p>
                         foreach (var book in mostDownloadedList)
@@ -79,7 +79,7 @@
                     @{
                         var bestRatedList = ViewBag.BestRating as List<Wordless.Models.PurchasedBook>;
                     }
-                    @if (bestRatedList.Count > 0)
+                    @if (bestRatedList!=null&& bestRatedList.Count > 0)
                     {
                         <p class="sidebar-name">Best rating</p>
                         foreach (var item in bestRatedList)
@@ -96,7 +96,7 @@
                     @{
                         var mostCommentedList = ViewBag.MostCommented as List<Wordless.Models.Book>;
                     }
-                    @if (mostCommentedList.Count() > 0)
+                    @if (mostCommentedList!=null&& mostCommentedList.Count() > 0)
                     {
                         <p class="sidebar-name">Most commented</p>
                         foreach (var book in mostCommentedList)
@@ -109,7 +109,7 @@
                         }
                     }
 
-                </div>*@
+                </div>
             </div>
         </div>
     </div>

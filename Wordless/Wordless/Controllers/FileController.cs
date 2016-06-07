@@ -14,7 +14,7 @@ namespace Wordless.Controllers
         public List<PurchasedBook> CreateFileList()
         {
             //en lista på vilka filer en användare har laddat upp
-            var userId = (int)Session["currentUserId"];
+            var userId = (Int64)Session["currentUserId"];
             var purchasedBookList = (from l in db.PurchasedBooks
                         where l.BuyerId == userId
                         select l).ToList();
@@ -85,7 +85,7 @@ namespace Wordless.Controllers
             else
             {
                 // hämtar userid och användare
-                var userId = (int)Session["currentUserId"];
+                var userId = (Int64)Session["currentUserId"];
                 var user = db.Users.Find(userId);
                 //skapa ny fil
                 var newFile = new File

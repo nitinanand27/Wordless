@@ -18,7 +18,7 @@ namespace Wordless.Models
 
         /// Navigation Properties
 
-        public int AuthorId { get; set; }           //vilken användare som har skrivit          
+        public Int64 AuthorId { get; set; }           //vilken användare som har skrivit          
         [ForeignKey("AuthorId")]
         public virtual User Author { get; set; }
 
