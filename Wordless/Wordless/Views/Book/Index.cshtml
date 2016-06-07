@@ -7,7 +7,7 @@
         <div class="row">
             <div id="BookDisplay" class="col-lg-8 col-md-8">
                 @if (Model.Count() > 0)
-                    {
+                {
                     foreach (var book in Model)
                     {
                         <div class="bodyDiv col-md-5 col-lg-5 book-divs">
@@ -27,9 +27,9 @@
                     }
                 }
 
-                </div>
+            </div>
             <div class="col-md-4">
-                @*<div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
                     @{
                         var mostDownloadedList = ViewBag.MostDownloaded as List<Wordless.Models.Book>;
 
@@ -46,8 +46,8 @@
                             }
                         }
                     }
-                    </div>
-                    <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                </div>
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
                     @{
                         var bestRatedList = ViewBag.BestRating as List<Wordless.Models.PurchasedBook>;
 
@@ -64,8 +64,8 @@
                             }
                         }
                     }
-                    </div>
-                    <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
+                </div>
+                <div class="sidebar-mid-bot sidebar-nav hidden-sm hidden-xs">
                     @{
                         var mostCommentedList = ViewBag.MostCommented as List<Wordless.Models.Book>;
 
@@ -82,12 +82,11 @@
                             }
                         }
 
-                    </div>
-                </div>
-                
+
+
 
                     }
-                </div>*@
+                </div>
 
             </div>
         </div>
@@ -100,11 +99,17 @@
 
 
 
-@*<div class="bodyDiv searchField">
-        <form action="/Book/" method="post" class="form-inline">
-            <div class="form-group">
-                <input class="form-control searchButton" name="search" placeholder="Search" type="text" />
-            </div>
-            <button type="submit" class="btn btn-default">Search</button>
-        </form>
-    </div>*@
+
+
+
+
+
+
+        @*<div class="bodyDiv searchField">
+                <form action="/Book/" method="post" class="form-inline">
+                    <div class="form-group">
+                        <input class="form-control searchButton" name="search" placeholder="Search" type="text" />
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
+            </div>*@
